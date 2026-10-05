@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaction Details — Equeh</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-soft: #f5f8ff;
+
+            --text: #172033;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+
+            --border: #e7ebf2;
+            --background: #f8fafc;
+            --white: #ffffff;
+
+            --green: #16a34a;
+            --green-light: #ecfdf3;
+
+            --orange: #f59e0b;
+            --orange-light: #fff8e7;
+
+            --red: #dc2626;
+            --red-light: #fef2f2;
+
+            --shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
+
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 9px;
+            box-shadow: 0 7px 18px rgba(37, 99, 235, 0.20);
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+        }
+
+        .header-container {
+            width: min(1180px, calc(100% - 40px));
+            min-height: 76px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--blue);
+        }
+
+        .main-nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -27px;
+            height: 2px;
+            border-radius: 10px;
+            background: var(--blue);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text-secondary);
+        }
+
+        .icon-button:hover {
+            color: var(--blue);
+            background: var(--blue-soft);
+        }
+
+        .profile-button {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 5px 12px 5px 5px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        .profile-avatar-small {
+            width: 31px;
+            height: 31px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .profile-button span:last-child {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 36px 0 70px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-size: 11px;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue);
+        }
+
+        .breadcrumb .current {
+            color: var(--text-secondary);
+        }
+
+        .page-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 7px;
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .page-heading h1 {
+            margin-bottom: 6px;
+            font-size: clamp(25px, 4vw, 33px);
+            line-height: 1.2;
+            letter-spacing: -0.035em;
+        }
+
+        .page-heading p {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .transaction-id-heading {
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 17px;
+            border-radius: 11px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.16);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        /* =========================
+           TOP STATUS
+        ========================= */
+
+        .transaction-status-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            padding: 21px 23px;
+            margin-bottom: 22px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .status-icon {
+            width: 43px;
+            height: 43px;
+            flex: 0 0 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .status-left strong {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 12px;
+        }
+
+        .status-left span {
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 11px;
+            border-radius: 20px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* =========================
+           MAIN GRID
+        ========================= */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.75fr);
+            gap: 22px;
+        }
+
+        .left-column,
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .card {
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 21px 23px 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h2 {
+            font-size: 15px;
+            letter-spacing: -0.015em;
+        }
+
+        .card-header p {
+            margin-top: 2px;
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        .card-body {
+            padding: 23px;
+        }
+
+        /* =========================
+           PROPERTY CARD
+        ========================= */
+
+        .property-card-content {
+            display: grid;
+            grid-template-columns: 155px 1fr;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .property-image {
+            width: 155px;
+            height: 125px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #eef2f7;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 7px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .property-card-content h3 {
+            margin-bottom: 3px;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .property-location {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        .property-price {
+            color: var(--blue);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .property-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 35px 1fr auto;
+            gap: 13px;
+            min-height: 80px;
+        }
+
+        .timeline-item:last-child {
+            min-height: auto;
+        }
+
+        .timeline-marker-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-marker-wrap::after {
+            content: "";
+            position: absolute;
+            top: 31px;
+            bottom: -1px;
+            width: 1px;
+            background: #dbe3ef;
+        }
+
+        .timeline-item:last-child .timeline-marker-wrap::after {
+            display: none;
+        }
+
+        .timeline-marker {
+            position: relative;
+            z-index: 2;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .timeline-item.completed .timeline-marker {
+            background: var(--green-light);
+            color: var(--green);
+        }
+
+        .timeline-item.current .timeline-marker {
+            background: var(--blue);
+            color: #ffffff;
+            box-shadow: 0 0 0 5px var(--blue-light);
+        }
+
+        .timeline-content {
+            padding-bottom: 20px;
+        }
+
+        .timeline-content strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+
+        .timeline-content p {
+            max-width: 500px;
+            color: var(--text-secondary);
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .timeline-date {
+            padding-top: 3px;
+            color: var(--text-light);
+            font-size: 8px;
+            white-space: nowrap;
+        }
+
+        .timeline-item.current .timeline-content strong {
+            color: var(--blue);
+        }
+
+        /* =========================
+           PAYMENT SUMMARY
+        ========================= */
+
+        .summary-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .summary-row:first-child {
+            padding-top: 0;
+        }
+
+        .summary-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .summary-row span:first-child {
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        .summary-row strong {
+            color: var(--text);
+            font-size: 10px;
+        }
+
+        .summary-row.total {
+            margin-top: 4px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .summary-row.total span:first-child {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .summary-row.total strong {
+            color: var(--blue);
+            font-size: 15px;
+        }
+
+        .paid {
+            color: var(--green) !important;
+        }
+
+        .pending {
+            color: var(--orange) !important;
+        }
+
+        /* =========================
+           DOCUMENTS
+        ========================= */
+
+        .document-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+        }
+
+        .document-icon {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 13px;
+        }
+
+        .document-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .document-info strong {
+            display: block;
+            overflow: hidden;
+            margin-bottom: 2px;
+            font-size: 9px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .document-info span {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        .document-status {
+            color: var(--green);
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           SIDE INFO
+        ========================= */
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .info-row:first-child {
+            padding-top: 0;
+        }
+
+        .info-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .info-row span {
+            color: var(--text-secondary);
+            font-size: 9px;
+        }
+
+        .info-row strong {
+            color: var(--text);
+            font-size: 9px;
+            text-align: right;
+        }
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 12px;
+            background: var(--orange-light);
+            border: 1px solid #fde68a;
+        }
+
+        .notice-icon {
+            color: var(--orange);
+            font-size: 13px;
+            line-height: 1;
+        }
+
+        .notice p {
+            color: #92400e;
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SUPPORT CARD
+        ========================= */
+
+        .support-card {
+            padding: 21px;
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+            border: 1px solid #dbeafe;
+            border-radius: var(--radius);
+        }
+
+        .support-card h2 {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .support-card p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .support-link {
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .site-footer {
+            border-top: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .footer-container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-container .logo {
+            font-size: 20px;
+        }
+
+        .footer-container .logo-mark {
+            width: 25px;
+            height: 25px;
+            flex-basis: 25px;
+            border-radius: 7px;
+        }
+
+        .footer-container .logo-mark::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .footer-copy {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 980px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .right-column {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                align-items: start;
+            }
+
+            .right-column .support-card {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .header-container,
+            .page,
+            .footer-container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .header-container {
+                min-height: 68px;
+            }
+
+            .main-nav,
+            .header-actions {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-nav {
+                display: none;
+                padding: 0 14px 15px;
+                background: var(--white);
+                border-top: 1px solid var(--border);
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .mobile-nav a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid #f1f5f9;
+                color: var(--text-secondary);
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .mobile-nav a:last-child {
+                border-bottom: 0;
+            }
+
+            .mobile-nav a.active {
+                color: var(--blue);
+            }
+
+            .page {
+                padding-top: 26px;
+            }
+
+            .page-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .page-heading .btn {
+                width: 100%;
+            }
+
+            .transaction-status-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .property-card-content {
+                grid-template-columns: 1fr;
+            }
+
+            .property-image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .right-column {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+                flex-basis: 27px;
+                border-radius: 8px;
+            }
+
+            .logo-mark::before {
+                width: 9px;
+                height: 9px;
+            }
+
+            .page-heading h1 {
+                font-size: 27px;
+            }
+
+            .card-header,
+            .card-body {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 31px 1fr;
+                gap: 10px;
+            }
+
+            .timeline-date {
+                grid-column: 2;
+                grid-row: 2;
+                padding-top: 0;
+                padding-bottom: 15px;
+            }
+
+            .timeline-content {
+                padding-bottom: 0;
+            }
+
+            .footer-container {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo" aria-label="Equeh home">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span class="logo-word">Equeh</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="discover.html">Discover</a>
+                <a href="transactions.html" class="active">Transactions</a>
+                <a href="messages.html">Messages</a>
+                <a href="profile.html">Profile</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="icon-button"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+                    ♧
+                </button>
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                >
+                    <span class="profile-avatar-small">PE</span>
+                    <span>Profile</span>
+                </button>
+
+            </div>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="discover.html">Discover</a>
+            <a href="transactions.html" class="active">Transactions</a>
+            <a href="messages.html">Messages</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+    <main class="page">
+
+        <div class="breadcrumb">
+            <a href="transactions.html">Transactions</a>
+            <span>›</span>
+            <span class="current">Transaction details</span>
+        </div>
+
+
+        <section class="page-heading">
+
+            <div>
+
+                <span class="eyebrow">
+                    TRANSACTION DETAILS
+                </span>
+
+                <h1>
+                    Modern Family Home
+                </h1>
+
+                <p>
+                    Track every stage of your Equeh property transaction.
+                </p>
+
+                <div class="transaction-id-heading">
+                    Transaction ID: EQ-20260914-001
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                id="backButton"
+            >
+                ← Back to transactions
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             CURRENT STATUS
+        ========================= -->
+        <section class="transaction-status-card">
+
+            <div class="status-left">
+
+                <div class="status-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <strong>
+                        Transaction is in progress
+                    </strong>
+
+                    <span>
+                        Your transaction is currently moving through the
+                        Equeh verification and completion process.
+                    </span>
+                </div>
+
+            </div>
+
+            <span class="status-badge">
+                <span class="status-dot"></span>
+                Active
+            </span>
+
+        </section>
+
+
+        <div class="content-grid">
+
+            <!-- =========================
+                 LEFT COLUMN
+            ========================= -->
+            <div class="left-column">
+
+
+                <!-- PROPERTY -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Property</h2>
+                            <p>The property attached to this transaction</p>
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="btn btn-secondary"
+                            style="min-height:34px;padding:0 11px;font-size:9px;"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="property-card-content">
+
+                            <div class="property-image">
+
+                                <!-- Replace with your own image -->
+                                <img
+                                    src="/image/modern.jpg.jpeg"
+                                    alt="Modern Family Home"
+                                >
+
+                            </div>
+
+                            <div>
+
+                                <span class="verified-badge">
+                                    ✓ Equeh verified property
+                                </span>
+
+                                <h3>
+                                    Modern Family Home
+                                </h3>
+
+                                <p class="property-location">
+                                    Lagos, Nigeria
+                                </p>
+
+                                <strong class="property-price">
+                                    ₦85,000,000
+                                </strong>
+
+                                <div class="property-meta">
+                                    <span>4 Bedrooms</span>
+                                    <span>4 Bathrooms</span>
+                                    <span>House</span>
+                                    <span>1 Parking</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TRANSACTION TIMELINE -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Transaction progress</h2>
+                            <p>
+                                Your transaction lifecycle with Equeh
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="timeline">
+
+
+                            <!-- STEP 1 -->
+                            <div class="timeline-item completed">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        ✓
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Buyer details
+                                    </strong>
+
+                                    <p>
+                                        Buyer information was submitted
+                                        and confirmed for the transaction.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Sep 14, 2026
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+                            <div class="timeline-item completed">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        ✓
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Identity & transaction verification
+                                    </strong>
+
+                                    <p>
+                                        Initial identity and transaction
+                                        verification requirements were completed.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Sep 14, 2026
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+                            <div class="timeline-item completed">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        ✓
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Equeh agency fee
+                                    </strong>
+
+                                    <p>
+                                        The Equeh agency/service fee has been
+                                        confirmed before the major property
+                                        transaction proceeds.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Sep 14, 2026
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 4 -->
+                            <div class="timeline-item current">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        4
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Agreement
+                                    </strong>
+
+                                    <p>
+                                        Review and confirmation of the
+                                        transaction agreement before the
+                                        major property payment.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Current
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 5 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        5
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Property payment
+                                    </strong>
+
+                                    <p>
+                                        Major property payment will proceed
+                                        after the required agreement stage.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 6 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        6
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Online verification
+                                    </strong>
+
+                                    <p>
+                                        Final online checks will be completed
+                                        before the physical verification stage.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 7 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        7
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        On-site verification
+                                    </strong>
+
+                                    <p>
+                                        Equeh will arrange the required
+                                        physical property verification.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 8 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        8
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Lawyer confirmation
+                                    </strong>
+
+                                    <p>
+                                        Required legal confirmation will be
+                                        completed before the final handover.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 9 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        9
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Physical handover
+                                    </strong>
+
+                                    <p>
+                                        Property and relevant physical
+                                        documentation will be handed over
+                                        according to the agreed process.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 10 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        10
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Fund release
+                                    </strong>
+
+                                    <p>
+                                        Funds are released subject to the
+                                        applicable completion conditions.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 11 -->
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker-wrap">
+                                    <div class="timeline-marker">
+                                        11
+                                    </div>
+                                </div>
+
+                                <div class="timeline-content">
+                                    <strong>
+                                        Completion
+                                    </strong>
+
+                                    <p>
+                                        Transaction completion is recorded
+                                        subject to applicable legal
+                                        registration and transfer requirements.
+                                    </p>
+                                </div>
+
+                                <div class="timeline-date">
+                                    Upcoming
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- DOCUMENTS -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Transaction documents</h2>
+                            <p>
+                                Documents associated with this transaction
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="document-list">
+
+                            <div class="document-item">
+
+                                <div class="document-icon">
+                                    ▣
+                                </div>
+
+                                <div class="document-info">
+                                    <strong>
+                                        Transaction agreement
+                                    </strong>
+
+                                    <span>
+                                        Agreement document
+                                    </span>
+                                </div>
+
+                                <span class="document-status">
+                                    Available
+                                </span>
+
+                            </div>
+
+
+                            <div class="document-item">
+
+                                <div class="document-icon">
+                                    ▣
+                                </div>
+
+                                <div class="document-info">
+                                    <strong>
+                                        Property verification documents
+                                    </strong>
+
+                                    <span>
+                                        Property documentation
+                                    </span>
+                                </div>
+
+                                <span class="document-status">
+                                    Available
+                                </span>
+
+                            </div>
+
+
+                            <div class="document-item">
+
+                                <div class="document-icon">
+                                    ▣
+                                </div>
+
+                                <div class="document-info">
+                                    <strong>
+                                        Equeh agency fee record
+                                    </strong>
+
+                                    <span>
+                                        Payment record
+                                    </span>
+                                </div>
+
+                                <span class="document-status">
+                                    Available
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- NOTICE -->
+                <div class="notice">
+
+                    <span class="notice-icon">
+                        !
+                    </span>
+
+                    <p>
+                        This frontend currently displays a transaction
+                        prototype. Payment processing, legal confirmation,
+                        verification services and fund release will be
+                        connected during backend implementation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 RIGHT COLUMN
+            ========================= -->
+            <aside class="right-column">
+
+
+                <!-- PAYMENT SUMMARY -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Payment summary</h2>
+                            <p>Financial overview</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="summary-list">
+
+                            <div class="summary-row">
+
+                                <span>
+                                    Property price
+                                </span>
+
+                                <strong>
+                                    ₦85,000,000
+                                </strong>
+
+                            </div>
+
+
+                            <div class="summary-row">
+
+                                <span>
+                                    Equeh agency fee
+                                </span>
+
+                                <strong class="paid">
+                                    Confirmed
+                                </strong>
+
+                            </div>
+
+
+                            <div class="summary-row">
+
+                                <span>
+                                    Property payment
+                                </span>
+
+                                <strong class="pending">
+                                    Pending
+                                </strong>
+
+                            </div>
+
+
+                            <div class="summary-row">
+
+                                <span>
+                                    Fund release
+                                </span>
+
+                                <strong>
+                                    Pending
+                                </strong>
+
+                            </div>
+
+
+                            <div class="summary-row total">
+
+                                <span>
+                                    Property transaction value
+                                </span>
+
+                                <strong>
+                                    ₦85,000,000
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TRANSACTION INFORMATION -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Transaction information</h2>
+                            <p>Key transaction details</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="info-list">
+
+                            <div class="info-row">
+                                <span>Transaction ID</span>
+                                <strong>EQ-20260914-001</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Buyer</span>
+                                <strong>Praise Egbadon</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Transaction type</span>
+                                <strong>Property purchase</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Property type</span>
+                                <strong>House</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Location</span>
+                                <strong>Lagos, Nigeria</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Started</span>
+                                <strong>September 14, 2026</strong>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Current stage</span>
+                                <strong>Agreement</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ACTIONS -->
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Next action</h2>
+                            <p>Continue your transaction</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p style="
+                            color:var(--text-secondary);
+                            font-size:9px;
+                            line-height:1.7;
+                            margin-bottom:16px;
+                        ">
+                            Your current transaction stage requires
+                            agreement review before the property payment
+                            stage can proceed.
+                        </p>
+
+                        <a
+                            href="transaction.html"
+                            class="btn btn-primary"
+                            style="width:100%;"
+                        >
+                            Continue transaction
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SUPPORT -->
+                <section class="support-card">
+
+                    <h2>
+                        Need help?
+                    </h2>
+
+                    <p>
+                        If you have a question about this transaction,
+                        contact Equeh support before taking your next step.
+                    </p>
+
+                    <a
+                        href="messages.html"
+                        class="support-link"
+                    >
+                        Contact Equeh support →
+                    </a>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <a href="index.html" class="logo" aria-label="Equeh home">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span class="logo-word">Equeh</span>
+            </a>
+
+            <p class="footer-copy">
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const mobileMenuButton =
+                document.getElementById("mobileMenuButton");
+
+            const mobileNav =
+                document.getElementById("mobileNav");
+
+            const notificationButton =
+                document.getElementById("notificationButton");
+
+            const profileButton =
+                document.getElementById("profileButton");
+
+            const backButton =
+                document.getElementById("backButton");
+
+
+            /* =========================
+               MOBILE NAVIGATION
+            ========================= */
+
+            if (mobileMenuButton && mobileNav) {
+
+                mobileMenuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        const isOpen =
+                            mobileNav.classList.toggle("active");
+
+                        mobileMenuButton.setAttribute(
+                            "aria-expanded",
+                            isOpen ? "true" : "false"
+                        );
+
+                        mobileMenuButton.textContent =
+                            isOpen ? "×" : "☰";
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               NOTIFICATIONS
+            ========================= */
+
+            if (notificationButton) {
+
+                notificationButton.addEventListener(
+                    "click",
+                    function () {
+
+                        alert(
+                            "You have no new notifications."
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               PROFILE
+            ========================= */
+
+            if (profileButton) {
+
+                profileButton.addEventListener(
+                    "click",
+                    function () {
+
+                        window.location.href =
+                            "profile.html";
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               BACK BUTTON
+            ========================= */
+
+            if (backButton) {
+
+                backButton.addEventListener(
+                    "click",
+                    function () {
+
+                        window.location.href =
+                            "transactions.html";
+
+                    }
+                );
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

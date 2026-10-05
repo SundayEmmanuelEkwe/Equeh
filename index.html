@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Equeh — Property You Can Trust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #3b82f6;
+            --blue-soft: #eff6ff;
+            --blue-border: #dbeafe;
+
+            --navy: #0f172a;
+            --text: #111827;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+
+            --white: #ffffff;
+            --background: #f8fafc;
+            --surface: #ffffff;
+
+            --border: #e2e8f0;
+            --border-dark: #cbd5e1;
+
+            --green: #16a34a;
+            --green-soft: #f0fdf4;
+            --green-border: #bbf7d0;
+
+            --yellow: #d97706;
+            --yellow-soft: #fffbeb;
+
+            --red: #dc2626;
+
+            --radius-small: 10px;
+            --radius-medium: 16px;
+            --radius-large: 24px;
+
+            --shadow-small:
+                0 4px 16px rgba(15, 23, 42, 0.05);
+
+            --shadow-medium:
+                0 12px 30px rgba(15, 23, 42, 0.08);
+
+            --shadow-large:
+                0 20px 50px rgba(15, 23, 42, 0.10);
+
+            --container-width: 1180px;
+        }
+
+
+        /* =========================================================
+           RESET
+           ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+
+        /* =========================================================
+           TYPOGRAPHY
+           ========================================================= */
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--navy);
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 68px);
+        }
+
+        h2 {
+            font-size: clamp(30px, 4vw, 46px);
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+
+        /* =========================================================
+           CONTAINER
+           ========================================================= */
+
+        .section-container {
+            width: min(100% - 40px, var(--container-width));
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           LOGO
+           ========================================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--blue);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6
+            );
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, 0.20);
+
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+           ========================================================= */
+
+        .btn {
+            min-height: 46px;
+            padding: 0 22px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            border: 1px solid transparent;
+            border-radius: var(--radius-small);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition:
+                0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+
+            box-shadow:
+                0 8px 20px rgba(37, 99, 235, 0.16);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--blue);
+            border-color: var(--blue-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blue-soft);
+            border-color: var(--blue);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--blue);
+            border-color: var(--white);
+        }
+
+        .btn-white:hover {
+            background: #f8fafc;
+        }
+
+
+        /* =========================================================
+           EYEBROW
+           ========================================================= */
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 14px;
+
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom: 1px solid var(--border);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-container {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-link {
+            color: var(--text-secondary);
+
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .login-link:hover {
+            color: var(--blue);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+           ========================================================= */
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            gap: 5px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .menu-toggle span {
+            width: 18px;
+            height: 2px;
+
+            background: var(--navy);
+
+            border-radius: 10px;
+        }
+
+        .mobile-menu {
+            display: none;
+
+            padding: 20px;
+
+            background: white;
+            border-top: 1px solid var(--border);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 0;
+
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .mobile-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            padding: 85px 0 95px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fafc 0%,
+                    #eff6ff 100%
+                );
+        }
+
+        .hero-container {
+            width: min(100% - 40px, var(--container-width));
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr 1.1fr;
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+        .hero-content {
+            max-width: 570px;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 22px;
+        }
+
+        .hero-content h1 span {
+            display: block;
+            color: var(--blue);
+        }
+
+        .hero-content > p {
+            max-width: 540px;
+
+            margin-bottom: 30px;
+
+            font-size: 16px;
+            line-height: 1.85;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .check-icon {
+            width: 21px;
+            height: 21px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green-soft);
+            color: var(--green);
+
+            border-radius: 50%;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           HERO VISUAL
+           ========================================================= */
+
+        .hero-visual {
+            position: relative;
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+
+            object-fit: cover;
+
+            border-radius: var(--radius-large);
+
+            box-shadow: var(--shadow-large);
+        }
+
+        .hero-card {
+            position: absolute;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border: 1px solid rgba(226, 232, 240, 0.9);
+
+            border-radius: 14px;
+
+            box-shadow: var(--shadow-medium);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .verification-card {
+            left: -25px;
+            bottom: 50px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px 17px;
+        }
+
+        .card-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green-soft);
+            color: var(--green);
+
+            border-radius: 10px;
+
+            font-weight: 700;
+        }
+
+        .verification-card strong,
+        .verification-card span {
+            display: block;
+        }
+
+        .verification-card strong {
+            font-size: 12px;
+        }
+
+        .verification-card span {
+            color: var(--text-light);
+            font-size: 10px;
+        }
+
+        .trust-card {
+            right: -20px;
+            top: 40px;
+
+            min-width: 170px;
+
+            padding: 17px 20px;
+        }
+
+        .trust-label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--text-light);
+
+            font-size: 8px;
+            font-weight: 700;
+
+            letter-spacing: 0.1em;
+        }
+
+        .trust-card strong {
+            display: block;
+
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           GENERAL SECTION
+           ========================================================= */
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-light {
+            background: var(--background);
+        }
+
+        .section-heading {
+            max-width: 700px;
+
+            margin: 0 auto 55px;
+
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           INTRODUCTION
+           ========================================================= */
+
+        .intro-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 80px;
+
+            align-items: center;
+        }
+
+        .intro-content p {
+            margin-bottom: 18px;
+
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .intro-points {
+            display: grid;
+            gap: 14px;
+
+            margin-top: 25px;
+        }
+
+        .intro-point {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+        }
+
+        .intro-point-icon {
+            width: 32px;
+            height: 32px;
+
+            flex: 0 0 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-soft);
+            color: var(--blue);
+
+            border-radius: 9px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .intro-point strong {
+            display: block;
+
+            margin-bottom: 2px;
+
+            font-size: 12px;
+        }
+
+        .intro-point span {
+            color: var(--text-secondary);
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           HOW IT WORKS
+           ========================================================= */
+
+        .process-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .process-card {
+            overflow: hidden;
+
+            background: white;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-medium);
+
+            box-shadow: var(--shadow-small);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow: var(--shadow-medium);
+        }
+
+        .process-image {
+            height: 190px;
+
+            object-fit: cover;
+        }
+
+        .process-content {
+            padding: 22px;
+        }
+
+        .process-number {
+            display: inline-flex;
+
+            width: 27px;
+            height: 27px;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 13px;
+
+            background: var(--blue-soft);
+            color: var(--blue);
+
+            border-radius: 50%;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .process-content h3 {
+            margin-bottom: 8px;
+
+            font-size: 17px;
+        }
+
+        .process-content p {
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           TRUST SECTION
+           ========================================================= */
+
+        .trust-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 75px;
+
+            align-items: center;
+        }
+
+        .trust-image {
+            height: 470px;
+
+            object-fit: cover;
+
+            border-radius: var(--radius-large);
+
+            box-shadow: var(--shadow-medium);
+        }
+
+        .trust-content h2 {
+            margin-bottom: 18px;
+        }
+
+        .trust-content > p {
+            margin-bottom: 28px;
+
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .trust-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 13px;
+        }
+
+        .trust-item-icon {
+            width: 35px;
+            height: 35px;
+
+            flex: 0 0 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-soft);
+            color: var(--blue);
+
+            border-radius: 9px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .trust-item h3 {
+            margin-bottom: 3px;
+
+            font-size: 13px;
+        }
+
+        .trust-item p {
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           WHY EQUEH
+           ========================================================= */
+
+        .why-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .why-card {
+            padding: 25px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius-medium);
+
+            box-shadow: var(--shadow-small);
+        }
+
+        .why-image {
+            width: 100%;
+            height: 150px;
+
+            object-fit: cover;
+
+            margin-bottom: 20px;
+
+            border-radius: 12px;
+        }
+
+        .why-card h3 {
+            margin-bottom: 8px;
+
+            font-size: 16px;
+        }
+
+        .why-card p {
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           CTA
+           ========================================================= */
+
+        .cta-section {
+            padding: 90px 0;
+        }
+
+        .cta-box {
+            position: relative;
+            overflow: hidden;
+
+            padding: 70px 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            border-radius: var(--radius-large);
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 50px rgba(37, 99, 235, 0.18);
+        }
+
+        .cta-box h2 {
+            color: white;
+
+            margin-bottom: 14px;
+
+            font-size: clamp(30px, 4vw, 44px);
+        }
+
+        .cta-box p {
+            max-width: 620px;
+
+            margin: 0 auto 28px;
+
+            color: rgba(255, 255, 255, 0.82);
+
+            font-size: 13px;
+        }
+
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .footer {
+            padding: 70px 0 25px;
+
+            background: #0f172a;
+
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr 1fr;
+
+            gap: 50px;
+
+            padding-bottom: 50px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 17px;
+        }
+
+        .footer-brand .logo-word {
+            color: #2563eb;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+
+            color: #94a3b8;
+
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 17px;
+
+            color: white;
+
+            font-size: 12px;
+        }
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #64748b;
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero-content {
+                max-width: 700px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .hero-content > p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-note {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 750px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .process-grid,
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .trust-grid,
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .trust-image {
+                max-width: 700px;
+                margin: auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 760px) {
+
+            .section-container {
+                width: min(100% - 28px, var(--container-width));
+            }
+
+            .nav-container {
+                min-height: 68px;
+            }
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 60px 0 70px;
+            }
+
+            .hero-content h1 {
+                font-size: 43px;
+            }
+
+            .hero-content > p {
+                font-size: 13px;
+            }
+
+            .hero-visual {
+                min-height: 360px;
+            }
+
+            .hero-image {
+                height: 360px;
+            }
+
+            .verification-card {
+                left: 10px;
+                bottom: 25px;
+            }
+
+            .trust-card {
+                right: 10px;
+                top: 20px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .process-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-image {
+                height: 350px;
+            }
+
+            .cta-box {
+                padding: 50px 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+                flex-basis: 27px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                min-height: 300px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .verification-card {
+                padding: 10px;
+            }
+
+            .trust-card {
+                min-width: 145px;
+                padding: 12px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         NAVIGATION
+         ========================================================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container section-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="#how-it-works">
+                    How it works
+                </a>
+
+                <a href="#trust">
+                    Trust
+                </a>
+
+                <a href="#why-equeh">
+                    Why Equeh
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <a
+                    href="login.html"
+                    class="login-link"
+                >
+                    Log in
+                </a>
+
+                <a
+                    href="create-account.html"
+                    class="btn btn-primary"
+                >
+                    Create account
+                </a>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <a href="#how-it-works">
+                How it works
+            </a>
+
+            <a href="#trust">
+                Trust
+            </a>
+
+            <a href="#why-equeh">
+                Why Equeh
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+
+            <div class="mobile-actions">
+
+                <a
+                    href="login.html"
+                    class="btn btn-secondary"
+                >
+                    Log in
+                </a>
+
+                <a
+                    href="create-account.html"
+                    class="btn btn-primary"
+                >
+                    Create account
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">
+                        VERIFIED PROPERTY TRANSACTIONS
+                    </span>
+
+
+                    <h1>
+                        Property
+                        <span>you can trust.</span>
+                    </h1>
+
+
+                    <p>
+                        Equeh makes buying property more trustworthy by
+                        connecting verified identities, verified properties,
+                        secure agreements and physical verification in one
+                        transparent transaction process.
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="create-account.html"
+                            class="btn btn-primary"
+                        >
+                            Create account
+                        </a>
+
+                        <a
+                            href="#how-it-works"
+                            class="btn btn-secondary"
+                        >
+                            See how it works
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-note">
+
+                        <span class="check-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Browse verified properties freely before you transact.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO IMAGE -->
+
+                <div class="hero-visual">
+
+                    <!-- Replace with your own image -->
+
+                    <img
+                        src="/image/modern.jpg.jpeg"
+                        alt="Modern verified property"
+                        class="hero-image"
+                    >
+
+
+                    <div class="hero-card verification-card">
+
+                        <div class="card-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Property verified
+                            </strong>
+
+                            <span>
+                                Identity & documents checked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-card trust-card">
+
+                        <span class="trust-label">
+                            EQUEH STANDARD
+                        </span>
+
+                        <strong>
+                            Verification before transaction.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INTRODUCTION
+             ===================================================== -->
+
+        <section
+            class="section"
+            id="about"
+        >
+
+            <div class="section-container">
+
+                <div class="intro-grid">
+
+                    <div class="intro-content">
+
+                        <span class="eyebrow">
+                            A BETTER WAY TO TRANSACT
+                        </span>
+
+                        <h2>
+                            Real estate should
+                            begin with trust.
+                        </h2>
+
+                    </div>
+
+
+                    <div>
+
+                        <p>
+                            Property transactions involve more than finding
+                            a building or a piece of land. Buyers need confidence
+                            that the person offering the property is legitimate,
+                            that the property exists as represented, and that
+                            the transaction process is properly documented.
+                        </p>
+
+                        <p>
+                            Equeh brings these trust requirements together in
+                            one structured platform, reducing uncertainty
+                            between the people, property, documents and money
+                            involved in a transaction.
+                        </p>
+
+
+                        <div class="intro-points">
+
+                            <div class="intro-point">
+
+                                <div class="intro-point-icon">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Verified identities
+                                    </strong>
+
+                                    <span>
+                                        Participants are verified before
+                                        transaction activities begin.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="intro-point">
+
+                                <div class="intro-point-icon">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Verified properties
+                                    </strong>
+
+                                    <span>
+                                        Property information and supporting
+                                        documents are checked.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="intro-point">
+
+                                <div class="intro-point-icon">
+                                    03
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Structured transactions
+                                    </strong>
+
+                                    <span>
+                                        Agreements, verification and payment
+                                        stages are connected.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             HOW IT WORKS
+             ===================================================== -->
+
+        <section
+            class="section section-light"
+            id="how-it-works"
+        >
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">
+                        HOW EQUEH WORKS
+                    </span>
+
+                    <h2>
+                        From discovery to completion.
+                    </h2>
+
+                    <p>
+                        Every stage is designed to make the property
+                        transaction clearer and more accountable.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <!-- DISCOVER -->
+
+                    <article class="process-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/discover.jpg.jpg"
+                            alt="Discover properties"
+                            class="process-image"
+                        >
+
+                        <div class="process-content">
+
+                            <span class="process-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Discover
+                            </h3>
+
+                            <p>
+                                Browse available verified properties and
+                                explore the information provided before
+                                expressing an interest.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VERIFY -->
+
+                    <article class="process-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/verify.jpg.jpg"
+                            alt="Verify property"
+                            class="process-image"
+                        >
+
+                        <div class="process-content">
+
+                            <span class="process-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Verify
+                            </h3>
+
+                            <p>
+                                Identity, property information and relevant
+                                documents move through the required
+                                verification stages.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- TRANSACT -->
+
+                    <article class="process-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/transact.jpg.jpg"
+                            alt="Property transaction"
+                            class="process-image"
+                        >
+
+                        <div class="process-content">
+
+                            <span class="process-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Transact
+                            </h3>
+
+                            <p>
+                                Agreements, payment and transaction milestones
+                                are coordinated through a structured process.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- COMPLETE -->
+
+                    <article class="process-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/complete.jpg.jpg"
+                            alt="Complete property transaction"
+                            class="process-image"
+                        >
+
+                        <div class="process-content">
+
+                            <span class="process-number">
+                                04
+                            </span>
+
+                            <h3>
+                                Complete
+                            </h3>
+
+                            <p>
+                                Online and on-site verification lead toward
+                                physical handover and transaction completion.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             TRUST
+             ===================================================== -->
+
+        <section
+            class="section"
+            id="trust"
+        >
+
+            <div class="section-container">
+
+                <div class="trust-grid">
+
+
+                    <div>
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/property-verification.jpg.jpeg"
+                            alt="Property verification"
+                            class="trust-image"
+                        >
+
+                    </div>
+
+
+                    <div class="trust-content">
+
+                        <span class="eyebrow">
+                            BUILT AROUND VERIFICATION
+                        </span>
+
+                        <h2>
+                            Trust is not a feature.
+                            It is the process.
+                        </h2>
+
+                        <p>
+                            Equeh is designed around a connected verification
+                            process rather than relying on a single badge or
+                            status indicator.
+                        </p>
+
+
+                        <div class="trust-list">
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Identity verification
+                                    </h3>
+
+                                    <p>
+                                        Establish who is participating in
+                                        the transaction before critical
+                                        transaction actions.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Document verification
+                                    </h3>
+
+                                    <p>
+                                        Supporting property documentation
+                                        is reviewed as part of the listing
+                                        and transaction process.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Physical verification
+                                    </h3>
+
+                                    <p>
+                                        Digital verification is followed by
+                                        physical verification where required
+                                        before completion.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Transaction accountability
+                                    </h3>
+
+                                    <p>
+                                        Important transaction stages are
+                                        recorded and connected to the
+                                        appropriate participants.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WHY EQUEH
+             ===================================================== -->
+
+        <section
+            class="section section-light"
+            id="why-equeh"
+        >
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">
+                        WHY EQUEH
+                    </span>
+
+                    <h2>
+                        Designed for confidence.
+                    </h2>
+
+                    <p>
+                        Equeh connects the digital and physical parts of
+                        property transactions instead of treating them
+                        as separate problems.
+                    </p>
+
+                </div>
+
+
+                <div class="why-grid">
+
+                    <article class="why-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/identity.jpg.jpg"
+                            alt="Identity verification"
+                            class="why-image"
+                        >
+
+                        <h3>
+                            Identity
+                        </h3>
+
+                        <p>
+                            Participants are connected to verified identity
+                            information before sensitive transaction actions.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/accountability.jpg.jpg"
+                            alt="Transaction accountability"
+                            class="why-image"
+                        >
+
+                        <h3>
+                            Accountability
+                        </h3>
+
+                        <p>
+                            Transaction stages provide a clearer record of
+                            what has happened and what still needs to happen.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/physical-verification.jpg.jpg"
+                            alt="Physical property verification"
+                            class="why-image"
+                        >
+
+                        <h3>
+                            Physical verification
+                        </h3>
+
+                        <p>
+                            The platform recognises that real property must
+                            ultimately be verified in the physical world.
+                        </p>
+
+                    </article>
+
+
+                    <article class="why-card">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/accountability.jpg.jpg"
+                            alt="Secure transaction process"
+                            class="why-image"
+                        >
+
+                        <h3>
+                            Transparency
+                        </h3>
+
+                        <p>
+                            Buyers and property owners move through a defined
+                            process instead of relying on informal promises.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CALL TO ACTION
+             ===================================================== -->
+
+        <section class="cta-section">
+
+            <div class="section-container">
+
+                <div class="cta-box">
+
+                    <span
+                        class="eyebrow"
+                        style="color: #bfdbfe;"
+                    >
+                        START WITH EQUEH
+                    </span>
+
+                    <h2>
+                        Find property with confidence.
+                    </h2>
+
+                    <p>
+                        Create an account and explore verified properties
+                        before deciding whether to transact.
+                    </p>
+
+                    <div class="cta-actions">
+
+                        <a
+                            href="create-account.html"
+                            class="btn btn-secondary"
+                        >
+                            Create account
+                        </a>
+
+                        <a
+                            href="login.html"
+                            class="btn btn-white"
+                        >
+                            Log in
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="section-container">
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <a
+                        href="index.html"
+                        class="logo"
+                        aria-label="Equeh home"
+                    >
+
+                        <span
+                            class="logo-mark"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span class="logo-word">
+                            Equeh
+                        </span>
+
+                    </a>
+
+                    <p>
+                        A structured property transaction platform designed
+                        around identity, property and transaction verification.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Platform
+                    </h4>
+
+                    <a href="#how-it-works">
+                        How it works
+                    </a>
+
+                    <a href="#trust">
+                        Verification
+                    </a>
+
+                    <a href="#why-equeh">
+                        Why Equeh
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <a href="login.html">
+                        Log in
+                    </a>
+
+                    <a href="create-account.html">
+                        Create account
+                    </a>
+
+                    <a href="forgot-password.html">
+                        Forgot password
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Information
+                    </h4>
+
+                    <a href="terms.html">
+                        Terms
+                    </a>
+
+                    <a href="privacy.html">
+                        Privacy
+                    </a>
+
+                    <a href="help.html">
+                        Help
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 Equeh. All rights reserved.
+                </p>
+
+                <p>
+                    Property transactions, structured around trust.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         EMBEDDED JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                /* =================================================
+                   MOBILE NAVIGATION
+                   ================================================= */
+
+                const menuToggle =
+                    document.getElementById("menuToggle");
+
+                const mobileMenu =
+                    document.getElementById("mobileMenu");
+
+
+                if (
+                    menuToggle &&
+                    mobileMenu
+                ) {
+
+                    menuToggle.addEventListener(
+                        "click",
+                        () => {
+
+                            const active =
+                                mobileMenu.classList.toggle(
+                                    "active"
+                                );
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                active ? "true" : "false"
+                            );
+
+                        }
+                    );
+
+
+                    const mobileLinks =
+                        mobileMenu.querySelectorAll("a");
+
+
+                    mobileLinks.forEach(
+                        link => {
+
+                            link.addEventListener(
+                                "click",
+                                () => {
+
+                                    mobileMenu.classList.remove(
+                                        "active"
+                                    );
+
+                                    menuToggle.setAttribute(
+                                        "aria-expanded",
+                                        "false"
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   CLOSE MOBILE MENU ON RESIZE
+                   ================================================= */
+
+                window.addEventListener(
+                    "resize",
+                    () => {
+
+                        if (
+                            window.innerWidth > 760 &&
+                            mobileMenu
+                        ) {
+
+                            mobileMenu.classList.remove(
+                                "active"
+                            );
+
+                            if (menuToggle) {
+
+                                menuToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================================
+                   SIMPLE SCROLL BEHAVIOUR
+                   ================================================= */
+
+                document
+                    .querySelectorAll('a[href^="#"]')
+                    .forEach(
+                        link => {
+
+                            link.addEventListener(
+                                "click",
+                                event => {
+
+                                    const targetId =
+                                        link.getAttribute(
+                                            "href"
+                                        );
+
+                                    if (
+                                        !targetId ||
+                                        targetId === "#"
+                                    ) {
+                                        return;
+                                    }
+
+
+                                    const target =
+                                        document.querySelector(
+                                            targetId
+                                        );
+
+
+                                    if (!target) {
+                                        return;
+                                    }
+
+
+                                    event.preventDefault();
+
+
+                                    target.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "start"
+                                    });
+
+                                }
+                            );
+
+                        }
+                    );
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

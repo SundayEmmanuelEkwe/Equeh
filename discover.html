@@ -1,0 +1,2606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Discover verified properties on Equeh."
+    >
+
+    <title>Discover Properties — Equeh</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-soft: #dbeafe;
+
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+
+            --text: #111827;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
+
+            --border: #e5e7eb;
+            --border-light: #eef0f3;
+
+            --background: #f8fafc;
+            --white: #ffffff;
+
+            --shadow-sm:
+                0 2px 8px rgba(15, 23, 42, 0.04);
+
+            --shadow-md:
+                0 10px 30px rgba(15, 23, 42, 0.07);
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Poppins", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .dashboard-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border-light);
+            backdrop-filter: blur(14px);
+        }
+
+        .header-container {
+            width: min(1200px, calc(100% - 40px));
+            min-height: 76px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        /* ================================
+           LOGO
+        ================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            flex-shrink: 0;
+        }
+
+        .logo-mark {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6
+            );
+            border-radius: 9px;
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, 0.20);
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        /* ================================
+           NAVIGATION
+        ================================= */
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .desktop-nav a {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--blue);
+        }
+
+        /* ================================
+           HEADER ACTIONS
+        ================================= */
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-btn {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .notification-btn:hover {
+            background: var(--blue-light);
+            border-color: var(--blue-soft);
+            color: var(--blue);
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 7px;
+            height: 7px;
+            background: #ef4444;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+        }
+
+        .profile-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 8px 4px 4px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .profile-button:hover {
+            border-color: var(--blue-soft);
+            background: var(--blue-light);
+        }
+
+        .profile-avatar {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-light);
+            color: var(--blue);
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .profile-name {
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-chevron {
+            color: var(--text-light);
+            font-size: 10px;
+        }
+
+        /* ================================
+           MOBILE MENU
+        ================================= */
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 11px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 17px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            display: none;
+            padding: 0 20px 18px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 11px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: 0;
+        }
+
+        .mobile-nav a.active {
+            color: var(--blue);
+        }
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .discover-main {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 42px 0 70px;
+        }
+
+        /* ================================
+           PAGE INTRO
+        ================================= */
+
+        .discover-intro {
+            margin-bottom: 28px;
+        }
+
+        .discover-eyebrow {
+            margin-bottom: 7px;
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
+        .discover-intro h1 {
+            color: var(--text);
+            font-size: clamp(28px, 4vw, 38px);
+            line-height: 1.2;
+            letter-spacing: -0.035em;
+        }
+
+        .discover-intro h1 span {
+            color: var(--blue);
+        }
+
+        .discover-intro p {
+            max-width: 680px;
+            margin-top: 9px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* ================================
+           SEARCH
+        ================================= */
+
+        .search-section {
+            padding: 18px;
+            margin-bottom: 28px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 48px;
+            padding: 0 14px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .search-icon {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--text);
+            font-size: 12px;
+        }
+
+        .search-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns:
+                1.3fr
+                1fr
+                1fr
+                1fr
+                auto;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .filter-select {
+            width: 100%;
+            min-height: 43px;
+            padding: 0 12px;
+            background: var(--white);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            outline: 0;
+            font-size: 10px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            border-color: var(--blue);
+        }
+
+        .filter-button {
+            min-height: 43px;
+            padding: 0 18px;
+            background: var(--blue);
+            color: var(--white);
+            border: 0;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            transition:
+                background 0.2s ease;
+        }
+
+        .filter-button:hover {
+            background: var(--blue-dark);
+        }
+
+        /* ================================
+           RESULTS HEADER
+        ================================= */
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 17px;
+        }
+
+        .results-count {
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .results-count span {
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .sort-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sort-label {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        .sort-select {
+            padding: 7px 10px;
+            background: var(--white);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: 0;
+            font-size: 9px;
+        }
+
+        /* ================================
+           PROPERTY GRID
+        ================================= */
+
+        .property-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--blue-soft);
+            box-shadow: var(--shadow-md);
+        }
+
+        .property-image {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #eef2f7;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition:
+                transform 0.35s ease;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.025);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 9px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--green);
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 700;
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .property-favourite {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-secondary);
+            border: 0;
+            border-radius: 50%;
+            font-size: 16px;
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+            transition:
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .property-favourite:hover {
+            transform: scale(1.05);
+            color: #ef4444;
+        }
+
+        .property-favourite.active {
+            color: #ef4444;
+        }
+
+        .property-content {
+            padding: 17px;
+        }
+
+        .property-location {
+            color: var(--blue);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .property-title {
+            margin-top: 5px;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+        }
+
+        .property-description {
+            margin-top: 6px;
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .property-details {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 13px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .property-detail {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        .property-detail strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .property-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-top: 14px;
+        }
+
+        .price-label {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        .property-price {
+            margin-top: 2px;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .view-property {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 36px;
+            padding: 0 12px;
+            background: var(--blue-light);
+            color: var(--blue);
+            border-radius: 9px;
+            font-size: 9px;
+            font-weight: 600;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .view-property:hover {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        /* ================================
+           VERIFIED NOTE
+        ================================= */
+
+        .verified-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            margin-top: 26px;
+            padding: 17px;
+            background: var(--green-light);
+            border: 1px solid #dcfce7;
+            border-radius: 14px;
+        }
+
+        .verified-note-icon {
+            width: 32px;
+            height: 32px;
+            flex: 0 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            color: var(--green);
+            border-radius: 9px;
+            font-size: 13px;
+        }
+
+        .verified-note-content h3 {
+            color: var(--text);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .verified-note-content p {
+            margin-top: 3px;
+            color: var(--text-light);
+            font-size: 8px;
+            line-height: 1.6;
+        }
+
+        /* ================================
+           EMPTY SEARCH STATE
+        ================================= */
+
+        .no-results {
+            display: none;
+            padding: 55px 20px;
+            text-align: center;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        .no-results-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-light);
+            color: var(--blue);
+            border-radius: 14px;
+            font-size: 20px;
+        }
+
+        .no-results h2 {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .no-results p {
+            max-width: 420px;
+            margin: 6px auto 0;
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .dashboard-footer {
+            padding: 25px 0;
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 19px;
+        }
+
+        .footer-logo .logo-mark {
+            width: 24px;
+            height: 24px;
+            flex-basis: 24px;
+            border-radius: 7px;
+        }
+
+        .footer-logo .logo-mark::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .footer-copy {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 1000px) {
+
+            .desktop-nav {
+                gap: 18px;
+            }
+
+            .filter-row {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .filter-button {
+                width: 100%;
+            }
+
+            .property-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 850px) {
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .header-container {
+                width: min(100% - 28px, 1200px);
+                min-height: 68px;
+            }
+
+            .discover-main {
+                width: min(100% - 28px, 1200px);
+                padding-top: 30px;
+            }
+
+            .discover-intro {
+                margin-bottom: 22px;
+            }
+
+            .search-section {
+                padding: 13px;
+                margin-bottom: 22px;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .sort-control {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .sort-select {
+                flex: 1;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .property-image {
+                height: 230px;
+            }
+
+            .footer-container {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+                flex-basis: 27px;
+                border-radius: 8px;
+            }
+
+            .logo-mark::before {
+                width: 9px;
+                height: 9px;
+            }
+
+            .profile-name,
+            .profile-chevron {
+                display: none;
+            }
+
+            .profile-button {
+                padding-right: 4px;
+            }
+
+            .notification-btn {
+                width: 37px;
+                height: 37px;
+            }
+
+            .discover-main {
+                width: min(100% - 22px, 1200px);
+            }
+
+            .discover-intro h1 {
+                font-size: 27px;
+            }
+
+            .search-bar {
+                min-height: 45px;
+            }
+
+            .property-image {
+                height: 205px;
+            }
+
+            .property-content {
+                padding: 15px;
+            }
+
+            .property-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .view-property {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="dashboard-header">
+
+        <div class="header-container">
+
+            <a
+                href="dashboard.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+
+            <nav
+                class="desktop-nav"
+                aria-label="Main navigation"
+            >
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a
+                    href="discover.html"
+                    class="active"
+                >
+                    Discover
+                </a>
+
+                <!-- CORRECTED -->
+                <a href="transactions.html">
+                    Transactions
+                </a>
+
+                <a href="messages.html">
+                    Messages
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="notification-btn"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+                    <span aria-hidden="true">
+                        ♧
+                    </span>
+
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                    aria-label="Open profile"
+                >
+
+                    <span class="profile-avatar">
+                        U
+                    </span>
+
+                    <span class="profile-name">
+                        User
+                    </span>
+
+                    <span
+                        class="profile-chevron"
+                        aria-hidden="true"
+                    >
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a
+                href="discover.html"
+                class="active"
+            >
+                Discover Properties
+            </a>
+
+            <!-- CORRECTED -->
+            <a href="transactions.html">
+                My Transactions
+            </a>
+
+            <a href="messages.html">
+                Messages
+            </a>
+
+            <a href="profile.html">
+                Profile & Account
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="discover-main">
+
+        <!-- Page introduction -->
+
+        <section class="discover-intro">
+
+            <p class="discover-eyebrow">
+                DISCOVER
+            </p>
+
+            <h1>
+                Find a property you can
+                <span>trust.</span>
+            </h1>
+
+            <p>
+                Explore properties listed on Equeh with verified
+                ownership, property information and transaction
+                documentation.
+            </p>
+
+        </section>
+
+
+        <!-- ================================
+             SEARCH & FILTERS
+        ================================= -->
+
+        <section class="search-section">
+
+            <div class="search-bar">
+
+                <span
+                    class="search-icon"
+                    aria-hidden="true"
+                >
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    class="search-input"
+                    id="propertySearch"
+                    placeholder="Search by location, property name or keyword..."
+                    aria-label="Search properties"
+                >
+
+            </div>
+
+
+            <div class="filter-row">
+
+                <select
+                    class="filter-select"
+                    id="locationFilter"
+                    aria-label="Filter by location"
+                >
+
+                    <option value="">
+                        All locations
+                    </option>
+
+                    <option value="Lagos">
+                        Lagos
+                    </option>
+
+                    <option value="Abuja">
+                        Abuja
+                    </option>
+
+                    <option value="Port Harcourt">
+                        Port Harcourt
+                    </option>
+
+                    <option value="Ibadan">
+                        Ibadan
+                    </option>
+
+                </select>
+
+
+                <select
+                    class="filter-select"
+                    id="propertyTypeFilter"
+                    aria-label="Filter by property type"
+                >
+
+                    <option value="">
+                        Property type
+                    </option>
+
+                    <option value="house">
+                        House
+                    </option>
+
+                    <option value="land">
+                        Landed Property
+                    </option>
+
+                </select>
+
+
+                <select
+                    class="filter-select"
+                    id="bedroomFilter"
+                    aria-label="Filter by bedrooms"
+                >
+
+                    <option value="">
+                        Bedrooms
+                    </option>
+
+                    <option value="2">
+                        2+ Bedrooms
+                    </option>
+
+                    <option value="3">
+                        3+ Bedrooms
+                    </option>
+
+                    <option value="4">
+                        4+ Bedrooms
+                    </option>
+
+                    <option value="5">
+                        5+ Bedrooms
+                    </option>
+
+                </select>
+
+
+                <select
+                    class="filter-select"
+                    id="priceFilter"
+                    aria-label="Filter by price"
+                >
+
+                    <option value="">
+                        Price range
+                    </option>
+
+                    <option value="50">
+                        Under ₦50m
+                    </option>
+
+                    <option value="100">
+                        ₦50m – ₦100m
+                    </option>
+
+                    <option value="200">
+                        ₦100m – ₦200m
+                    </option>
+
+                    <option value="201">
+                        Above ₦200m
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    id="filterButton"
+                >
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             RESULTS HEADER
+        ================================= -->
+
+        <div class="results-header">
+
+            <p class="results-count">
+                Verified properties
+                <span id="resultsCount">
+                    — 6 results
+                </span>
+            </p>
+
+
+            <div class="sort-control">
+
+                <span class="sort-label">
+                    Sort by
+                </span>
+
+                <select
+                    class="sort-select"
+                    id="sortSelect"
+                    aria-label="Sort properties"
+                >
+
+                    <option value="recommended">
+                        Recommended
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low to high
+                    </option>
+
+                    <option value="price-high">
+                        Price: High to low
+                    </option>
+
+                    <option value="newest">
+                        Newest
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             PROPERTY GRID
+        ================================= -->
+
+        <section
+            class="property-grid"
+            id="propertyGrid"
+            aria-label="Available properties"
+        >
+
+            <!-- PROPERTY 1 -->
+
+            <article
+                class="property-card"
+                data-location="Lagos"
+                data-type="house"
+                data-bedrooms="4"
+                data-price="85"
+                data-title="Modern Family Home"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/modern.jpg.jpeg"
+                        alt="Modern family home"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Lagos, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Modern Family Home
+                    </h2>
+
+                    <p class="property-description">
+                        A modern residential property with verified
+                        ownership and documented property information.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>4</strong>
+                            Beds
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>4</strong>
+                            Baths
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>1</strong>
+                            Parking
+                        </span>
+
+                        <span class="property-detail">
+                            House
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦85,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPERTY 2 -->
+
+            <article
+                class="property-card"
+                data-location="Abuja"
+                data-type="house"
+                data-bedrooms="5"
+                data-price="125"
+                data-title="Contemporary Residence"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/WhatsApp Image 2026-09-11 at 12.11.10 PM.jpeg"
+                        alt="Contemporary residence"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Abuja, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Contemporary Residence
+                    </h2>
+
+                    <p class="property-description">
+                        Spacious contemporary home prepared for a
+                        transparent and verified transaction.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>5</strong>
+                            Beds
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>5</strong>
+                            Baths
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>2</strong>
+                            Parking
+                        </span>
+
+                        <span class="property-detail">
+                            House
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦125,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPERTY 3 -->
+
+            <article
+                class="property-card"
+                data-location="Lagos"
+                data-type="land"
+                data-bedrooms="0"
+                data-price="45"
+                data-title="Residential Land"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/property-verification.jpg.jpeg"
+                        alt="Residential land"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Lagos, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Residential Land
+                    </h2>
+
+                    <p class="property-description">
+                        Verified landed property suitable for residential
+                        development and long-term ownership.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>1,200</strong>
+                            sqm
+                        </span>
+
+                        <span class="property-detail">
+                            Residential
+                        </span>
+
+                        <span class="property-detail">
+                            Verified
+                        </span>
+
+                        <span class="property-detail">
+                            Land
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦45,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPERTY 4 -->
+
+            <article
+                class="property-card"
+                data-location="Port Harcourt"
+                data-type="house"
+                data-bedrooms="4"
+                data-price="72"
+                data-title="Detached Family House"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/discover.jpg.jpg"
+                        alt="Detached family house"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Port Harcourt, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Detached Family House
+                    </h2>
+
+                    <p class="property-description">
+                        A verified detached property with ownership
+                        documentation prepared for transaction review.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>4</strong>
+                            Beds
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>3</strong>
+                            Baths
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>2</strong>
+                            Parking
+                        </span>
+
+                        <span class="property-detail">
+                            House
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦72,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPERTY 5 -->
+
+            <article
+                class="property-card"
+                data-location="Ibadan"
+                data-type="land"
+                data-bedrooms="0"
+                data-price="28"
+                data-title="Development Land"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/verify.jpg.jpg"
+                        alt="Development land"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Ibadan, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Development Land
+                    </h2>
+
+                    <p class="property-description">
+                        Landed property with documented information
+                        available for prospective buyers.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>1,500</strong>
+                            sqm
+                        </span>
+
+                        <span class="property-detail">
+                            Residential
+                        </span>
+
+                        <span class="property-detail">
+                            Verified
+                        </span>
+
+                        <span class="property-detail">
+                            Land
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦28,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPERTY 6 -->
+
+            <article
+                class="property-card"
+                data-location="Lagos"
+                data-type="house"
+                data-bedrooms="3"
+                data-price="58"
+                data-title="Three Bedroom Home"
+            >
+
+                <div class="property-image">
+
+                    <!-- Replace with your own image -->
+                    <img
+                        src="/image/complete.jpg.jpg"
+                        alt="Three bedroom home"
+                    >
+
+                    <span class="property-badge">
+                        ✓ Verified
+                    </span>
+
+                    <button
+                        type="button"
+                        class="property-favourite"
+                        data-favourite
+                        aria-label="Save property"
+                    >
+                        ♡
+                    </button>
+
+                </div>
+
+
+                <div class="property-content">
+
+                    <p class="property-location">
+                        Lagos, Nigeria
+                    </p>
+
+                    <h2 class="property-title">
+                        Three Bedroom Home
+                    </h2>
+
+                    <p class="property-description">
+                        A carefully documented residential property
+                        available for verified buyers on Equeh.
+                    </p>
+
+
+                    <div class="property-details">
+
+                        <span class="property-detail">
+                            <strong>3</strong>
+                            Beds
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>3</strong>
+                            Baths
+                        </span>
+
+                        <span class="property-detail">
+                            <strong>1</strong>
+                            Parking
+                        </span>
+
+                        <span class="property-detail">
+                            House
+                        </span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div>
+
+                            <p class="price-label">
+                                Asking price
+                            </p>
+
+                            <p class="property-price">
+                                ₦58,000,000
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="property-details.html"
+                            class="view-property"
+                        >
+                            View property
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- NO RESULTS -->
+
+        <section
+            class="no-results"
+            id="noResults"
+        >
+
+            <div
+                class="no-results-icon"
+                aria-hidden="true"
+            >
+                ⌕
+            </div>
+
+            <h2>
+                No properties found
+            </h2>
+
+            <p>
+                Try changing your search or adjusting the filters
+                to see more verified properties.
+            </p>
+
+        </section>
+
+
+        <!-- ================================
+             VERIFICATION MESSAGE
+        ================================= -->
+
+        <section class="verified-note">
+
+            <div
+                class="verified-note-icon"
+                aria-hidden="true"
+            >
+                ✓
+            </div>
+
+            <div class="verified-note-content">
+
+                <h3>
+                    What does “Verified” mean on Equeh?
+                </h3>
+
+                <p>
+                    Verification means Equeh has completed the
+                    applicable identity, ownership and property
+                    document checks required for the listing stage.
+                    Verification does not replace independent legal
+                    advice or applicable government registration.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="dashboard-footer">
+
+        <div class="footer-container">
+
+            <a
+                href="dashboard.html"
+                class="logo footer-logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <p class="footer-copy">
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="#">
+                    Help
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                /* ============================
+                   MOBILE NAVIGATION
+                ============================ */
+
+                const menuToggle =
+                    document.getElementById("menuToggle");
+
+                const mobileNav =
+                    document.getElementById("mobileNav");
+
+                if (menuToggle && mobileNav) {
+
+                    menuToggle.addEventListener(
+                        "click",
+                        function () {
+
+                            const isOpen =
+                                mobileNav.classList.toggle("open");
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                isOpen ? "true" : "false"
+                            );
+
+                        }
+                    );
+
+
+                    mobileNav
+                        .querySelectorAll("a")
+                        .forEach(
+                            function (link) {
+
+                                link.addEventListener(
+                                    "click",
+                                    function () {
+
+                                        mobileNav.classList.remove(
+                                            "open"
+                                        );
+
+                                        menuToggle.setAttribute(
+                                            "aria-expanded",
+                                            "false"
+                                        );
+
+                                    }
+                                );
+
+                            }
+                        );
+
+                }
+
+
+                /* ============================
+                   FAVOURITES
+                ============================ */
+
+                const favouriteButtons =
+                    document.querySelectorAll(
+                        "[data-favourite]"
+                    );
+
+                favouriteButtons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const active =
+                                    button.classList.toggle(
+                                        "active"
+                                    );
+
+                                button.textContent =
+                                    active ? "♥" : "♡";
+
+                                button.setAttribute(
+                                    "aria-label",
+                                    active
+                                        ? "Remove property from saved properties"
+                                        : "Save property"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* ============================
+                   PROPERTY FILTERING
+                ============================ */
+
+                const searchInput =
+                    document.getElementById(
+                        "propertySearch"
+                    );
+
+                const locationFilter =
+                    document.getElementById(
+                        "locationFilter"
+                    );
+
+                const typeFilter =
+                    document.getElementById(
+                        "propertyTypeFilter"
+                    );
+
+                const bedroomFilter =
+                    document.getElementById(
+                        "bedroomFilter"
+                    );
+
+                const priceFilter =
+                    document.getElementById(
+                        "priceFilter"
+                    );
+
+                const filterButton =
+                    document.getElementById(
+                        "filterButton"
+                    );
+
+                const propertyGrid =
+                    document.getElementById(
+                        "propertyGrid"
+                    );
+
+                const noResults =
+                    document.getElementById(
+                        "noResults"
+                    );
+
+                const resultsCount =
+                    document.getElementById(
+                        "resultsCount"
+                    );
+
+
+                function filterProperties() {
+
+                    const searchValue =
+                        searchInput.value
+                            .trim()
+                            .toLowerCase();
+
+                    const locationValue =
+                        locationFilter.value;
+
+                    const typeValue =
+                        typeFilter.value;
+
+                    const bedroomValue =
+                        bedroomFilter.value;
+
+                    const priceValue =
+                        priceFilter.value;
+
+
+                    const cards =
+                        Array.from(
+                            propertyGrid.querySelectorAll(
+                                ".property-card"
+                            )
+                        );
+
+
+                    let visibleCount = 0;
+
+
+                    cards.forEach(
+                        function (card) {
+
+                            const location =
+                                card.dataset.location;
+
+                            const type =
+                                card.dataset.type;
+
+                            const bedrooms =
+                                Number(
+                                    card.dataset.bedrooms
+                                );
+
+                            const price =
+                                Number(
+                                    card.dataset.price
+                                );
+
+                            const title =
+                                card.dataset.title
+                                    .toLowerCase();
+
+
+                            const matchesSearch =
+                                !searchValue ||
+                                location
+                                    .toLowerCase()
+                                    .includes(searchValue) ||
+                                title
+                                    .includes(searchValue);
+
+
+                            const matchesLocation =
+                                !locationValue ||
+                                location === locationValue;
+
+
+                            const matchesType =
+                                !typeValue ||
+                                type === typeValue;
+
+
+                            const matchesBedrooms =
+                                !bedroomValue ||
+                                (
+                                    type === "land"
+                                        ? false
+                                        : bedrooms >=
+                                          Number(bedroomValue)
+                                );
+
+
+                            let matchesPrice = true;
+
+
+                            if (priceValue === "50") {
+                                matchesPrice = price < 50;
+                            }
+
+                            if (priceValue === "100") {
+                                matchesPrice =
+                                    price >= 50 &&
+                                    price <= 100;
+                            }
+
+                            if (priceValue === "200") {
+                                matchesPrice =
+                                    price > 100 &&
+                                    price <= 200;
+                            }
+
+                            if (priceValue === "201") {
+                                matchesPrice =
+                                    price > 200;
+                            }
+
+
+                            const visible =
+                                matchesSearch &&
+                                matchesLocation &&
+                                matchesType &&
+                                matchesBedrooms &&
+                                matchesPrice;
+
+
+                            card.style.display =
+                                visible ? "" : "none";
+
+
+                            if (visible) {
+                                visibleCount++;
+                            }
+
+                        }
+                    );
+
+
+                    resultsCount.textContent =
+                        "— " +
+                        visibleCount +
+                        (
+                            visibleCount === 1
+                                ? " result"
+                                : " results"
+                        );
+
+
+                    if (visibleCount === 0) {
+                        noResults.classList.add("show");
+                    } else {
+                        noResults.classList.remove("show");
+                    }
+
+                }
+
+
+                if (filterButton) {
+
+                    filterButton.addEventListener(
+                        "click",
+                        filterProperties
+                    );
+
+                }
+
+
+                if (searchInput) {
+
+                    searchInput.addEventListener(
+                        "keydown",
+                        function (event) {
+
+                            if (event.key === "Enter") {
+                                filterProperties();
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                [
+                    locationFilter,
+                    typeFilter,
+                    bedroomFilter,
+                    priceFilter
+                ].forEach(
+                    function (select) {
+
+                        if (select) {
+
+                            select.addEventListener(
+                                "change",
+                                filterProperties
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* ============================
+                   SORTING
+                ============================ */
+
+                const sortSelect =
+                    document.getElementById(
+                        "sortSelect"
+                    );
+
+                if (sortSelect) {
+
+                    sortSelect.addEventListener(
+                        "change",
+                        function () {
+
+                            const cards =
+                                Array.from(
+                                    propertyGrid.querySelectorAll(
+                                        ".property-card"
+                                    )
+                                );
+
+
+                            if (
+                                sortSelect.value ===
+                                "price-low"
+                            ) {
+
+                                cards.sort(
+                                    function (a, b) {
+
+                                        return Number(
+                                            a.dataset.price
+                                        ) -
+                                        Number(
+                                            b.dataset.price
+                                        );
+
+                                    }
+                                );
+
+                            }
+
+
+                            if (
+                                sortSelect.value ===
+                                "price-high"
+                            ) {
+
+                                cards.sort(
+                                    function (a, b) {
+
+                                        return Number(
+                                            b.dataset.price
+                                        ) -
+                                        Number(
+                                            a.dataset.price
+                                        );
+
+                                    }
+                                );
+
+                            }
+
+
+                            if (
+                                sortSelect.value ===
+                                "newest"
+                            ) {
+
+                                cards.reverse();
+
+                            }
+
+
+                            cards.forEach(
+                                function (card) {
+
+                                    propertyGrid.appendChild(
+                                        card
+                                    );
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* ============================
+                   HEADER ACTIONS
+                ============================ */
+
+                const notificationButton =
+                    document.getElementById(
+                        "notificationButton"
+                    );
+
+                if (notificationButton) {
+
+                    notificationButton.addEventListener(
+                        "click",
+                        function () {
+
+                            alert(
+                                "Your notifications will appear here."
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                const profileButton =
+                    document.getElementById(
+                        "profileButton"
+                    );
+
+                if (profileButton) {
+
+                    profileButton.addEventListener(
+                        "click",
+                        function () {
+
+                            window.location.href =
+                                "profile.html";
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account — Equeh</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --text: #111827;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --green: #16a34a;
+            --red: #dc2626;
+            --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .section-container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .account-header {
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        .account-header-container {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6
+            );
+            border-radius: 9px;
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, 0.20);
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        .header-account-text {
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .header-account-text a {
+            color: var(--primary);
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .header-account-text a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .account-main {
+            padding: 54px 0 70px;
+        }
+
+        .account-layout {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 0.9fr)
+                minmax(420px, 1.1fr);
+            gap: 70px;
+            align-items: center;
+        }
+
+        .account-intro {
+            padding: 10px 0;
+        }
+
+        .account-intro-content {
+            max-width: 480px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .account-intro h1 {
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .account-intro h1 span {
+            color: var(--primary);
+        }
+
+        .account-intro > p {
+            max-width: 450px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .account-benefits {
+            display: grid;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .account-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .account-benefit h3 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .account-benefit p {
+            color: var(--text-secondary);
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+        .account-visual {
+            width: 100%;
+            margin-top: 30px;
+            overflow: hidden;
+            border-radius: 18px;
+            aspect-ratio: 16 / 8;
+            background: #e2e8f0;
+        }
+
+        .account-visual img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .account-form-area {
+            display: flex;
+            justify-content: center;
+        }
+
+        .account-card {
+            width: 100%;
+            max-width: 520px;
+            padding: 34px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .account-card-header {
+            margin-bottom: 25px;
+        }
+
+        .account-card-header .eyebrow {
+            margin-bottom: 8px;
+        }
+
+        .account-card-header h2 {
+            font-size: 23px;
+            line-height: 1.25;
+            letter-spacing: -0.7px;
+            margin-bottom: 8px;
+        }
+
+        .account-card-header p {
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.65;
+        }
+
+        .account-form {
+            display: grid;
+            gap: 17px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .form-group {
+            min-width: 0;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text);
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-group label span {
+            color: var(--red);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 43px;
+            padding: 0 13px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            outline: none;
+            background: #fff;
+            color: var(--text);
+            font-size: 11px;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        .form-group input.invalid,
+        .form-group select.invalid {
+            border-color: var(--red);
+        }
+
+        .field-error {
+            display: block;
+            min-height: 14px;
+            margin-top: 4px;
+            color: var(--red);
+            font-size: 9px;
+            line-height: 1.4;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field input {
+            padding-right: 42px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 12px;
+            padding: 4px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        .password-description {
+            margin-top: 5px;
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .password-rules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 12px;
+            margin-top: 6px;
+        }
+
+        .password-rules > span {
+            color: var(--text-light);
+            font-size: 10px;
+        }
+
+        .password-rules > span.valid {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .password-rules .rule-icon {
+            margin-right: 3px;
+        }
+
+        .acknowledgement {
+            margin-top: 2px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+        .checkbox-label input {
+            width: 15px;
+            height: 15px;
+            flex: 0 0 15px;
+            margin-top: 1px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .account-submit {
+            width: 100%;
+            height: 45px;
+            margin-top: 3px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .account-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .account-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .security-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-top: 18px;
+            padding-top: 17px;
+            border-top: 1px solid var(--border);
+        }
+
+        .security-icon {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .security-note p {
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.55;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .simple-footer {
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .simple-footer-container {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .simple-footer .logo {
+            font-size: 17px;
+        }
+
+        .simple-footer .logo-mark {
+            width: 21px;
+            height: 21px;
+            flex-basis: 21px;
+            border-radius: 6px;
+        }
+
+        .simple-footer .logo-mark::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+        }
+
+        .simple-footer p {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+            .account-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .account-intro-content {
+                max-width: 700px;
+            }
+
+            .account-visual {
+                max-width: 600px;
+            }
+
+            .account-form-area {
+                justify-content: flex-start;
+            }
+
+            .account-card {
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .account-header-container {
+                min-height: 68px;
+            }
+
+            .header-account-text {
+                font-size: 10px;
+                text-align: right;
+            }
+
+            .account-main {
+                padding: 35px 0 50px;
+            }
+
+            .account-layout {
+                gap: 32px;
+            }
+
+            .account-intro h1 {
+                font-size: 35px;
+                letter-spacing: -1.5px;
+            }
+
+            .account-intro > p {
+                font-size: 12px;
+            }
+
+            .account-card {
+                padding: 24px 20px;
+                border-radius: 14px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-group {
+                margin-bottom: 17px;
+            }
+
+            .account-form {
+                gap: 0;
+            }
+
+            .account-visual {
+                aspect-ratio: 16 / 9;
+            }
+
+            .simple-footer-container {
+                min-height: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body class="account-page">
+
+    <!-- HEADER -->
+    <header class="account-header">
+        <div class="section-container account-header-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+            <p class="header-account-text">
+                Already have an account?
+                <a href="login.html">Log in</a>
+            </p>
+
+        </div>
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="account-main">
+
+        <div class="section-container account-layout">
+
+            <!-- INTRODUCTION -->
+            <section class="account-intro">
+
+                <div class="account-intro-content">
+
+                    <span class="eyebrow">
+                        CREATE YOUR ACCOUNT
+                    </span>
+
+                    <h1>
+                        Start your journey with
+                        <span>Equeh.</span>
+                    </h1>
+
+                    <p>
+                        Create your account and gain access to a trusted
+                        property transaction experience built around verified
+                        people, verified properties and accountable transactions.
+                    </p>
+
+                    <div class="account-benefits">
+
+                        <div class="account-benefit">
+
+                            <div class="benefit-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Verified properties
+                                </h3>
+
+                                <p>
+                                    Browse properties backed by verification
+                                    and accountability.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="account-benefit">
+
+                            <div class="benefit-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Secure transactions
+                                </h3>
+
+                                <p>
+                                    Move through a structured transaction
+                                    process designed around trust.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="account-benefit">
+
+                            <div class="benefit-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    One account
+                                </h3>
+
+                                <p>
+                                    One account gives you access to the Equeh
+                                    platform without fixed client or owner roles.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-visual">
+
+                        <!-- Replace with your own image -->
+
+                        <img
+                            src="/image/WhatsApp Image 2026-09-11 at 12.11.10 PM.jpeg"
+                            alt="Equeh property"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FORM -->
+            <section class="account-form-area">
+
+                <div class="account-card">
+
+                    <div class="account-card-header">
+
+                        <span class="eyebrow">
+                            ACCOUNT DETAILS
+                        </span>
+
+                        <h2>
+                            Create your Equeh account
+                        </h2>
+
+                        <p>
+                            Enter your official details below to get started.
+                            You can complete the required verification steps
+                            when they become necessary.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="createAccountForm"
+                        class="account-form"
+                        novalidate
+                    >
+
+                        <!-- NAME -->
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="firstName">
+                                    Official first name
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    placeholder="Enter first name"
+                                    autocomplete="given-name"
+                                    required
+                                >
+
+                                <small
+                                    class="field-error"
+                                    id="firstNameError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="lastName">
+                                    Official last name
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    placeholder="Enter last name"
+                                    autocomplete="family-name"
+                                    required
+                                >
+
+                                <small
+                                    class="field-error"
+                                    id="lastNameError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GENDER / DOB -->
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="gender">
+                                    Gender
+                                    <span>*</span>
+                                </label>
+
+                                <select
+                                    id="gender"
+                                    name="gender"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select gender
+                                    </option>
+
+                                    <option value="male">
+                                        Male
+                                    </option>
+
+                                    <option value="female">
+                                        Female
+                                    </option>
+
+                                    <option value="prefer-not-to-say">
+                                        Prefer not to say
+                                    </option>
+
+                                </select>
+
+                                <small
+                                    class="field-error"
+                                    id="genderError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="dateOfBirth">
+                                    Date of birth
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dateOfBirth"
+                                    name="dateOfBirth"
+                                    required
+                                >
+
+                                <small
+                                    class="field-error"
+                                    id="dateOfBirthError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PHONE / EMAIL -->
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone number
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Enter phone number"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                                <small
+                                    class="field-error"
+                                    id="phoneError"
+                                ></small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email address
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter email address"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                                <small
+                                    class="field-error"
+                                    id="emailError"
+                                ></small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password
+                                <span>*</span>
+                            </label>
+
+                            <div class="password-field">
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Create a secure password"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="passwordToggle"
+                                    aria-label="Show password"
+                                >
+                                    ◉
+                                </button>
+
+                            </div>
+
+                            <p class="password-description">
+                                Use at least 8 characters, including 1 small
+                                letter, 1 capital letter, 1 number and
+                                1 special character.
+                            </p>
+
+
+                            <div class="password-rules">
+
+                                <span id="rule-length">
+                                    <span class="rule-icon">○</span>
+                                    8 characters
+                                </span>
+
+                                <span id="rule-uppercase">
+                                    <span class="rule-icon">○</span>
+                                    1 capital letter
+                                </span>
+
+                                <span id="rule-lowercase">
+                                    <span class="rule-icon">○</span>
+                                    1 small letter
+                                </span>
+
+                                <span id="rule-number">
+                                    <span class="rule-icon">○</span>
+                                    1 number
+                                </span>
+
+                                <span id="rule-special">
+                                    <span class="rule-icon">○</span>
+                                    1 special character
+                                </span>
+
+                            </div>
+
+
+                            <small
+                                class="field-error"
+                                id="passwordError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- ACKNOWLEDGEMENT -->
+                        <div class="acknowledgement">
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    id="acknowledgement"
+                                    name="acknowledgement"
+                                    required
+                                >
+
+                                <span>
+                                    I confirm that the information provided
+                                    is accurate and belongs to me.
+                                </span>
+
+                            </label>
+
+                            <small
+                                class="field-error"
+                                id="acknowledgementError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button
+                            type="submit"
+                            class="btn btn-primary account-submit"
+                        >
+                            Create account
+                        </button>
+
+                    </form>
+
+
+                    <!-- SECURITY -->
+                    <div class="security-note">
+
+                        <span class="security-icon">
+                            🔒
+                        </span>
+
+                        <p>
+                            Your information is protected using secure
+                            authentication and encrypted connections.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="simple-footer">
+
+        <div class="section-container simple-footer-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+            <p>
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const form =
+                document.getElementById("createAccountForm");
+
+            const password =
+                document.getElementById("password");
+
+            const passwordToggle =
+                document.getElementById("passwordToggle");
+
+
+            const rules = {
+                length:
+                    document.getElementById("rule-length"),
+
+                uppercase:
+                    document.getElementById("rule-uppercase"),
+
+                lowercase:
+                    document.getElementById("rule-lowercase"),
+
+                number:
+                    document.getElementById("rule-number"),
+
+                special:
+                    document.getElementById("rule-special")
+            };
+
+
+            /* =========================
+               PASSWORD VISIBILITY
+            ========================= */
+
+            if (passwordToggle && password) {
+
+                passwordToggle.addEventListener(
+                    "click",
+                    function () {
+
+                        const isPassword =
+                            password.type === "password";
+
+                        password.type =
+                            isPassword
+                                ? "text"
+                                : "password";
+
+                        passwordToggle.setAttribute(
+                            "aria-label",
+                            isPassword
+                                ? "Hide password"
+                                : "Show password"
+                        );
+
+                        passwordToggle.textContent =
+                            isPassword
+                                ? "◌"
+                                : "◉";
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               PASSWORD RULES
+            ========================= */
+
+            function updateRule(element, valid) {
+
+                if (!element) return;
+
+                const icon =
+                    element.querySelector(".rule-icon");
+
+                element.classList.toggle(
+                    "valid",
+                    valid
+                );
+
+                if (icon) {
+
+                    icon.textContent =
+                        valid
+                            ? "✓"
+                            : "○";
+
+                }
+
+            }
+
+
+            function validatePasswordRules(value) {
+
+                const checks = {
+
+                    length:
+                        value.length >= 8,
+
+                    uppercase:
+                        /[A-Z]/.test(value),
+
+                    lowercase:
+                        /[a-z]/.test(value),
+
+                    number:
+                        /[0-9]/.test(value),
+
+                    special:
+                        /[^A-Za-z0-9]/.test(value)
+
+                };
+
+
+                updateRule(
+                    rules.length,
+                    checks.length
+                );
+
+                updateRule(
+                    rules.uppercase,
+                    checks.uppercase
+                );
+
+                updateRule(
+                    rules.lowercase,
+                    checks.lowercase
+                );
+
+                updateRule(
+                    rules.number,
+                    checks.number
+                );
+
+                updateRule(
+                    rules.special,
+                    checks.special
+                );
+
+
+                return Object
+                    .values(checks)
+                    .every(Boolean);
+
+            }
+
+
+            if (password) {
+
+                password.addEventListener(
+                    "input",
+                    function () {
+
+                        validatePasswordRules(
+                            password.value
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               VALIDATION HELPERS
+            ========================= */
+
+            function setError(
+                input,
+                errorElement,
+                message
+            ) {
+
+                if (input) {
+
+                    input.classList.toggle(
+                        "invalid",
+                        Boolean(message)
+                    );
+
+                }
+
+                if (errorElement) {
+
+                    errorElement.textContent =
+                        message || "";
+
+                }
+
+            }
+
+
+            function clearErrors() {
+
+                document
+                    .querySelectorAll(".field-error")
+                    .forEach(function (element) {
+
+                        element.textContent = "";
+
+                    });
+
+
+                document
+                    .querySelectorAll(
+                        "input, select"
+                    )
+                    .forEach(function (element) {
+
+                        element.classList.remove(
+                            "invalid"
+                        );
+
+                    });
+
+            }
+
+
+            /* =========================
+               FORM SUBMISSION
+            ========================= */
+
+            if (form) {
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        event.preventDefault();
+
+                        clearErrors();
+
+                        let valid = true;
+
+
+                        const firstName =
+                            document.getElementById(
+                                "firstName"
+                            );
+
+                        const lastName =
+                            document.getElementById(
+                                "lastName"
+                            );
+
+                        const gender =
+                            document.getElementById(
+                                "gender"
+                            );
+
+                        const dateOfBirth =
+                            document.getElementById(
+                                "dateOfBirth"
+                            );
+
+                        const phone =
+                            document.getElementById(
+                                "phone"
+                            );
+
+                        const email =
+                            document.getElementById(
+                                "email"
+                            );
+
+                        const acknowledgement =
+                            document.getElementById(
+                                "acknowledgement"
+                            );
+
+
+                        /* FIRST NAME */
+
+                        if (
+                            !firstName.value.trim()
+                        ) {
+
+                            setError(
+                                firstName,
+                                document.getElementById(
+                                    "firstNameError"
+                                ),
+                                "Please enter your first name."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* LAST NAME */
+
+                        if (
+                            !lastName.value.trim()
+                        ) {
+
+                            setError(
+                                lastName,
+                                document.getElementById(
+                                    "lastNameError"
+                                ),
+                                "Please enter your last name."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* GENDER */
+
+                        if (!gender.value) {
+
+                            setError(
+                                gender,
+                                document.getElementById(
+                                    "genderError"
+                                ),
+                                "Please select your gender."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* DATE OF BIRTH */
+
+                        if (!dateOfBirth.value) {
+
+                            setError(
+                                dateOfBirth,
+                                document.getElementById(
+                                    "dateOfBirthError"
+                                ),
+                                "Please enter your date of birth."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* PHONE */
+
+                        if (
+                            !phone.value.trim()
+                        ) {
+
+                            setError(
+                                phone,
+                                document.getElementById(
+                                    "phoneError"
+                                ),
+                                "Please enter your phone number."
+                            );
+
+                            valid = false;
+
+                        } else if (
+                            phone.value
+                                .trim()
+                                .length < 7
+                        ) {
+
+                            setError(
+                                phone,
+                                document.getElementById(
+                                    "phoneError"
+                                ),
+                                "Please enter a valid phone number."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* EMAIL */
+
+                        const emailValue =
+                            email.value.trim();
+
+                        const emailPattern =
+                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                        if (!emailValue) {
+
+                            setError(
+                                email,
+                                document.getElementById(
+                                    "emailError"
+                                ),
+                                "Please enter your email address."
+                            );
+
+                            valid = false;
+
+                        } else if (
+                            !emailPattern.test(
+                                emailValue
+                            )
+                        ) {
+
+                            setError(
+                                email,
+                                document.getElementById(
+                                    "emailError"
+                                ),
+                                "Please enter a valid email address."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* PASSWORD */
+
+                        const passwordValid =
+                            validatePasswordRules(
+                                password.value
+                            );
+
+
+                        if (!password.value) {
+
+                            setError(
+                                password,
+                                document.getElementById(
+                                    "passwordError"
+                                ),
+                                "Please create a password."
+                            );
+
+                            valid = false;
+
+                        } else if (
+                            !passwordValid
+                        ) {
+
+                            setError(
+                                password,
+                                document.getElementById(
+                                    "passwordError"
+                                ),
+                                "Password does not meet all requirements."
+                            );
+
+                            valid = false;
+
+                        }
+
+
+                        /* ACKNOWLEDGEMENT */
+
+                        if (
+                            !acknowledgement.checked
+                        ) {
+
+                            document.getElementById(
+                                "acknowledgementError"
+                            ).textContent =
+                                "Please confirm the information provided.";
+
+                            valid = false;
+
+                        }
+
+
+                        if (!valid) {
+
+                            const firstInvalid =
+                                form.querySelector(
+                                    ".invalid"
+                                );
+
+                            if (firstInvalid) {
+
+                                firstInvalid.focus();
+
+                            }
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Frontend prototype:
+                         * account creation is ready for backend/Firebase
+                         * integration. No fake authentication is performed here.
+                         */
+
+                        alert(
+                            "Your account details have been validated successfully. Backend account creation can now be connected."
+                        );
+
+                    }
+                );
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>
