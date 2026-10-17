@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login — Equeh</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           EQUEH — GENERAL AUTHENTICATION STYLING
+           ========================================================= */
+
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-soft: #eff6ff;
+            --blue-border: #dbeafe;
+
+            --navy: #0f172a;
+            --text: #111827;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+
+            --white: #ffffff;
+            --background: #f8fafc;
+            --border: #e2e8f0;
+
+            --green: #16a34a;
+            --red: #dc2626;
+
+            --radius-small: 10px;
+            --radius-medium: 16px;
+            --radius-large: 24px;
+
+            --shadow-small:
+                0 4px 16px rgba(15, 23, 42, 0.05);
+
+            --shadow-medium:
+                0 12px 30px rgba(15, 23, 42, 0.08);
+
+            --container-width: 1180px;
+        }
+
+
+        /* =========================================================
+           RESET
+           ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           CONTAINER
+           ========================================================= */
+
+        .section-container {
+            width: min(
+                100% - 40px,
+                var(--container-width)
+            );
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           LOGO
+           ========================================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--blue);
+
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+
+            width: 30px;
+            height: 30px;
+
+            flex: 0 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 7px 18px
+                rgba(37, 99, 235, 0.20);
+
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        .account-header {
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom:
+                1px solid var(--border);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .account-header-container {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .account-header-login {
+            display: flex;
+            align-items: center;
+
+            gap: 6px;
+
+            color: var(--text-secondary);
+
+            font-size: 11px;
+        }
+
+        .account-header-login a {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .account-header-login a:hover {
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           MAIN
+           ========================================================= */
+
+        .login-main {
+            min-height:
+                calc(100vh - 76px);
+
+            display: flex;
+            align-items: center;
+
+            padding: 65px 0;
+        }
+
+        .login-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(400px, 500px);
+
+            align-items: center;
+
+            gap: 85px;
+        }
+
+
+        /* =========================================================
+           LEFT INTRO
+           ========================================================= */
+
+        .login-intro {
+            min-width: 0;
+        }
+
+        .login-intro-content {
+            max-width: 540px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 14px;
+
+            color: var(--blue);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 22px;
+            height: 2px;
+
+            background: var(--blue);
+
+            border-radius: 10px;
+        }
+
+        .login-intro h1 {
+            margin-bottom: 20px;
+
+            color: var(--navy);
+
+            font-size:
+                clamp(38px, 5vw, 60px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2.5px;
+        }
+
+        .login-intro h1 span {
+            color: var(--blue);
+        }
+
+        .login-intro > .login-intro-content > p {
+            max-width: 500px;
+
+            color: var(--text-secondary);
+
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           HIGHLIGHTS
+           ========================================================= */
+
+        .login-highlight {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 12px;
+
+            margin-top: 27px;
+        }
+
+        .login-highlight-icon {
+            width: 36px;
+            height: 36px;
+
+            flex: 0 0 36px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-soft);
+            color: var(--blue);
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .login-highlight strong {
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: var(--navy);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .login-highlight span {
+            color: var(--text-secondary);
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           FORM AREA
+           ========================================================= */
+
+        .login-form-area {
+            width: 100%;
+        }
+
+        .login-card {
+            width: 100%;
+
+            padding: 34px;
+
+            background: var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-large);
+
+            box-shadow:
+                var(--shadow-medium);
+        }
+
+
+        /* =========================================================
+           CARD HEADER
+           ========================================================= */
+
+        .login-card-header {
+            margin-bottom: 25px;
+        }
+
+        .login-card-header .eyebrow {
+            margin-bottom: 9px;
+        }
+
+        .login-card-header h2 {
+            margin-bottom: 7px;
+
+            color: var(--navy);
+
+            font-size: 25px;
+            font-weight: 600;
+
+            line-height: 1.3;
+
+            letter-spacing: -0.7px;
+        }
+
+        .login-card-header p {
+            color: var(--text-secondary);
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           FORM
+           ========================================================= */
+
+        .login-form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: var(--navy);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 47px;
+
+            padding:
+                0 13px;
+
+            background: var(--white);
+            color: var(--text);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 11px;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-group input:focus {
+            border-color: var(--blue);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(37, 99, 235, 0.08);
+        }
+
+
+        /* =========================================================
+           PASSWORD FIELD
+           ========================================================= */
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field input {
+            padding-right: 65px;
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            top: 50%;
+            right: 12px;
+
+            transform:
+                translateY(-50%);
+
+            padding: 0;
+
+            background: transparent;
+
+            border: 0;
+
+            color: var(--blue);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .password-toggle:hover {
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           FIELD ERRORS
+           ========================================================= */
+
+        .field-error {
+            display: block;
+
+            min-height: 14px;
+
+            margin-top: 4px;
+
+            color: var(--red);
+
+            font-size: 9px;
+            line-height: 1.4;
+        }
+
+
+        /* =========================================================
+           FORGOT PASSWORD
+           ========================================================= */
+
+        .login-forgot {
+            display: flex;
+            justify-content: flex-end;
+
+            margin-top: -2px;
+            margin-bottom: 17px;
+        }
+
+        .login-forgot a {
+            color: var(--blue);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .login-forgot a:hover {
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           BUTTON
+           ========================================================= */
+
+        .btn {
+            min-height: 46px;
+
+            padding:
+                0 20px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            border:
+                1px solid transparent;
+
+            border-radius:
+                var(--radius-small);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, 0.16);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+
+            transform:
+                translateY(-1px);
+        }
+
+        .login-submit {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           DIVIDER
+           ========================================================= */
+
+        .form-divider {
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            margin: 20px 0;
+
+            color: var(--text-light);
+
+            font-size: 8px;
+        }
+
+        .form-divider::before,
+        .form-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                var(--border);
+        }
+
+
+        /* =========================================================
+           SOCIAL LOGIN
+           ========================================================= */
+
+        .social-login {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 9px;
+        }
+
+        .social-btn {
+            min-height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 0 12px;
+
+            background: var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            color: var(--navy);
+
+            font-size: 9px;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: #f8fafc;
+
+            border-color:
+                var(--border);
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .social-icon svg {
+            display: block;
+            width: 18px;
+            height: 18px;
+        }
+
+
+        /* =========================================================
+           SECURITY NOTE
+           ========================================================= */
+
+        .security-note {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 8px;
+
+            margin-top: 18px;
+
+            padding: 10px 11px;
+
+            background: #f8fafc;
+
+            border:
+                1px solid #eef2f7;
+
+            border-radius: 9px;
+        }
+
+        .security-icon {
+            flex: 0 0 auto;
+
+            font-size: 11px;
+        }
+
+        .security-note p {
+            color: var(--text-secondary);
+
+            font-size: 8px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           CREATE ACCOUNT LINK
+           ========================================================= */
+
+        .login-create-account {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 5px;
+
+            margin-top: 18px;
+
+            color: var(--text-secondary);
+
+            font-size: 9px;
+        }
+
+        .login-create-account a {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .simple-footer {
+            padding: 22px 0;
+
+            background: white;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+        .simple-footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .simple-footer .logo {
+            font-size: 18px;
+        }
+
+        .simple-footer .logo-mark {
+            width: 23px;
+            height: 23px;
+
+            flex-basis: 23px;
+
+            border-radius: 7px;
+        }
+
+        .simple-footer .logo-mark::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+        }
+
+        .simple-footer p {
+            color: var(--text-light);
+
+            font-size: 8px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .login-layout {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+
+                max-width: 650px;
+            }
+
+            .login-intro-content {
+                max-width: 100%;
+
+                margin: 0 auto;
+
+                text-align: center;
+            }
+
+            .login-intro .eyebrow {
+                justify-content: center;
+            }
+
+            .login-intro > .login-intro-content > p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .login-highlight {
+                max-width: 410px;
+
+                margin-left: auto;
+                margin-right: auto;
+
+                text-align: left;
+            }
+
+            .login-form-area {
+                max-width: 500px;
+
+                margin: 0 auto;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .section-container {
+                width:
+                    min(
+                        100% - 28px,
+                        var(--container-width)
+                    );
+            }
+
+            .account-header-container {
+                min-height: 68px;
+            }
+
+            .account-header-login {
+                font-size: 9px;
+            }
+
+            .account-header-login span {
+                display: none;
+            }
+
+            .login-main {
+                min-height: auto;
+
+                padding:
+                    42px 0 50px;
+            }
+
+            .login-layout {
+                gap: 35px;
+            }
+
+            .login-intro h1 {
+                font-size: 38px;
+
+                letter-spacing: -1.7px;
+            }
+
+            .login-card {
+                padding: 25px 20px;
+
+                border-radius: 17px;
+            }
+
+            .login-card-header h2 {
+                font-size: 22px;
+            }
+
+            .social-login {
+                grid-template-columns: 1fr;
+            }
+
+            .simple-footer-container {
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo-mark {
+                width: 26px;
+                height: 26px;
+
+                flex-basis: 26px;
+            }
+
+            .login-intro h1 {
+                font-size: 33px;
+            }
+
+            .login-card {
+                padding:
+                    22px 17px;
+            }
+        }
+
+    </style>
+  <script type="module" crossorigin src="/assets/login-JNJmuxzU.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index-4NFEPWkC-BjJPGCf8.js">
+</head>
+
+
+<body class="login-page">
+
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <header class="account-header">
+
+        <div class="section-container account-header-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <div class="account-header-login">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="create-account.html">
+                    Create account
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN
+         ========================================================= -->
+
+    <main class="login-main">
+
+        <div class="section-container login-layout">
+
+
+            <!-- =================================================
+                 LEFT SIDE
+                 ================================================= -->
+
+            <section class="login-intro">
+
+                <div class="login-intro-content">
+
+                    <span class="eyebrow">
+                        ACCOUNT LOGIN
+                    </span>
+
+
+                    <h1>
+                        Welcome back to
+                        <span>Equeh.</span>
+                    </h1>
+
+
+                    <p>
+                        Sign in to continue exploring verified properties
+                        and managing your Equeh activities securely.
+                    </p>
+
+
+                    <div class="login-highlight">
+
+                        <div class="login-highlight-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Secure access
+                            </strong>
+
+                            <span>
+                                Your account information is protected
+                                throughout your session.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="login-highlight">
+
+                        <div class="login-highlight-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Verified property transactions
+                            </strong>
+
+                            <span>
+                                Continue from where you stopped and
+                                manage your Equeh activities.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RIGHT SIDE
+                 ================================================= -->
+
+            <section class="login-form-area">
+
+                <div class="login-card">
+
+
+                    <div class="login-card-header">
+
+                        <span class="eyebrow">
+                            ACCOUNT LOGIN
+                        </span>
+
+                        <h2>
+                            Log in to Equeh
+                        </h2>
+
+                        <p>
+                            Enter your account details to continue.
+                        </p>
+
+                    </div>
+
+
+                    <!-- LOGIN FORM -->
+
+                    <form
+                        id="loginForm"
+                        class="login-form"
+                        novalidate
+                    >
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="loginEmail">
+                                Email address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="you@example.com"
+                            >
+
+                            <small
+                                class="field-error"
+                                id="loginEmailError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="form-group">
+
+                            <label for="loginPassword">
+                                Password
+                            </label>
+
+                            <div class="password-field">
+
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="password"
+                                    autocomplete="current-password"
+                                    placeholder="Enter your password"
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    id="loginPasswordToggle"
+                                    aria-label="Show password"
+                                >
+                                    Show
+                                </button>
+
+                            </div>
+
+                            <small
+                                class="field-error"
+                                id="loginPasswordError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- FORGOT PASSWORD -->
+
+                        <div class="login-forgot">
+
+                            <a href="forgot-password.html">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <!-- LOGIN BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary login-submit"
+                        >
+                            Log in
+                        </button>
+
+
+                        <!-- DIVIDER -->
+
+                        <div class="form-divider">
+
+                            <span>
+                                or continue with
+                            </span>
+
+                        </div>
+
+
+                        <!-- SOCIAL LOGIN -->
+
+                        <div class="social-login">
+
+                            <button
+                                type="button"
+                                class="social-btn"
+                                id="googleLogin"
+                            >
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
+                                    G
+                                </span>
+
+                                Google
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="social-btn"
+                                id="appleLogin"
+                            >
+
+                                <span
+                                    class="social-icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        width="18"
+                                        height="18"
+                                        fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path d="M18.71 19.5c-.9 1.31-1.85 2.6-3.35 2.63-1.47.03-1.94-.85-3.63-.85-1.7 0-2.22.82-3.61.88-1.45.05-2.55-1.41-3.46-2.72-1.88-2.69-3.32-7.59-1.39-10.88.96-1.64 2.52-2.68 4.22-2.71 1.46-.03 2.84.94 3.63.94.78 0 2.39-1.16 4.02-.99.68.03 2.59.27 3.81 2.05-.1.06-2.28 1.33-2.25 3.96.03 3.15 2.76 4.2 2.79 4.21-.03.07-.44 1.51-1.43 2.98ZM15.68 4.5c.74-.9 1.24-2.15 1.1-3.4-1.06.04-2.34.7-3.1 1.59-.67.77-1.27 2.03-1.11 3.23 1.18.09 2.38-.6 3.11-1.42Z"/>
+                                    </svg>
+                                </span>
+
+                                Apple
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- SECURITY -->
+
+                        <div class="security-note">
+
+                            <span class="security-icon">
+                                🔒
+                            </span>
+
+                            <p>
+                                Your information is protected using secure
+                                authentication and encrypted connections.
+                            </p>
+
+                        </div>
+
+
+                        <!-- CREATE ACCOUNT -->
+
+                        <div class="login-create-account">
+
+                            <span>
+                                Don't have an account?
+                            </span>
+
+                            <a href="create-account.html">
+                                Create account
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="simple-footer">
+
+        <div class="section-container simple-footer-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <p>
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         EMBEDDED JAVASCRIPT
+         ========================================================= -->
+
+
+</body>
+</html>

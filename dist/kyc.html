@@ -1,0 +1,2872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KYC Verification — Equeh</title>
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            width: min(1180px, calc(100% - 40px));
+            height: 76px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        /* =========================================
+           EQUEH LOGO
+        ========================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 9px;
+            box-shadow: 0 7px 18px rgba(37, 99, 235, 0.20);
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        /* =========================================
+           DESKTOP NAVIGATION
+        ========================================= */
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .desktop-nav a {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--blue);
+        }
+
+        /* =========================================
+           HEADER ACTIONS
+        ========================================= */
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-button {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            position: relative;
+        }
+
+        .notification-button svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 7px;
+            height: 7px;
+            background: var(--blue);
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        .profile-button {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            border: 1px solid #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-button svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        /* =========================================
+           MOBILE NAVIGATION
+        ========================================= */
+
+        .mobile-nav {
+            display: none;
+            border-top: 1px solid var(--border);
+            background: white;
+            padding: 10px 20px 18px;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 12px 10px;
+            color: #475569;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--blue);
+            background: var(--blue-light);
+            font-weight: 600;
+        }
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .kyc-main {
+            width: min(1000px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 42px 0 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 28px;
+        }
+
+        .page-heading h1 {
+            font-size: clamp(28px, 4vw, 38px);
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+            margin-bottom: 8px;
+        }
+
+        .page-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        /* =========================================
+           VERIFICATION STATUS
+        ========================================= */
+
+        .status-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .status-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--blue-light);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .status-text h2 {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .status-text p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 11px;
+            border-radius: 50px;
+            background: #fffbeb;
+            color: var(--warning);
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .status-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .progress-top h2 {
+            font-size: 13px;
+        }
+
+        .progress-percentage {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            height: 7px;
+            background: #e5e7eb;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 20%;
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            border-radius: inherit;
+            transition: width 0.3s ease;
+        }
+
+        .progress-note {
+            margin-top: 9px;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        /* =========================================
+           ACCOUNT TYPE
+        ========================================= */
+
+        .verification-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .card-header p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .account-type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .account-type-option {
+            position: relative;
+        }
+
+        .account-type-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .account-type-label {
+            display: block;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .account-type-label:hover {
+            border-color: #bfdbfe;
+            background: #fbfdff;
+        }
+
+        .account-type-option input:checked + .account-type-label {
+            border-color: var(--blue);
+            background: var(--blue-light);
+            box-shadow: 0 0 0 1px var(--blue);
+        }
+
+        .type-icon {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 11px;
+            border-radius: 10px;
+            background: white;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dbeafe;
+        }
+
+        .type-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .account-type-label h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .account-type-label p {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-section {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+
+        .form-section:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .form-section-heading {
+            margin-bottom: 17px;
+        }
+
+        .form-section-heading h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .form-section-heading p {
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #374151;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .form-group label span {
+            color: var(--danger);
+        }
+
+        .form-control {
+            width: 100%;
+            height: 45px;
+            padding: 0 13px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: white;
+            color: var(--text);
+            outline: none;
+            font-size: 12px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: #93c5fd;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.06);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        .field-note {
+            color: #94a3b8;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           OTP
+        ========================================= */
+
+        .otp-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .otp-row .form-control {
+            max-width: 210px;
+        }
+
+        .verify-button {
+            height: 45px;
+            padding: 0 16px;
+            border: 1px solid #bfdbfe;
+            border-radius: 9px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .verify-button:hover {
+            background: #dbeafe;
+        }
+
+        /* =========================================
+           DOCUMENT UPLOAD
+        ========================================= */
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .upload-box {
+            position: relative;
+            min-height: 145px;
+            padding: 20px;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            background: #fbfdff;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #93c5fd;
+            background: var(--blue-light);
+        }
+
+        .upload-box input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 10px;
+            border-radius: 12px;
+            background: var(--blue-light);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .upload-box h4 {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .upload-box p {
+            color: #94a3b8;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .file-name {
+            display: none;
+            margin-top: 8px;
+            color: var(--success);
+            font-size: 9px;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        /* =========================================
+           COMPANY SECTION
+        ========================================= */
+
+        .company-fields {
+            display: none;
+        }
+
+        .company-fields.visible {
+            display: block;
+        }
+
+        /* =========================================
+           CONSENT
+        ========================================= */
+
+        .consent-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+        }
+
+        .checkbox-row input {
+            width: 15px;
+            height: 15px;
+            margin-top: 2px;
+            flex: 0 0 15px;
+            accent-color: var(--blue);
+            cursor: pointer;
+        }
+
+        .checkbox-row label {
+            color: #64748b;
+            font-size: 10px;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .checkbox-row a {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        /* =========================================
+           ACTIONS
+        ========================================= */
+
+        .form-actions {
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .secondary-button,
+        .primary-button {
+            min-height: 44px;
+            padding: 0 20px;
+            border-radius: 9px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .secondary-button {
+            border: 1px solid var(--border);
+            background: white;
+            color: #64748b;
+        }
+
+        .secondary-button:hover {
+            background: #f8fafc;
+        }
+
+        .primary-button {
+            border: none;
+            background: var(--blue);
+            color: white;
+            box-shadow: 0 7px 16px rgba(37, 99, 235, 0.15);
+        }
+
+        .primary-button:hover {
+            background: var(--blue-dark);
+        }
+
+        .primary-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* =========================================
+           INFORMATION NOTE
+        ========================================= */
+
+        .security-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 14px;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-radius: 10px;
+        }
+
+        .security-note svg {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 17px;
+            color: var(--blue);
+            margin-top: 1px;
+        }
+
+        .security-note p {
+            color: #475569;
+            font-size: 9px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           SUCCESS STATE
+        ========================================= */
+
+        .success-state {
+            display: none;
+            padding: 55px 30px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 20px;
+            border-radius: 22px;
+            background: #f0fdf4;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-icon svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        .success-state h2 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .success-state p {
+            max-width: 530px;
+            margin: 0 auto 22px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .success-button {
+            min-height: 44px;
+            padding: 0 20px;
+            border: none;
+            border-radius: 9px;
+            background: var(--blue);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .site-footer {
+            background: white;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-copy {
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        /* =========================================
+           TOAST
+        ========================================= */
+
+        .toast {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 2000;
+            max-width: 330px;
+            padding: 13px 16px;
+            background: #111827;
+            color: white;
+            border-radius: 10px;
+            font-size: 11px;
+            line-height: 1.5;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.25s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .header-actions .notification-button,
+            .header-actions .profile-button {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .header-inner {
+                width: min(100% - 28px, 1180px);
+                height: 68px;
+            }
+
+            .kyc-main {
+                width: min(100% - 28px, 1000px);
+                padding: 30px 0 50px;
+            }
+
+            .status-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .account-type-grid,
+            .form-grid,
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .card-header,
+            .card-body {
+                padding: 20px;
+            }
+
+            .otp-row {
+                flex-wrap: wrap;
+            }
+
+            .otp-row .form-control {
+                max-width: none;
+                flex: 1 1 100%;
+            }
+
+            .verify-button {
+                width: 100%;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .secondary-button,
+            .primary-button {
+                width: 100%;
+            }
+
+            .footer-inner {
+                width: min(100% - 28px, 1180px);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+                flex-basis: 27px;
+            }
+
+            .logo-mark::before {
+                width: 9px;
+                height: 9px;
+            }
+
+            .page-heading h1 {
+                font-size: 27px;
+            }
+
+            .card-header,
+            .card-body {
+                padding: 17px;
+            }
+
+            .progress-card,
+            .status-card {
+                padding: 16px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 12px 18px;
+            }
+
+            .toast {
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+
+            <nav
+                class="desktop-nav"
+                aria-label="Main navigation"
+            >
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="discover.html">
+                    Discover
+                </a>
+
+                <a href="transactions.html">
+                    Transactions
+                </a>
+
+                <a href="messages.html">
+                    Messages
+                </a>
+
+            </nav>
+
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    aria-label="Notifications"
+                    onclick="window.location.href='notifications.html'"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    >
+                        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <a
+                    href="profile.html"
+                    class="profile-button"
+                    aria-label="Profile"
+                >
+                    PE
+                </a>
+
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M4 6h16"></path>
+                        <path d="M4 12h16"></path>
+                        <path d="M4 18h16"></path>
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="discover.html">
+                Discover Properties
+            </a>
+
+            <a href="transactions.html">
+                My Transactions
+            </a>
+
+            <a href="messages.html">
+                Messages
+            </a>
+
+            <a href="profile.html">
+                Profile &amp; Account
+            </a>
+
+            <a href="notifications.html">
+                Notifications
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main class="kyc-main">
+
+        <div class="page-heading">
+
+            <h1>
+                Identity Verification
+            </h1>
+
+            <p>
+                Complete your verification to unlock actions that require identity and document verification on Equeh.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             STATUS
+        ====================================== -->
+
+        <section class="status-card">
+
+            <div class="status-left">
+
+                <div class="status-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    >
+                        <path d="M12 3 5 6v5c0 4.5 2.8 8.5 7 10 4.2-1.5 7-5.5 7-10V6l-7-3Z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+
+                </div>
+
+                <div class="status-text">
+
+                    <h2>
+                        Verification status
+                    </h2>
+
+                    <p>
+                        Your KYC information has not been submitted yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span
+                class="status-badge"
+                id="statusBadge"
+            >
+                Not submitted
+            </span>
+
+        </section>
+
+
+        <!-- =====================================
+             PROGRESS
+        ====================================== -->
+
+        <section class="progress-card">
+
+            <div class="progress-top">
+
+                <h2>
+                    Verification progress
+                </h2>
+
+                <span
+                    class="progress-percentage"
+                    id="progressPercentage"
+                >
+                    20%
+                </span>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar"
+                ></div>
+
+            </div>
+
+
+            <p class="progress-note">
+                Complete the required information and documents to submit your verification.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             VERIFICATION FORM
+        ====================================== -->
+
+        <section
+            class="verification-card"
+            id="verificationCard"
+        >
+
+            <div class="card-header">
+
+                <h2>
+                    KYC Information
+                </h2>
+
+                <p>
+                    Provide accurate information that matches your official identity and supporting documents.
+                </p>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <form id="kycForm" novalidate>
+
+
+                    <!-- =================================
+                         ACCOUNT TYPE
+                    ================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Account type
+                            </h3>
+
+                            <p>
+                                Select the entity type associated with your Equeh account.
+                            </p>
+
+                        </div>
+
+
+                        <span class="section-label">
+                            Choose account type
+                        </span>
+
+
+                        <div class="account-type-grid">
+
+
+                            <!-- INDIVIDUAL -->
+
+                            <div class="account-type-option">
+
+                                <input
+                                    type="radio"
+                                    id="individualType"
+                                    name="accountType"
+                                    value="individual"
+                                    checked
+                                >
+
+                                <label
+                                    for="individualType"
+                                    class="account-type-label"
+                                >
+
+                                    <div class="type-icon">
+
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                        >
+                                            <circle
+                                                cx="12"
+                                                cy="8"
+                                                r="3"
+                                            ></circle>
+
+                                            <path d="M5 21a7 7 0 0 1 14 0"></path>
+                                        </svg>
+
+                                    </div>
+
+                                    <h3>
+                                        Individual
+                                    </h3>
+
+                                    <p>
+                                        For a person using Equeh in their own name.
+                                    </p>
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- COMPANY -->
+
+                            <div class="account-type-option">
+
+                                <input
+                                    type="radio"
+                                    id="companyType"
+                                    name="accountType"
+                                    value="company"
+                                >
+
+                                <label
+                                    for="companyType"
+                                    class="account-type-label"
+                                >
+
+                                    <div class="type-icon">
+
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="1.8"
+                                        >
+                                            <path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"></path>
+                                            <path d="M2 21h20"></path>
+                                            <path d="M8 7h2"></path>
+                                            <path d="M14 7h2"></path>
+                                            <path d="M8 11h2"></path>
+                                            <path d="M14 11h2"></path>
+                                            <path d="M10 21v-5h4v5"></path>
+                                        </svg>
+
+                                    </div>
+
+                                    <h3>
+                                        Company
+                                    </h3>
+
+                                    <p>
+                                        For a registered company using Equeh for property transactions.
+                                    </p>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         PERSONAL INFORMATION
+                    ================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Personal information
+                            </h3>
+
+                            <p>
+                                Enter your information exactly as it appears on your official identity document.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="firstName">
+                                    First name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    class="form-control"
+                                    placeholder="Enter first name"
+                                    autocomplete="given-name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="lastName">
+                                    Last name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    class="form-control"
+                                    placeholder="Enter last name"
+                                    autocomplete="family-name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="gender">
+                                    Gender <span>*</span>
+                                </label>
+
+                                <select
+                                    id="gender"
+                                    name="gender"
+                                    class="form-control"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select gender
+                                    </option>
+
+                                    <option value="male">
+                                        Male
+                                    </option>
+
+                                    <option value="female">
+                                        Female
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="dateOfBirth">
+                                    Date of birth
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="dateOfBirth"
+                                    name="dateOfBirth"
+                                    class="form-control"
+                                >
+
+                                <span class="field-note">
+                                    Optional where not required for the selected verification process.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone number <span>*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-control"
+                                    placeholder="e.g. 08012345678"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email address <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         IDENTITY VERIFICATION
+                    ================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Identity verification
+                            </h3>
+
+                            <p>
+                                Provide the required identity information for verification.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="nin">
+                                    NIN <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nin"
+                                    name="nin"
+                                    class="form-control"
+                                    placeholder="Enter your NIN"
+                                    inputmode="numeric"
+                                    maxlength="11"
+                                    required
+                                >
+
+                                <span class="field-note">
+                                    Your NIN will be verified against the information submitted.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="idType">
+                                    Identification document
+                                </label>
+
+                                <select
+                                    id="idType"
+                                    name="idType"
+                                    class="form-control"
+                                >
+
+                                    <option value="">
+                                        Select document type
+                                    </option>
+
+                                    <option value="national-id">
+                                        National ID
+                                    </option>
+
+                                    <option value="passport">
+                                        International Passport
+                                    </option>
+
+                                    <option value="drivers-license">
+                                        Driver's Licence
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Phone verification <span>*</span>
+                                </label>
+
+                                <div class="otp-row">
+
+                                    <input
+                                        type="text"
+                                        id="otp"
+                                        name="otp"
+                                        class="form-control"
+                                        placeholder="Enter OTP"
+                                        inputmode="numeric"
+                                        maxlength="6"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="verify-button"
+                                        id="sendOtpButton"
+                                    >
+                                        Send OTP
+                                    </button>
+
+                                </div>
+
+                                <span
+                                    class="field-note"
+                                    id="otpNote"
+                                >
+                                    An OTP will be sent to your registered phone number when verification is connected.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         ADDRESS
+                    ================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Proof of address
+                            </h3>
+
+                            <p>
+                                Property upload and applicable verification processes may require proof of your current address.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group full">
+
+                                <label for="address">
+                                    Residential address <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    class="form-control"
+                                    placeholder="Enter your full residential address"
+                                    autocomplete="street-address"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="city">
+                                    City <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    class="form-control"
+                                    placeholder="Enter city"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="state">
+                                    State <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="state"
+                                    name="state"
+                                    class="form-control"
+                                    placeholder="Enter state"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label for="addressDocument">
+                                    Proof of address document <span>*</span>
+                                </label>
+
+                                <select
+                                    id="addressDocument"
+                                    name="addressDocument"
+                                    class="form-control"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select document type
+                                    </option>
+
+                                    <option value="utility-bill">
+                                        Utility bill
+                                    </option>
+
+                                    <option value="bank-statement">
+                                        Bank statement
+                                    </option>
+
+                                    <option value="government-document">
+                                        Government document
+                                    </option>
+
+                                    <option value="other">
+                                        Other acceptable document
+                                    </option>
+
+                                </select>
+
+                                <span class="field-note">
+                                    The actual document upload will be handled below.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         COMPANY INFORMATION
+                    ================================== -->
+
+                    <div
+                        class="form-section company-fields"
+                        id="companyFields"
+                    >
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Company information
+                            </h3>
+
+                            <p>
+                                Provide the information required for a company account.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="companyName">
+                                    Company name <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="companyName"
+                                    name="companyName"
+                                    class="form-control"
+                                    placeholder="Enter registered company name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="registrationNumber">
+                                    Registration number <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="registrationNumber"
+                                    name="registrationNumber"
+                                    class="form-control"
+                                    placeholder="Enter company registration number"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="bvn">
+                                    BVN <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="bvn"
+                                    name="bvn"
+                                    class="form-control"
+                                    placeholder="Enter BVN"
+                                    inputmode="numeric"
+                                    maxlength="11"
+                                >
+
+                                <span class="field-note">
+                                    Required for companies opening an Equeh account.
+                                </span>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="companyEmail">
+                                    Company email <span>*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="companyEmail"
+                                    name="companyEmail"
+                                    class="form-control"
+                                    placeholder="company@example.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label for="companyAddress">
+                                    Registered company address <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="companyAddress"
+                                    name="companyAddress"
+                                    class="form-control"
+                                    placeholder="Enter registered company address"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         DOCUMENTS
+                    ================================== -->
+
+                    <div class="form-section">
+
+                        <div class="form-section-heading">
+
+                            <h3>
+                                Supporting documents
+                            </h3>
+
+                            <p>
+                                Upload clear copies of the required documents. Document requirements may vary according to your account type and transaction.
+                            </p>
+
+                        </div>
+
+
+                        <div class="upload-grid">
+
+
+                            <!-- ID DOCUMENT -->
+
+                            <div class="upload-box">
+
+                                <input
+                                    type="file"
+                                    id="identityFile"
+                                    name="identityFile"
+                                    accept=".jpg,.jpeg,.png,.pdf"
+                                >
+
+                                <div class="upload-icon">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                    >
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                                        <path d="M14 2v6h6"></path>
+                                        <path d="M8 13h8"></path>
+                                        <path d="M8 17h6"></path>
+                                    </svg>
+
+                                </div>
+
+                                <h4>
+                                    Identity document
+                                </h4>
+
+                                <p>
+                                    JPG, PNG or PDF
+                                </p>
+
+                                <span
+                                    class="file-name"
+                                    id="identityFileName"
+                                ></span>
+
+                            </div>
+
+
+                            <!-- PROOF OF ADDRESS -->
+
+                            <div class="upload-box">
+
+                                <input
+                                    type="file"
+                                    id="addressFile"
+                                    name="addressFile"
+                                    accept=".jpg,.jpeg,.png,.pdf"
+                                >
+
+                                <div class="upload-icon">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                    >
+                                        <path d="M3 10.5 12 3l9 7.5"></path>
+                                        <path d="M5 9v11h14V9"></path>
+                                        <path d="M9 20v-6h6v6"></path>
+                                    </svg>
+
+                                </div>
+
+                                <h4>
+                                    Proof of address
+                                </h4>
+
+                                <p>
+                                    JPG, PNG or PDF
+                                </p>
+
+                                <span
+                                    class="file-name"
+                                    id="addressFileName"
+                                ></span>
+
+                            </div>
+
+
+                            <!-- COMPANY DOCUMENT -->
+
+                            <div
+                                class="upload-box"
+                                id="companyDocumentBox"
+                                style="display: none;"
+                            >
+
+                                <input
+                                    type="file"
+                                    id="companyFile"
+                                    name="companyFile"
+                                    accept=".jpg,.jpeg,.png,.pdf"
+                                >
+
+                                <div class="upload-icon">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                    >
+                                        <path d="M4 21V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"></path>
+                                        <path d="M2 21h20"></path>
+                                        <path d="M8 7h2"></path>
+                                        <path d="M14 7h2"></path>
+                                        <path d="M8 11h2"></path>
+                                        <path d="M14 11h2"></path>
+                                    </svg>
+
+                                </div>
+
+                                <h4>
+                                    Company document
+                                </h4>
+
+                                <p>
+                                    JPG, PNG or PDF
+                                </p>
+
+                                <span
+                                    class="file-name"
+                                    id="companyFileName"
+                                ></span>
+
+                            </div>
+
+
+                            <!-- ADDITIONAL DOCUMENT -->
+
+                            <div class="upload-box">
+
+                                <input
+                                    type="file"
+                                    id="additionalFile"
+                                    name="additionalFile"
+                                    accept=".jpg,.jpeg,.png,.pdf"
+                                >
+
+                                <div class="upload-icon">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                    >
+                                        <path d="M12 5v14"></path>
+                                        <path d="M5 12h14"></path>
+                                    </svg>
+
+                                </div>
+
+                                <h4>
+                                    Additional document
+                                </h4>
+
+                                <p>
+                                    Optional
+                                </p>
+
+                                <span
+                                    class="file-name"
+                                    id="additionalFileName"
+                                ></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         CONSENT
+                    ================================== -->
+
+                    <div class="consent-box">
+
+                        <div class="checkbox-row">
+
+                            <input
+                                type="checkbox"
+                                id="consent"
+                                name="consent"
+                                required
+                            >
+
+                            <label for="consent">
+                                I confirm that the information and documents I have provided are accurate and belong to me or my organization. I understand that Equeh may verify the information provided before approving my account or allowing applicable property and transaction activities.
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         SECURITY NOTE
+                    ================================== -->
+
+                    <div class="security-note">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        >
+                            <rect
+                                x="5"
+                                y="10"
+                                width="14"
+                                height="11"
+                                rx="2"
+                            ></rect>
+
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+                        </svg>
+
+                        <p>
+                            Your verification information is intended for identity and transaction verification purposes. Actual document validation, identity checks, OTP verification and secure storage will be handled by the Equeh backend and approved verification services.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================
+                         ACTIONS
+                    ================================== -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            onclick="window.location.href='profile.html'"
+                        >
+                            Save for later
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="submitButton"
+                        >
+                            Submit for verification
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- =================================
+                     SUCCESS STATE
+                ================================== -->
+
+                <div
+                    class="success-state"
+                    id="successState"
+                >
+
+                    <div class="success-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        >
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+
+                    </div>
+
+                    <h2>
+                        Verification submitted
+                    </h2>
+
+                    <p>
+                        Your KYC information has been submitted for review. The actual verification process will be completed through the Equeh verification system.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="success-button"
+                        onclick="window.location.href='dashboard.html'"
+                    >
+                        Return to dashboard
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <p class="footer-copy">
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="messages.html">
+                    Help &amp; Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         TOAST
+    ========================================= -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <script>
+
+        /* =========================================
+           MOBILE NAVIGATION
+        ========================================= */
+
+        const mobileMenuButton =
+            document.getElementById("mobileMenuButton");
+
+        const mobileNav =
+            document.getElementById("mobileNav");
+
+
+        if (mobileMenuButton && mobileNav) {
+
+            mobileMenuButton.addEventListener(
+                "click",
+                function () {
+
+                    const isOpen =
+                        mobileNav.classList.toggle("open");
+
+                    mobileMenuButton.setAttribute(
+                        "aria-expanded",
+                        isOpen ? "true" : "false"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           ACCOUNT TYPE SWITCH
+        ========================================= */
+
+        const individualType =
+            document.getElementById("individualType");
+
+        const companyType =
+            document.getElementById("companyType");
+
+        const companyFields =
+            document.getElementById("companyFields");
+
+        const companyDocumentBox =
+            document.getElementById("companyDocumentBox");
+
+        const companyName =
+            document.getElementById("companyName");
+
+        const registrationNumber =
+            document.getElementById("registrationNumber");
+
+        const bvn =
+            document.getElementById("bvn");
+
+        const companyEmail =
+            document.getElementById("companyEmail");
+
+        const companyAddress =
+            document.getElementById("companyAddress");
+
+
+        function updateAccountType() {
+
+            const isCompany =
+                companyType.checked;
+
+
+            if (isCompany) {
+
+                companyFields.classList.add("visible");
+
+                companyDocumentBox.style.display =
+                    "block";
+
+                companyName.required = true;
+                registrationNumber.required = true;
+                bvn.required = true;
+                companyEmail.required = true;
+                companyAddress.required = true;
+
+            } else {
+
+                companyFields.classList.remove("visible");
+
+                companyDocumentBox.style.display =
+                    "none";
+
+                companyName.required = false;
+                registrationNumber.required = false;
+                bvn.required = false;
+                companyEmail.required = false;
+                companyAddress.required = false;
+
+            }
+
+
+            updateProgress();
+
+        }
+
+
+        individualType.addEventListener(
+            "change",
+            updateAccountType
+        );
+
+        companyType.addEventListener(
+            "change",
+            updateAccountType
+        );
+
+
+        /* =========================================
+           FILE INPUT DISPLAY
+        ========================================= */
+
+        function setupFileInput(inputId, nameId) {
+
+            const input =
+                document.getElementById(inputId);
+
+            const name =
+                document.getElementById(nameId);
+
+
+            if (!input || !name) {
+                return;
+            }
+
+
+            input.addEventListener(
+                "change",
+                function () {
+
+                    if (this.files.length > 0) {
+
+                        name.textContent =
+                            this.files[0].name;
+
+                        name.style.display =
+                            "block";
+
+                    } else {
+
+                        name.textContent = "";
+
+                        name.style.display =
+                            "none";
+
+                    }
+
+
+                    updateProgress();
+
+                }
+            );
+
+        }
+
+
+        setupFileInput(
+            "identityFile",
+            "identityFileName"
+        );
+
+        setupFileInput(
+            "addressFile",
+            "addressFileName"
+        );
+
+        setupFileInput(
+            "companyFile",
+            "companyFileName"
+        );
+
+        setupFileInput(
+            "additionalFile",
+            "additionalFileName"
+        );
+
+
+        /* =========================================
+           OTP BUTTON
+        ========================================= */
+
+        const sendOtpButton =
+            document.getElementById("sendOtpButton");
+
+        const otpNote =
+            document.getElementById("otpNote");
+
+
+        if (sendOtpButton) {
+
+            sendOtpButton.addEventListener(
+                "click",
+                function () {
+
+                    sendOtpButton.textContent =
+                        "OTP requested";
+
+                    sendOtpButton.disabled =
+                        true;
+
+                    otpNote.textContent =
+                        "OTP delivery will be connected to the phone verification service when the backend is implemented.";
+
+                    showToast(
+                        "OTP functionality will be connected during backend implementation."
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           FORM VALIDATION
+        ========================================= */
+
+        const kycForm =
+            document.getElementById("kycForm");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const verificationCard =
+            document.getElementById("verificationCard");
+
+        const successState =
+            document.getElementById("successState");
+
+        const statusBadge =
+            document.getElementById("statusBadge");
+
+
+        if (kycForm) {
+
+            kycForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    if (!kycForm.checkValidity()) {
+
+                        kycForm.reportValidity();
+
+                        showToast(
+                            "Please complete all required fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    submitButton.disabled =
+                        true;
+
+                    submitButton.textContent =
+                        "Submitting...";
+
+
+                    /*
+                     * Frontend-only submission simulation.
+                     * Real submission will be connected to
+                     * the Equeh backend later.
+                     */
+
+                    setTimeout(
+                        function () {
+
+                            verificationCard
+                                .querySelector(".card-header")
+                                .style.display = "none";
+
+                            kycForm.style.display =
+                                "none";
+
+                            successState.style.display =
+                                "block";
+
+
+                            statusBadge.textContent =
+                                "Under review";
+
+                            statusBadge.style.background =
+                                "#eff6ff";
+
+                            statusBadge.style.color =
+                                "#2563eb";
+
+
+                            document.getElementById(
+                                "progressBar"
+                            ).style.width = "100%";
+
+
+                            document.getElementById(
+                                "progressPercentage"
+                            ).textContent = "100%";
+
+
+                            showToast(
+                                "KYC submitted for review."
+                            );
+
+                        },
+                        800
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           PROGRESS CALCULATION
+        ========================================= */
+
+        function updateProgress() {
+
+            const progressBar =
+                document.getElementById("progressBar");
+
+            const progressPercentage =
+                document.getElementById("progressPercentage");
+
+
+            if (!progressBar || !progressPercentage) {
+                return;
+            }
+
+
+            const requiredFields =
+                Array.from(
+                    kycForm.querySelectorAll(
+                        "input[required], select[required]"
+                    )
+                );
+
+
+            let completed =
+                0;
+
+
+            requiredFields.forEach(
+                function (field) {
+
+                    if (
+                        field.type === "checkbox"
+                    ) {
+
+                        if (field.checked) {
+                            completed++;
+                        }
+
+                        return;
+
+                    }
+
+
+                    if (
+                        field.type === "file"
+                    ) {
+
+                        if (field.files.length > 0) {
+                            completed++;
+                        }
+
+                        return;
+
+                    }
+
+
+                    if (
+                        field.value.trim() !== ""
+                    ) {
+
+                        completed++;
+
+                    }
+
+                }
+            );
+
+
+            const total =
+                requiredFields.length;
+
+
+            let percentage =
+                total > 0
+                    ? Math.round(
+                        (completed / total) * 100
+                    )
+                    : 0;
+
+
+            if (percentage < 5) {
+                percentage = 5;
+            }
+
+
+            progressBar.style.width =
+                percentage + "%";
+
+            progressPercentage.textContent =
+                percentage + "%";
+
+        }
+
+
+        /* =========================================
+           WATCH FORM FIELDS
+        ========================================= */
+
+        if (kycForm) {
+
+            kycForm
+                .querySelectorAll(
+                    "input, select"
+                )
+                .forEach(
+                    function (field) {
+
+                        field.addEventListener(
+                            "input",
+                            updateProgress
+                        );
+
+                        field.addEventListener(
+                            "change",
+                            updateProgress
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =========================================
+           TOAST
+        ========================================= */
+
+        let toastTimer;
+
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+
+            if (!toast) {
+                return;
+            }
+
+
+            toast.textContent =
+                message;
+
+            toast.classList.add("show");
+
+
+            clearTimeout(toastTimer);
+
+
+            toastTimer =
+                setTimeout(
+                    function () {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    3200
+                );
+
+        }
+
+
+        /* =========================================
+           INITIALIZE
+        ========================================= */
+
+        updateAccountType();
+
+        updateProgress();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Your Equeh property dashboard."
+    >
+
+    <title>Dashboard — Equeh</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-soft: #dbeafe;
+
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+
+            --orange: #ea580c;
+            --orange-light: #fff7ed;
+
+            --purple: #7c3aed;
+            --purple-light: #f5f3ff;
+
+            --text: #111827;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
+
+            --border: #e5e7eb;
+            --border-light: #eef0f3;
+
+            --background: #f8fafc;
+            --white: #ffffff;
+
+            --shadow-sm:
+                0 2px 8px rgba(15, 23, 42, 0.04);
+
+            --shadow-md:
+                0 10px 30px rgba(15, 23, 42, 0.07);
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: var(--background);
+
+            color: var(--text);
+
+            font-family: "Poppins", sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .dashboard-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom: 1px solid var(--border-light);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .header-container {
+            width: min(1200px, calc(100% - 40px));
+
+            min-height: 76px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 24px;
+        }
+
+        /* ================================
+           LOGO
+        ================================= */
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: var(--blue);
+
+            font-size: 24px;
+            font-weight: 700;
+
+            letter-spacing: -0.04em;
+
+            flex-shrink: 0;
+        }
+
+        .logo-mark {
+            position: relative;
+
+            width: 30px;
+            height: 30px;
+
+            flex: 0 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #3b82f6
+            );
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 7px 18px rgba(37, 99, 235, 0.20);
+
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #ffffff;
+
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        /* ================================
+           DESKTOP NAVIGATION
+        ================================= */
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        .desktop-nav a {
+            color: var(--text-secondary);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--blue);
+        }
+
+        /* ================================
+           HEADER ACTIONS
+        ================================= */
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .notification-btn {
+            position: relative;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid var(--border);
+
+            background: var(--white);
+
+            border-radius: 12px;
+
+            color: var(--text-secondary);
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .notification-btn:hover {
+            background: var(--blue-light);
+
+            border-color: var(--blue-soft);
+
+            color: var(--blue);
+        }
+
+        .notification-dot {
+            position: absolute;
+
+            top: 8px;
+            right: 8px;
+
+            width: 7px;
+            height: 7px;
+
+            background: #ef4444;
+
+            border: 2px solid var(--white);
+
+            border-radius: 50%;
+        }
+
+        .profile-button {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 4px 8px 4px 4px;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .profile-button:hover {
+            border-color: var(--blue-soft);
+
+            background: var(--blue-light);
+        }
+
+        .profile-avatar {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
+            border-radius: 50%;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .profile-name {
+            color: var(--text);
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-chevron {
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        /* ================================
+           MOBILE MENU BUTTON
+        ================================= */
+
+        .menu-toggle {
+            display: none;
+
+            width: 40px;
+            height: 40px;
+
+            border: 1px solid var(--border);
+
+            background: var(--white);
+
+            border-radius: 11px;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 17px;
+            height: 2px;
+
+            background: var(--text);
+
+            border-radius: 2px;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        /* ================================
+           MOBILE NAVIGATION
+        ================================= */
+
+        .mobile-nav {
+            display: none;
+
+            padding: 0 20px 18px;
+
+            background: var(--white);
+
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+
+            padding: 11px 0;
+
+            color: var(--text-secondary);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: 0;
+        }
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .dashboard-main {
+            width: min(1200px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding: 42px 0 70px;
+        }
+
+        /* ================================
+           WELCOME
+        ================================= */
+
+        .welcome-section {
+            margin-bottom: 30px;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 24px;
+        }
+
+        .welcome-eyebrow {
+            margin-bottom: 7px;
+
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
+        .welcome-section h1 {
+            color: var(--text);
+
+            font-size: clamp(26px, 4vw, 36px);
+
+            line-height: 1.2;
+
+            letter-spacing: -0.035em;
+        }
+
+        .welcome-section h1 span {
+            color: var(--blue);
+        }
+
+        .welcome-text {
+            max-width: 600px;
+
+            margin-top: 9px;
+
+            color: var(--text-light);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .browse-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 46px;
+
+            padding: 0 20px;
+
+            background: var(--blue);
+
+            color: var(--white);
+
+            border: 0;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .browse-button:hover {
+            background: var(--blue-dark);
+
+            transform: translateY(-1px);
+        }
+
+        /* ================================
+           SUMMARY CARDS
+        ================================= */
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 16px;
+
+            margin-bottom: 28px;
+        }
+
+        .summary-card {
+            padding: 20px;
+
+            background: var(--white);
+
+            border: 1px solid var(--border-light);
+
+            border-radius: var(--radius-md);
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+        .summary-label {
+            color: var(--text-light);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+        }
+
+        .summary-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .summary-icon.blue {
+            background: var(--blue-light);
+            color: var(--blue);
+        }
+
+        .summary-icon.green {
+            background: var(--green-light);
+            color: var(--green);
+        }
+
+        .summary-icon.orange {
+            background: var(--orange-light);
+            color: var(--orange);
+        }
+
+        .summary-icon.purple {
+            background: var(--purple-light);
+            color: var(--purple);
+        }
+
+        .summary-value {
+            color: var(--text);
+
+            font-size: 25px;
+            font-weight: 700;
+
+            letter-spacing: -0.03em;
+        }
+
+        .summary-subtext {
+            margin-top: 4px;
+
+            color: var(--text-light);
+
+            font-size: 11px;
+        }
+
+        /* ================================
+           DASHBOARD GRID
+        ================================= */
+
+        .dashboard-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.55fr)
+                minmax(300px, 0.85fr);
+
+            gap: 22px;
+
+            align-items: start;
+        }
+
+        .dashboard-card {
+            background: var(--white);
+
+            border: 1px solid var(--border-light);
+
+            border-radius: var(--radius-lg);
+
+            box-shadow: var(--shadow-sm);
+
+            overflow: hidden;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 16px;
+
+            padding: 22px 22px 18px;
+
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            color: var(--text);
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .card-header p {
+            margin-top: 4px;
+
+            color: var(--text-light);
+
+            font-size: 11px;
+        }
+
+        .card-link {
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           TRANSACTION LIST
+        ================================= */
+
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 17px 22px;
+
+            border-bottom: 1px solid var(--border-light);
+
+            transition:
+                background 0.2s ease;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: 0;
+        }
+
+        .transaction-item:hover {
+            background: #fafcff;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+
+            flex: 0 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
+            border-radius: 12px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .transaction-info {
+            min-width: 0;
+
+            flex: 1;
+        }
+
+        .transaction-title {
+            color: var(--text);
+
+            font-size: 12px;
+            font-weight: 600;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .transaction-meta {
+            margin-top: 4px;
+
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        .transaction-status {
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        .transaction-status.progress {
+            background: var(--orange-light);
+
+            color: var(--orange);
+        }
+
+        .transaction-status.completed {
+            background: var(--green-light);
+
+            color: var(--green);
+        }
+
+        .transaction-status.pending {
+            background: var(--blue-light);
+
+            color: var(--blue);
+        }
+
+        /* ================================
+           PROPERTY CARD
+        ================================= */
+
+        .property-card {
+            padding: 18px;
+        }
+
+        .property-image {
+            position: relative;
+
+            height: 180px;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            background: #e5e7eb;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.025);
+        }
+
+        .verified-badge {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            padding: 6px 9px;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            color: var(--green);
+
+            border-radius: 20px;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .property-favourite {
+            position: absolute;
+
+            top: 10px;
+            right: 10px;
+
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            color: var(--text-secondary);
+
+            border-radius: 50%;
+
+            font-size: 16px;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .property-favourite.active {
+            color: #ef4444;
+        }
+
+        .property-content {
+            padding-top: 15px;
+        }
+
+        .property-title {
+            color: var(--text);
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .property-location {
+            margin-top: 5px;
+
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        .property-details {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            margin-top: 13px;
+
+            color: var(--text-secondary);
+
+            font-size: 10px;
+        }
+
+        .property-price {
+            margin-top: 15px;
+
+            color: var(--blue);
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .property-note {
+            margin-top: 6px;
+
+            color: var(--text-light);
+
+            font-size: 9px;
+        }
+
+        /* ================================
+           QUICK ACTIONS
+        ================================= */
+
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 17px 22px;
+
+            border-bottom: 1px solid var(--border-light);
+
+            transition:
+                background 0.2s ease;
+        }
+
+        .quick-action:last-child {
+            border-bottom: 0;
+        }
+
+        .quick-action:hover {
+            background: #fafcff;
+        }
+
+        .quick-action-icon {
+            width: 38px;
+            height: 38px;
+
+            flex: 0 0 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .quick-action-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .quick-action-title {
+            display: block;
+
+            color: var(--text);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .quick-action-text {
+            display: block;
+
+            margin-top: 3px;
+
+            color: var(--text-light);
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+        .quick-action-arrow {
+            color: var(--text-light);
+
+            font-size: 15px;
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .dashboard-footer {
+            border-top: 1px solid var(--border-light);
+
+            background: var(--white);
+        }
+
+        .footer-container {
+            width: min(1200px, calc(100% - 40px));
+
+            min-height: 90px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+        }
+
+        .footer-logo .logo-mark {
+            width: 25px;
+            height: 25px;
+
+            flex-basis: 25px;
+        }
+
+        .footer-logo .logo-mark::before {
+            width: 8px;
+            height: 8px;
+        }
+
+        .footer-copy {
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+
+            font-size: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 950px) {
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .header-actions {
+                margin-left: auto;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 680px) {
+
+            .header-container {
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                min-height: 68px;
+
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .logo-mark {
+                width: 27px;
+                height: 27px;
+
+                flex-basis: 27px;
+            }
+
+            .logo-mark::before {
+                width: 9px;
+                height: 9px;
+            }
+
+            .profile-name,
+            .profile-chevron {
+                display: none;
+            }
+
+            .profile-button {
+                padding: 3px;
+
+                border-radius: 50%;
+
+                border: 0;
+            }
+
+            .dashboard-main {
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                padding: 30px 0 50px;
+            }
+
+            .welcome-section {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 18px;
+            }
+
+            .welcome-section h1 {
+                font-size: 28px;
+            }
+
+            .browse-button {
+                width: 100%;
+            }
+
+            .summary-grid {
+                gap: 10px;
+            }
+
+            .summary-card {
+                padding: 15px;
+            }
+
+            .summary-value {
+                font-size: 21px;
+            }
+
+            .summary-label {
+                font-size: 9px;
+            }
+
+            .summary-subtext {
+                font-size: 9px;
+            }
+
+            .card-header {
+                padding: 18px 16px 15px;
+            }
+
+            .transaction-item {
+                padding: 15px 16px;
+
+                gap: 11px;
+            }
+
+            .transaction-icon {
+                width: 35px;
+                height: 35px;
+
+                flex-basis: 35px;
+
+                border-radius: 10px;
+            }
+
+            .transaction-status {
+                padding: 4px 7px;
+
+                font-size: 8px;
+            }
+
+            .property-card {
+                padding: 14px;
+            }
+
+            .property-image {
+                height: 190px;
+            }
+
+            .quick-action {
+                padding: 15px 16px;
+            }
+
+            .footer-container {
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                padding: 20px 0;
+
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 13px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions {
+                gap: 6px;
+            }
+
+            .notification-btn,
+            .menu-toggle {
+                width: 37px;
+                height: 37px;
+            }
+
+        }
+
+    </style>
+  <script type="module" crossorigin src="/assets/dashboard-YELLHHGF.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index-4NFEPWkC-BjJPGCf8.js">
+</head>
+
+<body>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="dashboard-header">
+
+        <div class="header-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <nav
+                class="desktop-nav"
+                aria-label="Primary navigation"
+            >
+
+                <a
+                    href="dashboard.html"
+                    class="active"
+                >
+                    Dashboard
+                </a>
+
+                <a href="discover.html">
+                    Discover
+                </a>
+
+                <a href="transactions.html">
+                    Transactions
+                </a>
+
+                <a href="messages.html">
+                    Messages
+                </a>
+
+            </nav>
+
+
+            <!-- HEADER ACTIONS -->
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="notification-btn"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+
+                    <span aria-hidden="true">
+                        ♧
+                    </span>
+
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                    aria-label="Open profile"
+                >
+
+                    <span class="profile-avatar">
+                        <span id="profileInitial">
+                            U
+                        </span>
+                    </span>
+
+                    <span
+                        class="profile-name"
+                        id="profileName"
+                    >
+                        User
+                    </span>
+
+                    <span
+                        class="profile-chevron"
+                        aria-hidden="true"
+                    >
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav
+            class="mobile-nav"
+            id="mobileNav"
+            aria-label="Mobile navigation"
+        >
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="discover.html">
+                Discover Properties
+            </a>
+
+            <a href="transactions.html">
+                My Transactions
+            </a>
+
+            <a href="messages.html">
+                Messages
+            </a>
+
+            <a href="profile.html">
+                Profile &amp; Account
+            </a>
+
+            <a href="notifications.html">
+                Notifications
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="dashboard-main">
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <div class="welcome-eyebrow">
+                    Your Equeh Dashboard
+                </div>
+
+                <h1>
+                    Welcome back,
+                    <span id="welcomeUserName">
+                        User.
+                    </span>
+                </h1>
+
+                <p class="welcome-text">
+                    Manage your property search, transactions,
+                    verification status, and account activity
+                    from one secure place.
+                </p>
+
+            </div>
+
+
+            <a
+                href="discover.html"
+                class="browse-button"
+            >
+                Browse Properties
+            </a>
+
+        </section>
+
+
+        <!-- SUMMARY CARDS -->
+
+        <section class="summary-grid">
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Saved Properties
+                    </span>
+
+                    <span
+                        class="summary-icon blue"
+                        aria-hidden="true"
+                    >
+                        ♡
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    3
+                </div>
+
+                <div class="summary-subtext">
+                    Properties you saved
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Active Transactions
+                    </span>
+
+                    <span
+                        class="summary-icon orange"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    1
+                </div>
+
+                <div class="summary-subtext">
+                    Currently in progress
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Completed
+                    </span>
+
+                    <span
+                        class="summary-icon green"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    2
+                </div>
+
+                <div class="summary-subtext">
+                    Completed transactions
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Verification
+                    </span>
+
+                    <span
+                        class="summary-icon purple"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    Verified
+                </div>
+
+                <div class="summary-subtext">
+                    Account verification status
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- MAIN DASHBOARD GRID -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- LEFT COLUMN -->
+
+            <div>
+
+
+                <!-- RECENT TRANSACTIONS -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Recent Transactions
+                            </h2>
+
+                            <p>
+                                Keep track of your property
+                                transactions.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="transactions.html"
+                            class="card-link"
+                        >
+                            View all
+                        </a>
+
+                    </div>
+
+
+                    <div class="transaction-list">
+
+
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
+
+                            <span class="transaction-icon">
+                                ↗
+                            </span>
+
+                            <span class="transaction-info">
+
+                                <span class="transaction-title">
+                                    4 Bedroom Detached Duplex
+                                </span>
+
+                                <span class="transaction-meta">
+                                    Lekki, Lagos · Updated recently
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status progress">
+                                In Progress
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
+
+                            <span class="transaction-icon">
+                                ✓
+                            </span>
+
+                            <span class="transaction-info">
+
+                                <span class="transaction-title">
+                                    Residential Land
+                                </span>
+
+                                <span class="transaction-meta">
+                                    Abuja · Completed
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status completed">
+                                Completed
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
+
+                            <span class="transaction-icon">
+                                ✓
+                            </span>
+
+                            <span class="transaction-info">
+
+                                <span class="transaction-title">
+                                    3 Bedroom Terrace
+                                </span>
+
+                                <span class="transaction-meta">
+                                    Ikeja, Lagos · Completed
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status completed">
+                                Completed
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
+
+                            <span class="transaction-icon">
+                                ○
+                            </span>
+
+                            <span class="transaction-info">
+
+                                <span class="transaction-title">
+                                    Commercial Property
+                                </span>
+
+                                <span class="transaction-meta">
+                                    Victoria Island · Awaiting action
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status pending">
+                                Pending
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- SAVED PROPERTY -->
+
+                <section
+                    class="dashboard-card"
+                    style="margin-top: 22px;"
+                >
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Saved Property
+                            </h2>
+
+                            <p>
+                                Properties you may want to revisit.
+                            </p>
+
+                        </div>
+
+                        <a
+                            href="discover.html"
+                            class="card-link"
+                        >
+                            Discover more
+                        </a>
+
+                    </div>
+
+
+                    <article class="property-card">
+
+                        <a href="property-details.html">
+
+                            <div class="property-image">
+
+                                <img
+                                    src="/assets/modern.jpg-DZJb0fkR.jpeg"
+                                    alt="Modern property"
+                                >
+
+                                <span class="verified-badge">
+                                    ✓ Verified
+                                </span>
+
+                            </div>
+
+
+                            <div class="property-content">
+
+                                <h3 class="property-title">
+                                    Modern 4 Bedroom Detached Duplex
+                                </h3>
+
+                                <p class="property-location">
+                                    Lekki Phase 1, Lagos
+                                </p>
+
+
+                                <div class="property-details">
+
+                                    <span>
+                                        4 Beds
+                                    </span>
+
+                                    <span>
+                                        5 Baths
+                                    </span>
+
+                                    <span>
+                                        Detached
+                                    </span>
+
+                                </div>
+
+
+                                <div class="property-price">
+                                    ₦185,000,000
+                                </div>
+
+                                <p class="property-note">
+                                    Verified property information
+                                    available through Equeh.
+                                </p>
+
+                            </div>
+
+                        </a>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+
+            <!-- RIGHT COLUMN -->
+
+            <aside>
+
+
+                <!-- ACCOUNT STATUS -->
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Account Status
+                            </h2>
+
+                            <p>
+                                Your current Equeh account status.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <a
+                            href="kyc.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                ✓
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <span class="quick-action-title">
+                                    Identity verified
+                                </span>
+
+                                <span class="quick-action-text">
+                                    Your account verification status
+                                    is currently active.
+                                </span>
+
+                            </span>
+
+                            <span
+                                class="quick-action-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="transactions.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                ↗
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <span class="quick-action-title">
+                                    View transactions
+                                </span>
+
+                                <span class="quick-action-text">
+                                    Review your current and completed
+                                    property transactions.
+                                </span>
+
+                            </span>
+
+                            <span
+                                class="quick-action-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="kyc.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                ✓
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <span class="quick-action-title">
+                                    Complete verification
+                                </span>
+
+                                <span class="quick-action-text">
+                                    Manage your identity and verification
+                                    information.
+                                </span>
+
+                            </span>
+
+                            <span
+                                class="quick-action-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="profile.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                ○
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <span class="quick-action-title">
+                                    Manage profile
+                                </span>
+
+                                <span class="quick-action-text">
+                                    Update your account information and
+                                    preferences.
+                                </span>
+
+                            </span>
+
+                            <span
+                                class="quick-action-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- SECURITY / TRUST CARD -->
+
+                <section
+                    class="dashboard-card"
+                    style="margin-top: 22px;"
+                >
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Equeh Trust
+                            </h2>
+
+                            <p>
+                                Your transaction protection journey.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div style="padding: 22px;">
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                                margin-bottom:18px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--green-light);
+                                    color:var(--green);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Verified account
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Your identity information is
+                                    connected to your Equeh account.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                                margin-bottom:18px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--blue-light);
+                                    color:var(--blue);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ◆
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Property verification
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Equeh helps coordinate property and
+                                    transaction verification.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--purple-light);
+                                    color:var(--purple);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ◇
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Secure transactions
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Transaction stages are tracked
+                                    through the Equeh workflow.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="dashboard-footer">
+
+        <div class="footer-container">
+
+            <a
+                href="dashboard.html"
+                class="logo footer-logo"
+                aria-label="Equeh home"
+            >
+
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+
+            </a>
+
+
+            <p class="footer-copy">
+                © 2026 Equeh. All rights reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="#">
+                    Help
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+
+</body>
+</html>

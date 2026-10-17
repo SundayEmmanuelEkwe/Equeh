@@ -1,0 +1,4447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Start and manage your verified property transaction with Equeh.">
+    <title>Start Transaction — Equeh</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-soft: #dbeafe;
+            --text: #111827;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --border: #e5e7eb;
+            --border-light: #eef2f7;
+            --background: #f8fafc;
+            --white: #ffffff;
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+            --orange: #f59e0b;
+            --orange-light: #fffbeb;
+            --red: #dc2626;
+            --shadow: 0 12px 35px rgba(15, 23, 42, 0.07);
+            --radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .section-container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .dashboard-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .header-container {
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-mark {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 9px;
+            box-shadow: 0 7px 18px rgba(37, 99, 235, 0.20);
+            transform: rotate(45deg);
+        }
+
+        .logo-mark::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 3px;
+        }
+
+        .logo-word {
+            color: #2563eb;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .main-nav a {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--blue);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--white);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: 0.2s ease;
+        }
+
+        .icon-button:hover {
+            color: var(--blue);
+            border-color: var(--blue-soft);
+            background: var(--blue-light);
+        }
+
+        .notification-dot {
+            position: relative;
+        }
+
+        .notification-dot::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 2px solid white;
+        }
+
+        .profile-button {
+            border: 0;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 4px;
+        }
+
+        .profile-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: var(--blue-light);
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .profile-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: white;
+            color: var(--text);
+        }
+
+        .mobile-nav {
+            display: none;
+            padding: 12px 0 18px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .transaction-page {
+            padding: 38px 0 70px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 11px;
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--blue);
+        }
+
+        .page-heading {
+            margin-bottom: 30px;
+        }
+
+        .page-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .page-eyebrow::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--blue);
+        }
+
+        .page-heading h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.15;
+            letter-spacing: -0.035em;
+            margin-bottom: 10px;
+        }
+
+        .page-heading p {
+            max-width: 700px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .transaction-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .main-column {
+            min-width: 0;
+        }
+
+        .side-column {
+            position: sticky;
+            top: 98px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-card {
+            padding: 22px 24px;
+            margin-bottom: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .progress-header h2 {
+            font-size: 15px;
+            letter-spacing: -0.015em;
+        }
+
+        .progress-count {
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 7px;
+        }
+
+        .progress-item {
+            min-width: 0;
+        }
+
+        .progress-line {
+            height: 4px;
+            border-radius: 999px;
+            background: #e2e8f0;
+            margin-bottom: 9px;
+        }
+
+        .progress-item.active .progress-line,
+        .progress-item.completed .progress-line {
+            background: var(--blue);
+        }
+
+        .progress-item.completed .progress-line {
+            background: var(--green);
+        }
+
+        .progress-label {
+            color: var(--text-light);
+            font-size: 9px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .progress-item.active .progress-label,
+        .progress-item.completed .progress-label {
+            color: var(--text);
+        }
+
+        /* =========================
+           FORM CARD
+        ========================= */
+
+        .form-card {
+            padding: 28px;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 11px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            margin-bottom: 7px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .property-summary {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            margin-bottom: 25px;
+        }
+
+        .property-thumb {
+            width: 82px;
+            height: 68px;
+            flex: 0 0 82px;
+            border-radius: 11px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .property-summary-content {
+            min-width: 0;
+        }
+
+        .property-summary-content h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .property-location {
+            color: var(--text-secondary);
+            font-size: 10px;
+            margin-bottom: 7px;
+        }
+
+        .property-price {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FORM ELEMENTS
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .form-group {
+            min-width: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--text);
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: var(--red);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            height: 46px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            background: #fff;
+            color: var(--text);
+            outline: none;
+            padding: 0 13px;
+            font-size: 11px;
+            transition: 0.2s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            border-color: #93c5fd;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+
+        .form-input.error,
+        .form-select.error {
+            border-color: #fca5a5;
+        }
+
+        .field-hint {
+            display: block;
+            margin-top: 6px;
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .field-error {
+            display: block;
+            min-height: 14px;
+            margin-top: 5px;
+            color: var(--red);
+            font-size: 9px;
+        }
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            padding: 14px 15px;
+            border-radius: 13px;
+            margin-bottom: 22px;
+        }
+
+        .notice.blue {
+            background: var(--blue-light);
+            border: 1px solid #dbeafe;
+        }
+
+        .notice.green {
+            background: var(--green-light);
+            border: 1px solid #dcfce7;
+        }
+
+        .notice.orange {
+            background: var(--orange-light);
+            border: 1px solid #fef3c7;
+        }
+
+        .notice-icon {
+            width: 27px;
+            height: 27px;
+            flex: 0 0 27px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: white;
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .notice.green .notice-icon {
+            color: var(--green);
+        }
+
+        .notice.orange .notice-icon {
+            color: var(--orange);
+        }
+
+        .notice strong {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .notice p {
+            color: var(--text-secondary);
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           CHECKBOXES
+        ========================= */
+
+        .checkbox-group {
+            margin-top: 21px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            width: 17px;
+            height: 17px;
+            flex: 0 0 17px;
+            margin-top: 1px;
+            accent-color: var(--blue);
+            cursor: pointer;
+        }
+
+        .checkbox-label span {
+            color: var(--text-secondary);
+            font-size: 10px;
+            line-height: 1.65;
+        }
+
+        /* =========================
+           AGENCY FEE
+        ========================= */
+
+        .fee-card {
+            border: 1px solid var(--blue-soft);
+            background: #f8fbff;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 22px;
+        }
+
+        .fee-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .fee-card-title {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+        }
+
+        .fee-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: var(--blue);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .fee-card-title h3 {
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .fee-card-title p {
+            color: var(--text-secondary);
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .fee-required {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: var(--orange-light);
+            color: #b45309;
+            font-size: 8px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .fee-amount {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 0;
+            border-top: 1px solid var(--blue-soft);
+            border-bottom: 1px solid var(--blue-soft);
+        }
+
+        .fee-amount span:first-child {
+            color: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        .fee-value {
+            color: var(--blue);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .fee-note {
+            margin-top: 12px;
+            color: var(--text-light);
+            font-size: 8px;
+            line-height: 1.6;
+        }
+
+        .fee-status {
+            display: none;
+            align-items: center;
+            gap: 7px;
+            margin-top: 13px;
+            padding: 9px 11px;
+            border-radius: 9px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .fee-status.show {
+            display: flex;
+        }
+
+        /* =========================
+           PAYMENT METHOD
+        ========================= */
+
+        .payment-methods {
+            display: grid;
+            gap: 10px;
+        }
+
+        .payment-option {
+            position: relative;
+        }
+
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .payment-option label:hover {
+            border-color: #bfdbfe;
+            background: #f8fbff;
+        }
+
+        .payment-option input:checked + label {
+            border-color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        .payment-option-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: white;
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .payment-option-content strong {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+        .payment-option-content span {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        /* =========================
+           VERIFICATION
+        ========================= */
+
+        .verification-list {
+            display: grid;
+            gap: 11px;
+        }
+
+        .verification-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .verification-check {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .verification-item strong {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+        .verification-item p {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        /* =========================
+           AGREEMENT
+        ========================= */
+
+        .agreement-box {
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: #fafafa;
+            margin-bottom: 18px;
+        }
+
+        .agreement-box h3 {
+            font-size: 12px;
+            margin-bottom: 11px;
+        }
+
+        .agreement-box p {
+            color: var(--text-secondary);
+            font-size: 9px;
+            line-height: 1.8;
+            margin-bottom: 11px;
+        }
+
+        .agreement-box ul {
+            padding-left: 17px;
+            color: var(--text-secondary);
+        }
+
+        .agreement-box li {
+            font-size: 9px;
+            line-height: 1.8;
+            margin-bottom: 4px;
+        }
+
+        /* =========================
+           DOCUMENTS
+        ========================= */
+
+        .document-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            min-width: 0;
+        }
+
+        .document-icon {
+            width: 35px;
+            height: 35px;
+            flex: 0 0 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 13px;
+        }
+
+        .document-info strong {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+        .document-info span {
+            color: var(--text-light);
+            font-size: 8px;
+        }
+
+        .document-status {
+            color: var(--green);
+            font-size: 9px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           FORM ACTIONS
+        ========================= */
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .btn {
+            min-height: 44px;
+            border-radius: 11px;
+            padding: 0 18px;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-secondary);
+            border-color: var(--border);
+        }
+
+        .btn-secondary:hover {
+            color: var(--text);
+            border-color: #cbd5e1;
+        }
+
+        .btn-success {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #15803d;
+        }
+
+        .btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .side-card {
+            padding: 21px;
+            margin-bottom: 16px;
+        }
+
+        .side-card h3 {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .transaction-property-image {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 13px;
+            margin-bottom: 15px;
+            background: #e2e8f0;
+        }
+
+        .side-property-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .side-property-location {
+            color: var(--text-secondary);
+            font-size: 9px;
+            margin-bottom: 13px;
+        }
+
+        .side-property-price {
+            color: var(--blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .summary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 10px;
+        }
+
+        .summary-row:last-child {
+            border-bottom: 0;
+        }
+
+        .summary-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .summary-row strong {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .side-fee-box {
+            margin-top: 15px;
+            padding: 13px;
+            background: var(--blue-light);
+            border-radius: 11px;
+        }
+
+        .side-fee-box span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 8px;
+            margin-bottom: 3px;
+        }
+
+        .side-fee-box strong {
+            color: var(--blue);
+            font-size: 12px;
+        }
+
+        .trust-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .trust-item-icon {
+            width: 27px;
+            height: 27px;
+            flex: 0 0 27px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .trust-item strong {
+            display: block;
+            font-size: 9px;
+            margin-bottom: 2px;
+        }
+
+        .trust-item span {
+            display: block;
+            color: var(--text-light);
+            font-size: 8px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 45px 25px;
+        }
+
+        .success-state.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .success-state h2 {
+            font-size: 24px;
+            letter-spacing: -0.025em;
+            margin-bottom: 8px;
+        }
+
+        .success-state > p {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .transaction-id {
+            display: inline-block;
+            padding: 11px 16px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 10px;
+            margin-bottom: 24px;
+        }
+
+        .transaction-id strong {
+            color: var(--text);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .simple-footer {
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            background: white;
+            margin-top: 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-container .logo {
+            font-size: 19px;
+        }
+
+        .footer-container .logo-mark {
+            width: 25px;
+            height: 25px;
+            flex-basis: 25px;
+            border-radius: 7px;
+        }
+
+        .footer-container .logo-mark::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .footer-copy {
+            color: var(--text-light);
+            font-size: 9px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 980px) {
+            .transaction-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-column {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .side-card {
+                margin-bottom: 0;
+            }
+
+            .side-card:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .main-nav,
+            .header-actions .profile-button,
+            .header-actions .notification-dot {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+
+            .progress-label {
+                font-size: 8px;
+            }
+
+            .side-column {
+                grid-template-columns: 1fr;
+            }
+
+            .side-card:first-child {
+                grid-column: auto;
+            }
+
+            .progress-track {
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 14px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .section-container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .transaction-page {
+                padding-top: 25px;
+            }
+
+            .form-card,
+            .progress-card {
+                padding: 20px;
+            }
+
+            .property-summary {
+                align-items: flex-start;
+            }
+
+            .property-thumb {
+                width: 70px;
+                height: 60px;
+                flex-basis: 70px;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+                align-items: stretch;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+
+            .fee-card-header {
+                flex-direction: column;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="dashboard-header">
+        <div class="section-container header-container">
+
+            <a href="index.html" class="logo" aria-label="Equeh home">
+                <span class="logo-mark" aria-hidden="true"></span>
+                <span class="logo-word">Equeh</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="discover.html">Discover</a>
+                <a href="transactions.html" class="active">Transactions</a>
+                <a href="messages.html">Messages</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="icon-button notification-dot"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+                    ♢
+                </button>
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                    aria-label="Open profile"
+                >
+                    <span class="profile-avatar">PE</span>
+                    <span class="profile-name">Profile</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <div class="section-container">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="discover.html">Discover</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="messages.html">Messages</a>
+                <a href="profile.html">Profile</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="transaction-page">
+
+        <div class="section-container">
+
+            <div class="breadcrumb">
+                <a href="discover.html">Discover</a>
+                <span>›</span>
+                <a href="property-details.html">Property Details</a>
+                <span>›</span>
+                <span>Start Transaction</span>
+            </div>
+
+
+            <div class="page-heading">
+
+                <div class="page-eyebrow">
+                    Secure Transaction
+                </div>
+
+                <h1>
+                    Start your property transaction.
+                </h1>
+
+                <p>
+                    Complete the required information to begin the Equeh
+                    transaction process. The Equeh agency fee must be paid
+                    first before the major property transaction can proceed.
+                </p>
+
+            </div>
+
+
+            <div class="transaction-layout">
+
+                <!-- =========================
+                     MAIN COLUMN
+                ========================= -->
+
+                <div class="main-column">
+
+                    <!-- Progress -->
+                    <div class="card progress-card">
+
+                        <div class="progress-header">
+
+                            <h2>
+                                Transaction progress
+                            </h2>
+
+                            <span
+                                class="progress-count"
+                                id="progressCount"
+                            >
+                                Step 1 of 6
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-item active"
+                                data-progress="1"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Buyer Details
+                                </div>
+                            </div>
+
+                            <div
+                                class="progress-item"
+                                data-progress="2"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Verification
+                                </div>
+                            </div>
+
+                            <div
+                                class="progress-item"
+                                data-progress="3"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Equeh Fee
+                                </div>
+                            </div>
+
+                            <div
+                                class="progress-item"
+                                data-progress="4"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Agreement
+                                </div>
+                            </div>
+
+                            <div
+                                class="progress-item"
+                                data-progress="5"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Property Payment
+                                </div>
+                            </div>
+
+                            <div
+                                class="progress-item"
+                                data-progress="6"
+                            >
+                                <div class="progress-line"></div>
+                                <div class="progress-label">
+                                    Completion
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         FORM CARD
+                    ========================= -->
+
+                    <div class="card form-card">
+
+
+                        <!-- =========================
+                             STEP 1
+                        ========================= -->
+
+                        <section
+                            class="form-section active"
+                            id="step1"
+                            data-step="1"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    01
+                                </div>
+
+                                <h2>
+                                    Confirm your transaction details
+                                </h2>
+
+                                <p>
+                                    Tell us who is entering into this
+                                    transaction and confirm how you intend
+                                    to purchase the property.
+                                </p>
+
+                            </div>
+
+
+                            <div class="property-summary">
+
+                                <!-- Replace with your own image -->
+                                <img
+                                    class="property-thumb"
+                                    src="/assets/modern.jpg-DZJb0fkR.jpeg"
+                                    alt="Equeh property"
+                                >
+
+                                <div class="property-summary-content">
+
+                                    <h3>
+                                        Modern Family Home
+                                    </h3>
+
+                                    <div class="property-location">
+                                        Lagos, Nigeria
+                                    </div>
+
+                                    <div class="property-price">
+                                        ₦85,000,000
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="notice blue">
+
+                                <div class="notice-icon">
+                                    i
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Why Equeh asks for this information
+                                    </strong>
+
+                                    <p>
+                                        Transaction details help Equeh
+                                        correctly associate the buyer with
+                                        the property and the eventual
+                                        transaction record.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="firstName"
+                                    >
+                                        First name
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        class="form-input"
+                                        type="text"
+                                        id="firstName"
+                                        placeholder="Enter your first name"
+                                        autocomplete="given-name"
+                                    >
+
+                                    <span
+                                        class="field-error"
+                                        id="firstNameError"
+                                    ></span>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="lastName"
+                                    >
+                                        Last name
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        class="form-input"
+                                        type="text"
+                                        id="lastName"
+                                        placeholder="Enter your last name"
+                                        autocomplete="family-name"
+                                    >
+
+                                    <span
+                                        class="field-error"
+                                        id="lastNameError"
+                                    ></span>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="email"
+                                    >
+                                        Email address
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        class="form-input"
+                                        type="email"
+                                        id="email"
+                                        placeholder="you@example.com"
+                                        autocomplete="email"
+                                    >
+
+                                    <span
+                                        class="field-error"
+                                        id="emailError"
+                                    ></span>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="phone"
+                                    >
+                                        Phone number
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <input
+                                        class="form-input"
+                                        type="tel"
+                                        id="phone"
+                                        placeholder="+234 800 000 0000"
+                                        autocomplete="tel"
+                                    >
+
+                                    <span
+                                        class="field-error"
+                                        id="phoneError"
+                                    ></span>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="buyerType"
+                                    >
+                                        Buyer type
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="buyerType"
+                                    >
+                                        <option value="">
+                                            Select buyer type
+                                        </option>
+
+                                        <option value="individual">
+                                            Individual
+                                        </option>
+
+                                        <option value="company">
+                                            Company
+                                        </option>
+                                    </select>
+
+                                    <span
+                                        class="field-error"
+                                        id="buyerTypeError"
+                                    ></span>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label
+                                        class="form-label"
+                                        for="purchasePurpose"
+                                    >
+                                        Purchase purpose
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    <select
+                                        class="form-select"
+                                        id="purchasePurpose"
+                                    >
+                                        <option value="">
+                                            Select purpose
+                                        </option>
+
+                                        <option value="residential">
+                                            Residential use
+                                        </option>
+
+                                        <option value="investment">
+                                            Investment
+                                        </option>
+
+                                        <option value="business">
+                                            Business use
+                                        </option>
+
+                                        <option value="other">
+                                            Other
+                                        </option>
+                                    </select>
+
+                                    <span
+                                        class="field-error"
+                                        id="purchasePurposeError"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkbox-group">
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="detailsConfirmation"
+                                    >
+
+                                    <span>
+                                        I confirm that the information
+                                        provided above is accurate and that
+                                        I am authorised to begin this
+                                        transaction.
+                                    </span>
+
+                                </label>
+
+                                <span
+                                    class="field-error"
+                                    id="detailsConfirmationError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <a
+                                    href="property-details.html"
+                                    class="btn btn-secondary"
+                                >
+                                    ← Back
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="step1Next"
+                                >
+                                    Continue
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             STEP 2
+                        ========================= -->
+
+                        <section
+                            class="form-section"
+                            id="step2"
+                            data-step="2"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    02
+                                </div>
+
+                                <h2>
+                                    Identity & transaction verification
+                                </h2>
+
+                                <p>
+                                    Equeh verifies the parties involved before
+                                    the transaction progresses. This helps
+                                    protect buyers, sellers and the integrity
+                                    of the transaction record.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice orange">
+
+                                <div class="notice-icon">
+                                    !
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Verification may require
+                                        additional information
+                                    </strong>
+
+                                    <p>
+                                        Depending on your account and
+                                        transaction type, Equeh may request
+                                        identity and supporting documentation
+                                        before the agency fee and transaction
+                                        stages can proceed.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="verification-list">
+
+                                <div class="verification-item">
+
+                                    <div class="verification-check">
+                                        ✓
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Equeh account information
+                                        </strong>
+
+                                        <p>
+                                            Your account details are linked
+                                            to this transaction.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="verification-item">
+
+                                    <div class="verification-check">
+                                        ✓
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Email verification
+                                        </strong>
+
+                                        <p>
+                                            Your registered email is
+                                            associated with the transaction.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="verification-item">
+
+                                    <div class="verification-check">
+                                        ✓
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Phone verification
+                                        </strong>
+
+                                        <p>
+                                            Your registered phone number
+                                            is used for transaction
+                                            communication.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="verification-item">
+
+                                    <div class="verification-check">
+                                        ✓
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            Identity verification
+                                        </strong>
+
+                                        <p>
+                                            Identity documentation may be
+                                            requested before the transaction
+                                            proceeds.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkbox-group">
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="verificationConfirmation"
+                                    >
+
+                                    <span>
+                                        I understand that Equeh may require
+                                        additional verification before
+                                        allowing the transaction to proceed.
+                                    </span>
+
+                                </label>
+
+                                <span
+                                    class="field-error"
+                                    id="verificationConfirmationError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-back="1"
+                                >
+                                    ← Back
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="step2Next"
+                                >
+                                    Continue
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             STEP 3 — EQUEH AGENCY FEE
+                        ========================= -->
+
+                        <section
+                            class="form-section"
+                            id="step3"
+                            data-step="3"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    03
+                                </div>
+
+                                <h2>
+                                    Pay the Equeh agency fee
+                                </h2>
+
+                                <p>
+                                    The Equeh agency/service fee is required
+                                    before the major property transaction can
+                                    proceed.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice blue">
+
+                                <div class="notice-icon">
+                                    i
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        This payment comes first
+                                    </strong>
+
+                                    <p>
+                                        Payment of the Equeh agency fee is
+                                        separate from the property's purchase
+                                        price. The major property payment will
+                                        remain unavailable until this fee has
+                                        been successfully paid and confirmed.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fee-card">
+
+                                <div class="fee-card-header">
+
+                                    <div class="fee-card-title">
+
+                                        <div class="fee-icon">
+                                            ₦
+                                        </div>
+
+                                        <div>
+
+                                            <h3>
+                                                Equeh Agency Fee
+                                            </h3>
+
+                                            <p>
+                                                Required before the major
+                                                transaction can proceed.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="fee-required">
+                                        REQUIRED
+                                    </span>
+
+                                </div>
+
+
+                                <div class="fee-amount">
+
+                                    <span>
+                                        Agency / service fee
+                                    </span>
+
+                                    <strong class="fee-value">
+                                        To be calculated
+                                    </strong>
+
+                                </div>
+
+
+                                <p class="fee-note">
+                                    The final fee will be calculated by the
+                                    Equeh transaction system according to the
+                                    applicable Equeh fee structure. No agency
+                                    fee amount is hard-coded into this
+                                    prototype.
+                                </p>
+
+
+                                <div
+                                    class="fee-status"
+                                    id="feeStatus"
+                                >
+                                    ✓ Agency fee payment confirmed
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label class="form-label">
+                                    Select payment method
+                                    <span class="required">*</span>
+                                </label>
+
+
+                                <div class="payment-methods">
+
+                                    <div class="payment-option">
+
+                                        <input
+                                            type="radio"
+                                            name="agencyPaymentMethod"
+                                            id="agencyBankTransfer"
+                                            value="bank-transfer"
+                                        >
+
+                                        <label for="agencyBankTransfer">
+
+                                            <div class="payment-option-icon">
+                                                ₦
+                                            </div>
+
+                                            <div class="payment-option-content">
+
+                                                <strong>
+                                                    Bank transfer
+                                                </strong>
+
+                                                <span>
+                                                    Pay using the provided
+                                                    Equeh bank details.
+                                                </span>
+
+                                            </div>
+
+                                        </label>
+
+                                    </div>
+
+
+                                    <div class="payment-option">
+
+                                        <input
+                                            type="radio"
+                                            name="agencyPaymentMethod"
+                                            id="agencyOnlinePayment"
+                                            value="online"
+                                        >
+
+                                        <label for="agencyOnlinePayment">
+
+                                            <div class="payment-option-icon">
+                                                ◇
+                                            </div>
+
+                                            <div class="payment-option-content">
+
+                                                <strong>
+                                                    Online payment
+                                                </strong>
+
+                                                <span>
+                                                    Use an approved online
+                                                    payment method.
+                                                </span>
+
+                                            </div>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                                <span
+                                    class="field-error"
+                                    id="agencyPaymentMethodError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="checkbox-group">
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="agencyFeeConfirmation"
+                                    >
+
+                                    <span>
+                                        I understand that the Equeh agency
+                                        fee is separate from the property's
+                                        purchase price and must be paid and
+                                        confirmed before the major property
+                                        transaction can proceed.
+                                    </span>
+
+                                </label>
+
+                                <span
+                                    class="field-error"
+                                    id="agencyFeeConfirmationError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-back="2"
+                                >
+                                    ← Back
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="step3Next"
+                                >
+                                    Pay Equeh Fee
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             STEP 4 — AGREEMENT
+                        ========================= -->
+
+                        <section
+                            class="form-section"
+                            id="step4"
+                            data-step="4"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    04
+                                </div>
+
+                                <h2>
+                                    Review the transaction agreement
+                                </h2>
+
+                                <p>
+                                    After the Equeh agency fee has been
+                                    confirmed, review the applicable
+                                    transaction terms before the major
+                                    property payment.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice green">
+
+                                <div class="notice-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Equeh agency fee requirement satisfied
+                                    </strong>
+
+                                    <p>
+                                        You can now proceed to the agreement
+                                        stage and review the terms applicable
+                                        to the property transaction.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="agreement-box">
+
+                                <h3>
+                                    Equeh Property Transaction Framework
+                                </h3>
+
+                                <p>
+                                    This transaction is being initiated for
+                                    the property identified on this page.
+                                    The parties will be required to complete
+                                    applicable verification and documentation
+                                    before the transaction can be completed.
+                                </p>
+
+                                <p>
+                                    The transaction process may include
+                                    identity verification, property
+                                    documentation review, agreement, payment
+                                    through the applicable Equeh payment and
+                                    escrow process, online verification,
+                                    physical/on-site verification and legal
+                                    confirmation.
+                                </p>
+
+                                <ul>
+
+                                    <li>
+                                        Property information must correspond
+                                        with the verified property record.
+                                    </li>
+
+                                    <li>
+                                        Parties must provide truthful and
+                                        accurate information.
+                                    </li>
+
+                                    <li>
+                                        Required documentation must be
+                                        reviewed before completion.
+                                    </li>
+
+                                    <li>
+                                        The Equeh agency fee must be paid
+                                        before the major property payment
+                                        stage.
+                                    </li>
+
+                                    <li>
+                                        Property funds will proceed through
+                                        the applicable Equeh payment and
+                                        escrow process.
+                                    </li>
+
+                                    <li>
+                                        On-site verification may be required
+                                        before completion.
+                                    </li>
+
+                                    <li>
+                                        Completion remains subject to
+                                        applicable legal registration and
+                                        transfer requirements.
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+
+                            <div class="checkbox-group">
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="agreementConfirmation"
+                                    >
+
+                                    <span>
+                                        I have reviewed the transaction
+                                        framework and understand that final
+                                        legal terms and applicable documents
+                                        must be reviewed and accepted before
+                                        completion.
+                                    </span>
+
+                                </label>
+
+                                <span
+                                    class="field-error"
+                                    id="agreementConfirmationError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-back="3"
+                                >
+                                    ← Back
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="step4Next"
+                                >
+                                    Continue
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             STEP 5 — PROPERTY PAYMENT
+                        ========================= -->
+
+                        <section
+                            class="form-section"
+                            id="step5"
+                            data-step="5"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    05
+                                </div>
+
+                                <h2>
+                                    Property payment & escrow
+                                </h2>
+
+                                <p>
+                                    The Equeh agency fee has been addressed.
+                                    The transaction can now proceed to the
+                                    major property payment stage.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice green">
+
+                                <div class="notice-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Major transaction payment stage
+                                    </strong>
+
+                                    <p>
+                                        This payment is separate from the
+                                        Equeh agency fee and represents the
+                                        property's transaction amount.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="fee-card">
+
+                                <div class="fee-card-header">
+
+                                    <div class="fee-card-title">
+
+                                        <div class="fee-icon">
+                                            ₦
+                                        </div>
+
+                                        <div>
+
+                                            <h3>
+                                                Property Purchase Price
+                                            </h3>
+
+                                            <p>
+                                                Amount associated with this
+                                                property transaction.
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="fee-amount">
+
+                                    <span>
+                                        Property price
+                                    </span>
+
+                                    <strong class="fee-value">
+                                        ₦85,000,000
+                                    </strong>
+
+                                </div>
+
+
+                                <p class="fee-note">
+                                    This amount is separate from the Equeh
+                                    agency fee. Applicable payment and escrow
+                                    conditions will be determined by the
+                                    connected transaction system.
+                                </p>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label class="form-label">
+                                    Property payment method
+                                    <span class="required">*</span>
+                                </label>
+
+
+                                <div class="payment-methods">
+
+                                    <div class="payment-option">
+
+                                        <input
+                                            type="radio"
+                                            name="propertyPaymentMethod"
+                                            id="propertyBankTransfer"
+                                            value="bank-transfer"
+                                        >
+
+                                        <label for="propertyBankTransfer">
+
+                                            <div class="payment-option-icon">
+                                                ₦
+                                            </div>
+
+                                            <div class="payment-option-content">
+
+                                                <strong>
+                                                    Bank transfer
+                                                </strong>
+
+                                                <span>
+                                                    Transfer through the
+                                                    approved Equeh process.
+                                                </span>
+
+                                            </div>
+
+                                        </label>
+
+                                    </div>
+
+
+                                    <div class="payment-option">
+
+                                        <input
+                                            type="radio"
+                                            name="propertyPaymentMethod"
+                                            id="propertyOnlinePayment"
+                                            value="online"
+                                        >
+
+                                        <label for="propertyOnlinePayment">
+
+                                            <div class="payment-option-icon">
+                                                ◇
+                                            </div>
+
+                                            <div class="payment-option-content">
+
+                                                <strong>
+                                                    Online payment
+                                                </strong>
+
+                                                <span>
+                                                    Use an approved online
+                                                    payment method.
+                                                </span>
+
+                                            </div>
+
+                                        </label>
+
+                                    </div>
+
+                                </div>
+
+                                <span
+                                    class="field-error"
+                                    id="propertyPaymentMethodError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="checkbox-group">
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="propertyPaymentConfirmation"
+                                    >
+
+                                    <span>
+                                        I understand that this is the major
+                                        property transaction payment and that
+                                        applicable verification, escrow,
+                                        physical verification and legal
+                                        completion requirements still apply.
+                                    </span>
+
+                                </label>
+
+                                <span
+                                    class="field-error"
+                                    id="propertyPaymentConfirmationError"
+                                ></span>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-back="4"
+                                >
+                                    ← Back
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    id="step5Next"
+                                >
+                                    Proceed
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             STEP 6 — COMPLETION
+                        ========================= -->
+
+                        <section
+                            class="form-section"
+                            id="step6"
+                            data-step="6"
+                        >
+
+                            <div class="section-header">
+
+                                <div class="section-number">
+                                    06
+                                </div>
+
+                                <h2>
+                                    Verification & completion
+                                </h2>
+
+                                <p>
+                                    Payment does not immediately complete the
+                                    property transaction. Equeh continues
+                                    through the required verification and
+                                    handover stages.
+                                </p>
+
+                            </div>
+
+
+                            <div class="notice blue">
+
+                                <div class="notice-icon">
+                                    i
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Payment is not the final stage
+                                    </strong>
+
+                                    <p>
+                                        The transaction may continue through
+                                        online verification, on-site
+                                        verification, lawyer confirmation,
+                                        physical handover and applicable fund
+                                        release conditions.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="document-list">
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            ✓
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Buyer verification
+                                            </strong>
+
+                                            <span>
+                                                Buyer information and identity
+                                                verification
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Ready
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            ✓
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Equeh agency fee
+                                            </strong>
+
+                                            <span>
+                                                Required first payment
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Confirmed
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            ✓
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Property payment
+                                            </strong>
+
+                                            <span>
+                                                Major transaction payment
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Initiated
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            →
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Online verification
+                                            </strong>
+
+                                            <span>
+                                                Final online checks
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Next
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            →
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                On-site verification
+                                            </strong>
+
+                                            <span>
+                                                Physical property verification
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Upcoming
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            →
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Lawyer confirmation
+                                            </strong>
+
+                                            <span>
+                                                Applicable legal confirmation
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Upcoming
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-item">
+
+                                    <div class="document-info">
+
+                                        <div class="document-icon">
+                                            →
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Physical handover
+                                            </strong>
+
+                                            <span>
+                                                Handover after required
+                                                conditions are satisfied
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <span class="document-status">
+                                        Upcoming
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="notice orange"
+                                style="margin-top:20px;"
+                            >
+
+                                <div class="notice-icon">
+                                    !
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Important
+                                    </strong>
+
+                                    <p>
+                                        This prototype does not process real
+                                        payments or legally execute a
+                                        property transfer. Real payment,
+                                        escrow, verification, legal and
+                                        handover functions will require the
+                                        appropriate Equeh backend,
+                                        integrations and applicable legal
+                                        processes.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-back="5"
+                                >
+                                    ← Back
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-success"
+                                    id="completeTransaction"
+                                >
+                                    Start transaction
+                                    <span>✓</span>
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =========================
+                             SUCCESS
+                        ========================= -->
+
+                        <section
+                            class="success-state"
+                            id="successState"
+                        >
+
+                            <div class="success-icon">
+                                ✓
+                            </div>
+
+                            <h2>
+                                Transaction started.
+                            </h2>
+
+                            <p>
+                                Your Equeh transaction record has been
+                                created in this prototype. The transaction
+                                will proceed through the required payment,
+                                verification, legal and physical completion
+                                stages once the corresponding backend
+                                services are connected.
+                            </p>
+
+                            <div class="transaction-id">
+
+                                Transaction ID:
+
+                                <strong id="transactionId">
+                                    EQ-000000
+                                </strong>
+
+                            </div>
+
+                            <div>
+
+                                <a
+                                    href="transactions.html"
+                                    class="btn btn-primary"
+                                >
+                                    View transaction
+                                    <span>→</span>
+                                </a>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     SIDEBAR
+                ========================= -->
+
+                <aside class="side-column">
+
+                    <div class="card side-card">
+
+                        <!-- Replace with your own image -->
+                        <img
+                            class="transaction-property-image"
+                            src="/assets/modern.jpg-DZJb0fkR.jpeg"
+                            alt="Equeh property"
+                        >
+
+                        <h3 class="side-property-title">
+                            Modern Family Home
+                        </h3>
+
+                        <div class="side-property-location">
+                            Lagos, Nigeria
+                        </div>
+
+                        <div class="side-property-price">
+                            ₦85,000,000
+                        </div>
+
+
+                        <div class="summary-row">
+                            <span>Property type</span>
+                            <strong>House</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Bedrooms</span>
+                            <strong>4</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Bathrooms</span>
+                            <strong>4</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Parking</span>
+                            <strong>1</strong>
+                        </div>
+
+
+                        <div class="side-fee-box">
+
+                            <span>
+                                Equeh agency fee
+                            </span>
+
+                            <strong>
+                                Calculated before payment
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card side-card">
+
+                        <h3>
+                            Equeh transaction protection
+                        </h3>
+
+
+                        <div class="trust-list">
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Verified parties
+                                    </strong>
+
+                                    <span>
+                                        Transaction participants undergo
+                                        the required verification.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Verified property
+                                    </strong>
+
+                                    <span>
+                                        The transaction is connected to
+                                        the verified property listing.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Agency fee first
+                                    </strong>
+
+                                    <span>
+                                        The Equeh fee is handled before
+                                        the major property payment.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Structured transaction
+                                    </strong>
+
+                                    <span>
+                                        Major transaction stages are
+                                        recorded as the process progresses.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="trust-item">
+
+                                <div class="trust-item-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Physical verification
+                                    </strong>
+
+                                    <span>
+                                        On-site verification can form part
+                                        of the completion process.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="simple-footer">
+
+        <div class="section-container footer-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Equeh home"
+            >
+                <span
+                    class="logo-mark"
+                    aria-hidden="true"
+                ></span>
+
+                <span class="logo-word">
+                    Equeh
+                </span>
+            </a>
+
+            <div class="footer-copy">
+                © 2026 Equeh. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* =========================
+               MOBILE NAVIGATION
+            ========================= */
+
+            const mobileMenuButton =
+                document.getElementById("mobileMenuButton");
+
+            const mobileNav =
+                document.getElementById("mobileNav");
+
+
+            if (mobileMenuButton && mobileNav) {
+
+                mobileMenuButton.addEventListener(
+                    "click",
+                    function () {
+
+                        const isOpen =
+                            mobileNav.classList.toggle("open");
+
+                        mobileMenuButton.setAttribute(
+                            "aria-expanded",
+                            isOpen ? "true" : "false"
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               HEADER ACTIONS
+            ========================= */
+
+            const profileButton =
+                document.getElementById("profileButton");
+
+
+            if (profileButton) {
+
+                profileButton.addEventListener(
+                    "click",
+                    function () {
+                        window.location.href = "profile.html";
+                    }
+                );
+
+            }
+
+
+            const notificationButton =
+                document.getElementById(
+                    "notificationButton"
+                );
+
+
+            if (notificationButton) {
+
+                notificationButton.addEventListener(
+                    "click",
+                    function () {
+                        alert("No new notifications.");
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               TRANSACTION STEPS
+            ========================= */
+
+            let currentStep = 1;
+
+            const totalSteps = 6;
+
+            const sections =
+                document.querySelectorAll(
+                    ".form-section"
+                );
+
+            const progressItems =
+                document.querySelectorAll(
+                    ".progress-item"
+                );
+
+            const progressCount =
+                document.getElementById(
+                    "progressCount"
+                );
+
+
+            function updateStep(step) {
+
+                currentStep = step;
+
+
+                sections.forEach(function (section) {
+
+                    section.classList.remove(
+                        "active"
+                    );
+
+                });
+
+
+                const currentSection =
+                    document.getElementById(
+                        "step" + step
+                    );
+
+
+                if (currentSection) {
+
+                    currentSection.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                progressItems.forEach(
+                    function (item) {
+
+                        const itemStep =
+                            Number(
+                                item.dataset.progress
+                            );
+
+                        item.classList.remove(
+                            "active",
+                            "completed"
+                        );
+
+
+                        if (itemStep < step) {
+
+                            item.classList.add(
+                                "completed"
+                            );
+
+                        }
+
+
+                        if (itemStep === step) {
+
+                            item.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                if (progressCount) {
+
+                    progressCount.textContent =
+                        "Step " +
+                        step +
+                        " of " +
+                        totalSteps;
+
+                }
+
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+
+
+            /* =========================
+               ERROR HELPERS
+            ========================= */
+
+            function setError(
+                inputId,
+                errorId,
+                message
+            ) {
+
+                const input =
+                    document.getElementById(
+                        inputId
+                    );
+
+                const error =
+                    document.getElementById(
+                        errorId
+                    );
+
+
+                if (input) {
+
+                    input.classList.toggle(
+                        "error",
+                        Boolean(message)
+                    );
+
+                }
+
+
+                if (error) {
+
+                    error.textContent =
+                        message || "";
+
+                }
+
+            }
+
+
+            function validateRequired(
+                inputId,
+                errorId,
+                message
+            ) {
+
+                const input =
+                    document.getElementById(
+                        inputId
+                    );
+
+
+                if (
+                    !input ||
+                    !input.value.trim()
+                ) {
+
+                    setError(
+                        inputId,
+                        errorId,
+                        message
+                    );
+
+                    return false;
+
+                }
+
+
+                setError(
+                    inputId,
+                    errorId,
+                    ""
+                );
+
+                return true;
+
+            }
+
+
+            function validateSelect(
+                inputId,
+                errorId,
+                message
+            ) {
+
+                const input =
+                    document.getElementById(
+                        inputId
+                    );
+
+
+                if (
+                    !input ||
+                    !input.value
+                ) {
+
+                    setError(
+                        inputId,
+                        errorId,
+                        message
+                    );
+
+                    return false;
+
+                }
+
+
+                setError(
+                    inputId,
+                    errorId,
+                    ""
+                );
+
+                return true;
+
+            }
+
+
+            function validateCheckbox(
+                inputId,
+                errorId,
+                message
+            ) {
+
+                const input =
+                    document.getElementById(
+                        inputId
+                    );
+
+                const error =
+                    document.getElementById(
+                        errorId
+                    );
+
+
+                if (
+                    !input ||
+                    !input.checked
+                ) {
+
+                    if (error) {
+                        error.textContent =
+                            message;
+                    }
+
+                    return false;
+
+                }
+
+
+                if (error) {
+                    error.textContent = "";
+                }
+
+                return true;
+
+            }
+
+
+            function validateRadioGroup(
+                name,
+                errorId,
+                message
+            ) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        name +
+                        '"]:checked'
+                    );
+
+                const error =
+                    document.getElementById(
+                        errorId
+                    );
+
+
+                if (!selected) {
+
+                    if (error) {
+                        error.textContent =
+                            message;
+                    }
+
+                    return false;
+
+                }
+
+
+                if (error) {
+                    error.textContent = "";
+                }
+
+                return true;
+
+            }
+
+
+            /* =========================
+               STEP 1
+            ========================= */
+
+            const step1Next =
+                document.getElementById(
+                    "step1Next"
+                );
+
+
+            if (step1Next) {
+
+                step1Next.addEventListener(
+                    "click",
+                    function () {
+
+                        let valid = true;
+
+
+                        if (
+                            !validateRequired(
+                                "firstName",
+                                "firstNameError",
+                                "First name is required."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateRequired(
+                                "lastName",
+                                "lastNameError",
+                                "Last name is required."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        const email =
+                            document.getElementById(
+                                "email"
+                            );
+
+                        const emailPattern =
+                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                        if (
+                            !email ||
+                            !email.value.trim()
+                        ) {
+
+                            setError(
+                                "email",
+                                "emailError",
+                                "Email address is required."
+                            );
+
+                            valid = false;
+
+                        } else if (
+                            !emailPattern.test(
+                                email.value.trim()
+                            )
+                        ) {
+
+                            setError(
+                                "email",
+                                "emailError",
+                                "Enter a valid email address."
+                            );
+
+                            valid = false;
+
+                        } else {
+
+                            setError(
+                                "email",
+                                "emailError",
+                                ""
+                            );
+
+                        }
+
+
+                        if (
+                            !validateRequired(
+                                "phone",
+                                "phoneError",
+                                "Phone number is required."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateSelect(
+                                "buyerType",
+                                "buyerTypeError",
+                                "Select a buyer type."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateSelect(
+                                "purchasePurpose",
+                                "purchasePurposeError",
+                                "Select the purchase purpose."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateCheckbox(
+                                "detailsConfirmation",
+                                "detailsConfirmationError",
+                                "Please confirm the information provided."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (valid) {
+
+                            const firstName =
+                                document.getElementById(
+                                    "firstName"
+                                ).value.trim();
+
+                            const lastName =
+                                document.getElementById(
+                                    "lastName"
+                                ).value.trim();
+
+
+                            sessionStorage.setItem(
+                                "transactionBuyerName",
+                                firstName +
+                                " " +
+                                lastName
+                            );
+
+
+                            sessionStorage.setItem(
+                                "transactionStarted",
+                                "true"
+                            );
+
+
+                            updateStep(2);
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               STEP 2
+            ========================= */
+
+            const step2Next =
+                document.getElementById(
+                    "step2Next"
+                );
+
+
+            if (step2Next) {
+
+                step2Next.addEventListener(
+                    "click",
+                    function () {
+
+                        const valid =
+                            validateCheckbox(
+                                "verificationConfirmation",
+                                "verificationConfirmationError",
+                                "Please acknowledge the verification requirement."
+                            );
+
+
+                        if (valid) {
+
+                            updateStep(3);
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               STEP 3 — AGENCY FEE
+            ========================= */
+
+            const step3Next =
+                document.getElementById(
+                    "step3Next"
+                );
+
+
+            if (step3Next) {
+
+                step3Next.addEventListener(
+                    "click",
+                    function () {
+
+                        let valid = true;
+
+
+                        if (
+                            !validateRadioGroup(
+                                "agencyPaymentMethod",
+                                "agencyPaymentMethodError",
+                                "Select a payment method."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateCheckbox(
+                                "agencyFeeConfirmation",
+                                "agencyFeeConfirmationError",
+                                "Please confirm that you understand the Equeh agency fee requirement."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (!valid) {
+                            return;
+                        }
+
+
+                        /*
+                         * PROTOTYPE ONLY
+                         *
+                         * In the real Equeh system, this is where the
+                         * payment gateway would be launched.
+                         *
+                         * The user must NOT be allowed to continue until
+                         * the backend confirms successful payment.
+                         */
+
+                        const feeStatus =
+                            document.getElementById(
+                                "feeStatus"
+                            );
+
+
+                        if (feeStatus) {
+
+                            feeStatus.classList.add(
+                                "show"
+                            );
+
+                        }
+
+
+                        sessionStorage.setItem(
+                            "equehAgencyFeeStatus",
+                            "paid"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                updateStep(4);
+
+                            },
+                            600
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               STEP 4 — AGREEMENT
+            ========================= */
+
+            const step4Next =
+                document.getElementById(
+                    "step4Next"
+                );
+
+
+            if (step4Next) {
+
+                step4Next.addEventListener(
+                    "click",
+                    function () {
+
+                        if (
+                            validateCheckbox(
+                                "agreementConfirmation",
+                                "agreementConfirmationError",
+                                "Please confirm that you reviewed the transaction framework."
+                            )
+                        ) {
+
+                            updateStep(5);
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               STEP 5 — PROPERTY PAYMENT
+            ========================= */
+
+            const step5Next =
+                document.getElementById(
+                    "step5Next"
+                );
+
+
+            if (step5Next) {
+
+                step5Next.addEventListener(
+                    "click",
+                    function () {
+
+                        let valid = true;
+
+
+                        /*
+                         * Double-check that the Equeh agency fee
+                         * has already been paid before allowing
+                         * the major property payment stage.
+                         */
+
+                        const agencyFeeStatus =
+                            sessionStorage.getItem(
+                                "equehAgencyFeeStatus"
+                            );
+
+
+                        if (
+                            agencyFeeStatus !==
+                            "paid"
+                        ) {
+
+                            alert(
+                                "The Equeh agency fee must be paid and confirmed before the major property payment can proceed."
+                            );
+
+                            updateStep(3);
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !validateRadioGroup(
+                                "propertyPaymentMethod",
+                                "propertyPaymentMethodError",
+                                "Select a property payment method."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (
+                            !validateCheckbox(
+                                "propertyPaymentConfirmation",
+                                "propertyPaymentConfirmationError",
+                                "Please acknowledge the property payment conditions."
+                            )
+                        ) {
+                            valid = false;
+                        }
+
+
+                        if (valid) {
+
+                            sessionStorage.setItem(
+                                "propertyPaymentStatus",
+                                "initiated"
+                            );
+
+                            updateStep(6);
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               BACK BUTTONS
+            ========================= */
+
+            const backButtons =
+                document.querySelectorAll(
+                    "[data-back]"
+                );
+
+
+            backButtons.forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const targetStep =
+                                Number(
+                                    button.dataset.back
+                                );
+
+
+                            if (
+                                targetStep >= 1 &&
+                                targetStep <= totalSteps
+                            ) {
+
+                                updateStep(
+                                    targetStep
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /* =========================
+               COMPLETE TRANSACTION
+            ========================= */
+
+            const completeTransaction =
+                document.getElementById(
+                    "completeTransaction"
+                );
+
+            const successState =
+                document.getElementById(
+                    "successState"
+                );
+
+
+            if (completeTransaction) {
+
+                completeTransaction.addEventListener(
+                    "click",
+                    function () {
+
+                        const agencyFeeStatus =
+                            sessionStorage.getItem(
+                                "equehAgencyFeeStatus"
+                            );
+
+
+                        if (
+                            agencyFeeStatus !==
+                            "paid"
+                        ) {
+
+                            alert(
+                                "The Equeh agency fee must be paid first."
+                            );
+
+                            updateStep(3);
+
+                            return;
+
+                        }
+
+
+                        const transactionId =
+                            "EQ-" +
+                            Date.now()
+                                .toString()
+                                .slice(-8);
+
+
+                        const transactionIdElement =
+                            document.getElementById(
+                                "transactionId"
+                            );
+
+
+                        if (transactionIdElement) {
+
+                            transactionIdElement.textContent =
+                                transactionId;
+
+                        }
+
+
+                        sessionStorage.setItem(
+                            "transactionId",
+                            transactionId
+                        );
+
+
+                        sessionStorage.setItem(
+                            "transactionStatus",
+                            "initiated"
+                        );
+
+
+                        sections.forEach(
+                            function (section) {
+
+                                section.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        progressItems.forEach(
+                            function (item) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                                item.classList.add(
+                                    "completed"
+                                );
+
+                            }
+                        );
+
+
+                        if (progressCount) {
+
+                            progressCount.textContent =
+                                "Transaction initiated";
+
+                        }
+
+
+                        if (successState) {
+
+                            successState.classList.add(
+                                "active"
+                            );
+
+                        }
+
+
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth"
+                        });
+
+                    }
+                );
+
+            }
+
+
+            /* =========================
+               CLEAR INPUT ERRORS
+            ========================= */
+
+            const formInputs =
+                document.querySelectorAll(
+                    ".form-input, .form-select"
+                );
+
+
+            formInputs.forEach(
+                function (input) {
+
+                    input.addEventListener(
+                        "input",
+                        function () {
+
+                            input.classList.remove(
+                                "error"
+                            );
+
+                        }
+                    );
+
+
+                    input.addEventListener(
+                        "change",
+                        function () {
+
+                            input.classList.remove(
+                                "error"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            /* =========================
+               RESTORE BUYER NAME
+            ========================= */
+
+            const savedName =
+                sessionStorage.getItem(
+                    "transactionBuyerName"
+                );
+
+
+            if (savedName) {
+
+                const nameParts =
+                    savedName.split(" ");
+
+
+                const firstName =
+                    document.getElementById(
+                        "firstName"
+                    );
+
+                const lastName =
+                    document.getElementById(
+                        "lastName"
+                    );
+
+
+                if (
+                    firstName &&
+                    !firstName.value
+                ) {
+
+                    firstName.value =
+                        nameParts[0] || "";
+
+                }
+
+
+                if (
+                    lastName &&
+                    !lastName.value
+                ) {
+
+                    lastName.value =
+                        nameParts
+                            .slice(1)
+                            .join(" ");
+
+                }
+
+            }
+
+
+            /* =========================
+               RESTORE AGENCY FEE STATE
+            ========================= */
+
+            const existingFeeStatus =
+                sessionStorage.getItem(
+                    "equehAgencyFeeStatus"
+                );
+
+
+            if (
+                existingFeeStatus ===
+                "paid"
+            ) {
+
+                const feeStatus =
+                    document.getElementById(
+                        "feeStatus"
+                    );
+
+
+                if (feeStatus) {
+
+                    feeStatus.classList.add(
+                        "show"
+                    );
+
+                }
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>
