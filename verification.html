@@ -438,6 +438,7 @@
             }
         }
     </style>
+    <meta http-equiv="refresh" content="0; url=forgot-password.html">
 </head>
 
 <body class="login-page">
@@ -621,6 +622,9 @@
             "DOMContentLoaded",
             function () {
 
+                window.location.replace("forgot-password.html");
+                return;
+
                 const form =
                     document.getElementById(
                         "verificationForm"
@@ -749,22 +753,9 @@
                         }
 
 
-                        /*
-                         * Prototype verification:
-                         *
-                         * The actual email/OTP verification service can be
-                         * connected here. For the frontend prototype, a valid
-                         * 6-digit code allows the user to continue.
-                         */
-
-                        sessionStorage.setItem(
-                            "verificationComplete",
-                            "true"
+                        window.location.replace(
+                            "forgot-password.html"
                         );
-
-
-                        window.location.href =
-                            "reset-password.html";
 
                     }
                 );

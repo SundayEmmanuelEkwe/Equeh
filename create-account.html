@@ -8,6 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
@@ -15,21 +16,27 @@
 
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #eff6ff;
             --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
+
             --text: #111827;
             --text-secondary: #64748b;
             --text-light: #94a3b8;
+
             --border: #e2e8f0;
             --background: #f8fafc;
             --white: #ffffff;
+
             --green: #16a34a;
             --red: #dc2626;
-            --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+
+            --shadow:
+                0 20px 50px rgba(15, 23, 42, 0.08);
+
             --radius: 18px;
         }
+
 
         * {
             box-sizing: border-box;
@@ -37,21 +44,25 @@
             padding: 0;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
             font-family: "Poppins", sans-serif;
-            color: var(--text);
-            background: var(--background);
             min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
         }
+
 
         a {
             color: inherit;
             text-decoration: none;
         }
+
 
         button,
         input,
@@ -59,548 +70,843 @@
             font: inherit;
         }
 
-        .section-container {
-            width: min(1180px, calc(100% - 40px));
-            margin: 0 auto;
-        }
 
-        /* =========================
+        /* =========================================
            HEADER
-        ========================= */
+        ========================================= */
 
         .account-header {
-            background: rgba(255, 255, 255, 0.94);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             position: relative;
             z-index: 10;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom:
+                1px solid rgba(226, 232, 240, 0.8);
         }
 
+
         .account-header-container {
+            width: min(
+                1180px,
+                calc(100% - 40px)
+            );
+
             min-height: 76px;
+
+            margin: 0 auto;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
+
+        /* =========================================
+           EQUEH LOGO
+        ========================================= */
+
         .logo {
             display: inline-flex;
             align-items: center;
+
             gap: 10px;
+
             color: var(--blue);
-            text-decoration: none;
+
             font-size: 24px;
             font-weight: 700;
+
             letter-spacing: -0.04em;
         }
+
 
         .logo-mark {
             position: relative;
+
             width: 30px;
             height: 30px;
+
             flex: 0 0 30px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(
-                135deg,
-                #2563eb,
-                #3b82f6
-            );
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
             border-radius: 9px;
+
             box-shadow:
-                0 7px 18px rgba(37, 99, 235, 0.20);
+                0 7px 18px
+                rgba(37, 99, 235, 0.20);
+
             transform: rotate(45deg);
         }
 
+
         .logo-mark::before {
             content: "";
+
             position: absolute;
+
             width: 10px;
             height: 10px;
+
             background: #ffffff;
+
             border-radius: 3px;
         }
 
+
         .logo-word {
             color: #2563eb;
-            font-weight: 700;
-            letter-spacing: -0.04em;
         }
+
 
         .header-account-text {
             color: var(--text-secondary);
+
             font-size: 12px;
             font-weight: 500;
         }
 
+
         .header-account-text a {
-            color: var(--primary);
-            font-weight: 600;
             margin-left: 5px;
+
+            color: var(--blue);
+
+            font-weight: 600;
         }
+
 
         .header-account-text a:hover {
-            color: var(--primary-dark);
+            color: var(--blue-dark);
         }
 
-        /* =========================
+
+        /* =========================================
            MAIN
-        ========================= */
+        ========================================= */
 
         .account-main {
             padding: 54px 0 70px;
         }
 
+
         .account-layout {
+            width: min(
+                1180px,
+                calc(100% - 40px)
+            );
+
+            margin: 0 auto;
+
             display: grid;
+
             grid-template-columns:
                 minmax(0, 0.9fr)
                 minmax(420px, 1.1fr);
+
             gap: 70px;
+
             align-items: center;
         }
 
-        .account-intro {
-            padding: 10px 0;
-        }
+
+        /* =========================================
+           INTRO
+        ========================================= */
 
         .account-intro-content {
             max-width: 480px;
         }
 
+
         .eyebrow {
             display: inline-block;
-            color: var(--primary);
+
+            margin-bottom: 14px;
+
+            color: var(--blue);
+
             font-size: 10px;
             font-weight: 700;
+
             letter-spacing: 1.5px;
+
             text-transform: uppercase;
-            margin-bottom: 14px;
         }
+
 
         .account-intro h1 {
-            font-size: clamp(34px, 4vw, 52px);
-            line-height: 1.08;
-            letter-spacing: -2px;
             margin-bottom: 18px;
+
+            font-size:
+                clamp(34px, 4vw, 52px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
         }
 
+
         .account-intro h1 span {
-            color: var(--primary);
+            color: var(--blue);
         }
+
 
         .account-intro > p {
             max-width: 450px;
+
             color: var(--text-secondary);
+
             font-size: 14px;
             line-height: 1.8;
         }
 
+
+        /* =========================================
+           BENEFITS
+        ========================================= */
+
         .account-benefits {
             display: grid;
+
             gap: 14px;
+
             margin-top: 30px;
         }
 
+
         .account-benefit {
             display: flex;
+
             align-items: flex-start;
+
             gap: 12px;
         }
+
 
         .benefit-icon {
             width: 30px;
             height: 30px;
+
             flex: 0 0 30px;
+
             display: grid;
             place-items: center;
+
             border-radius: 9px;
-            background: var(--primary-light);
-            color: var(--primary);
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
             font-size: 13px;
             font-weight: 700;
         }
 
+
         .account-benefit h3 {
+            margin-bottom: 2px;
+
             font-size: 12px;
             font-weight: 600;
-            margin-bottom: 2px;
         }
+
 
         .account-benefit p {
             color: var(--text-secondary);
+
             font-size: 10px;
             line-height: 1.55;
         }
 
+
+        /* =========================================
+           IMAGE
+        ========================================= */
+
         .account-visual {
             width: 100%;
+
             margin-top: 30px;
+
             overflow: hidden;
+
             border-radius: 18px;
+
             aspect-ratio: 16 / 8;
+
             background: #e2e8f0;
         }
+
 
         .account-visual img {
             width: 100%;
             height: 100%;
+
             display: block;
+
             object-fit: cover;
         }
 
-        /* =========================
-           FORM CARD
-        ========================= */
+
+        /* =========================================
+           FORM AREA
+        ========================================= */
 
         .account-form-area {
             display: flex;
+
             justify-content: center;
         }
 
+
         .account-card {
             width: 100%;
+
             max-width: 520px;
+
             padding: 34px;
+
             background: var(--white);
-            border: 1px solid var(--border);
+
+            border:
+                1px solid var(--border);
+
             border-radius: var(--radius);
+
             box-shadow: var(--shadow);
         }
+
 
         .account-card-header {
             margin-bottom: 25px;
         }
 
+
         .account-card-header .eyebrow {
             margin-bottom: 8px;
         }
 
+
         .account-card-header h2 {
+            margin-bottom: 8px;
+
             font-size: 23px;
             line-height: 1.25;
+
             letter-spacing: -0.7px;
-            margin-bottom: 8px;
         }
+
 
         .account-card-header p {
             color: var(--text-secondary);
+
             font-size: 11px;
             line-height: 1.65;
         }
 
+
+        /* =========================================
+           FORM
+        ========================================= */
+
         .account-form {
             display: grid;
+
             gap: 17px;
         }
 
+
         .form-row {
             display: grid;
+
             grid-template-columns:
                 repeat(2, minmax(0, 1fr));
+
             gap: 14px;
         }
+
 
         .form-group {
             min-width: 0;
         }
 
+
         .form-group label {
             display: block;
+
+            margin-bottom: 7px;
+
             color: var(--text);
+
             font-size: 10px;
             font-weight: 600;
-            margin-bottom: 7px;
         }
+
 
         .form-group label span {
             color: var(--red);
         }
 
+
         .form-group input,
         .form-group select {
             width: 100%;
             height: 43px;
+
             padding: 0 13px;
-            border: 1px solid var(--border);
+
+            border:
+                1px solid var(--border);
+
             border-radius: 9px;
+
             outline: none;
-            background: #fff;
+
+            background: #ffffff;
+
             color: var(--text);
+
             font-size: 11px;
+
             transition:
                 border-color 0.2s ease,
                 box-shadow 0.2s ease;
         }
 
+
         .form-group input::placeholder {
             color: var(--text-light);
         }
 
+
         .form-group input:focus,
         .form-group select:focus {
-            border-color: var(--primary);
+            border-color: var(--blue);
+
             box-shadow:
-                0 0 0 3px rgba(37, 99, 235, 0.08);
+                0 0 0 3px
+                rgba(37, 99, 235, 0.08);
         }
+
 
         .form-group input.invalid,
         .form-group select.invalid {
             border-color: var(--red);
         }
 
+
         .field-error {
             display: block;
+
             min-height: 14px;
+
             margin-top: 4px;
+
             color: var(--red);
+
             font-size: 9px;
+
             line-height: 1.4;
         }
+
+
+        /* =========================================
+           PASSWORD
+        ========================================= */
 
         .password-field {
             position: relative;
         }
 
+
         .password-field input {
-            padding-right: 42px;
+            padding-right: 45px;
         }
+
 
         .password-toggle {
             position: absolute;
-            right: 11px;
+
+            right: 10px;
             top: 50%;
-            transform: translateY(-50%);
+
+            transform:
+                translateY(-50%);
+
+            width: 30px;
+            height: 30px;
+
+            display: grid;
+            place-items: center;
+
             border: 0;
+
             background: transparent;
+
             color: var(--text-light);
+
             cursor: pointer;
-            font-size: 12px;
-            padding: 4px;
+
+            font-size: 14px;
         }
 
+
         .password-toggle:hover {
-            color: var(--primary);
+            color: var(--blue);
         }
+
 
         .password-description {
             margin-top: 5px;
+
             color: var(--text-light);
+
             font-size: 9px;
+
             line-height: 1.5;
         }
 
+
         .password-rules {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 5px 12px;
-            margin-top: 6px;
+
+            margin-top: 7px;
         }
+
 
         .password-rules > span {
             color: var(--text-light);
-            font-size: 10px;
+
+            font-size: 9px;
+
+            transition:
+                color 0.2s ease;
         }
+
 
         .password-rules > span.valid {
             color: var(--green);
+
             font-weight: 600;
         }
 
-        .password-rules .rule-icon {
+
+        .rule-icon {
+            display: inline-block;
+
             margin-right: 3px;
         }
+
+
+        /* =========================================
+           ACKNOWLEDGEMENT
+        ========================================= */
 
         .acknowledgement {
             margin-top: 2px;
         }
 
+
         .checkbox-label {
             display: flex;
+
             align-items: flex-start;
+
             gap: 9px;
+
             cursor: pointer;
+
             color: var(--text-secondary);
+
             font-size: 10px;
+
             line-height: 1.55;
         }
+
 
         .checkbox-label input {
             width: 15px;
             height: 15px;
+
             flex: 0 0 15px;
+
             margin-top: 1px;
-            accent-color: var(--primary);
+
+            accent-color: var(--blue);
+
             cursor: pointer;
         }
+
+
+        /* =========================================
+           SUBMIT
+        ========================================= */
 
         .account-submit {
             width: 100%;
             height: 45px;
+
             margin-top: 3px;
+
             border: 0;
+
             border-radius: 9px;
-            background: var(--primary);
-            color: #fff;
+
+            background: var(--blue);
+
+            color: #ffffff;
+
             font-size: 11px;
+
             font-weight: 600;
+
             cursor: pointer;
+
             transition:
                 background 0.2s ease,
                 transform 0.2s ease;
         }
 
+
         .account-submit:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
+            background: var(--blue-dark);
+
+            transform:
+                translateY(-1px);
         }
+
 
         .account-submit:disabled {
             opacity: 0.65;
+
             cursor: not-allowed;
+
             transform: none;
         }
 
+
+        /* =========================================
+           SECURITY NOTE
+        ========================================= */
+
         .security-note {
             display: flex;
+
             align-items: flex-start;
+
             gap: 8px;
+
             margin-top: 18px;
+
             padding-top: 17px;
-            border-top: 1px solid var(--border);
+
+            border-top:
+                1px solid var(--border);
         }
+
 
         .security-icon {
             font-size: 12px;
+
             line-height: 1.4;
         }
 
+
         .security-note p {
             color: var(--text-light);
+
             font-size: 9px;
+
             line-height: 1.55;
         }
 
-        /* =========================
+
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         .simple-footer {
-            border-top: 1px solid var(--border);
-            background: #fff;
+            border-top:
+                1px solid var(--border);
+
+            background: #ffffff;
         }
 
+
         .simple-footer-container {
+            width: min(
+                1180px,
+                calc(100% - 40px)
+            );
+
             min-height: 72px;
+
+            margin: 0 auto;
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 20px;
         }
+
 
         .simple-footer .logo {
             font-size: 17px;
         }
 
+
         .simple-footer .logo-mark {
             width: 21px;
             height: 21px;
+
             flex: 0 0 21px;
+
             border-radius: 6px;
         }
+
 
         .simple-footer .logo-mark::before {
             width: 7px;
             height: 7px;
+
             border-radius: 2px;
         }
 
+
         .simple-footer p {
             color: var(--text-light);
+
             font-size: 9px;
         }
 
-        /* =========================
+
+        /* =========================================
            RESPONSIVE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 900px) {
 
             .account-layout {
                 grid-template-columns: 1fr;
+
                 gap: 40px;
             }
+
 
             .account-intro-content {
                 max-width: 700px;
             }
 
+
             .account-visual {
                 max-width: 600px;
             }
 
+
             .account-form-area {
                 justify-content: flex-start;
             }
+
 
             .account-card {
                 max-width: 600px;
             }
         }
 
+
         @media (max-width: 600px) {
 
-            .section-container {
-                width: min(100% - 28px, 1180px);
+            .account-header-container,
+            .account-layout,
+            .simple-footer-container {
+                width:
+                    calc(100% - 28px);
             }
+
 
             .account-header-container {
                 min-height: 68px;
             }
 
+
             .header-account-text {
                 font-size: 10px;
+
                 text-align: right;
             }
 
+
             .account-main {
-                padding: 35px 0 50px;
+                padding:
+                    35px 0 50px;
             }
+
 
             .account-layout {
                 gap: 32px;
             }
 
+
             .account-intro h1 {
                 font-size: 35px;
-                letter-spacing: -1.5px;
+
+                letter-spacing:
+                    -1.5px;
             }
+
 
             .account-intro > p {
                 font-size: 12px;
             }
 
+
             .account-card {
-                padding: 24px 20px;
+                padding:
+                    24px 20px;
+
                 border-radius: 14px;
             }
 
+
             .form-row {
                 grid-template-columns: 1fr;
+
                 gap: 0;
             }
+
 
             .form-group {
                 margin-bottom: 17px;
             }
 
+
             .account-form {
                 gap: 0;
             }
 
+
             .account-visual {
                 aspect-ratio: 16 / 9;
             }
+
 
             .simple-footer-container {
                 min-height: 65px;
@@ -609,32 +915,44 @@
     </style>
 </head>
 
-<body class="account-page">
 
-    <!-- HEADER -->
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
     <header class="account-header">
 
-        <div class="section-container account-header-container">
+        <div class="account-header-container">
 
             <a
                 href="index.html"
                 class="logo"
                 aria-label="Equeh home"
             >
+
                 <span
                     class="logo-mark"
                     aria-hidden="true"
                 ></span>
 
-                <span class="logo-word">Equeh</span>
+                <span class="logo-word">
+                    Equeh
+                </span>
+
             </a>
 
+
             <p class="header-account-text">
+
                 Already have an account?
 
                 <a href="login.html">
                     Log in
                 </a>
+
             </p>
 
         </div>
@@ -642,12 +960,20 @@
     </header>
 
 
-    <!-- MAIN -->
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
     <main class="account-main">
 
-        <div class="section-container account-layout">
+        <div class="account-layout">
 
-            <!-- INTRODUCTION -->
+
+            <!-- =====================================
+                 LEFT SIDE
+            ====================================== -->
+
             <section class="account-intro">
 
                 <div class="account-intro-content">
@@ -656,25 +982,34 @@
                         CREATE YOUR ACCOUNT
                     </span>
 
+
                     <h1>
                         Start your journey with
                         <span>Equeh.</span>
                     </h1>
 
+
                     <p>
-                        Create your account and gain access to a trusted
-                        property transaction experience built around verified
-                        people, verified properties and accountable transactions.
+                        Create your account and gain access
+                        to a trusted property transaction
+                        experience built around verified
+                        people, verified properties and
+                        accountable transactions.
                     </p>
 
 
+
                     <div class="account-benefits">
+
+
+                        <!-- BENEFIT 1 -->
 
                         <div class="account-benefit">
 
                             <div class="benefit-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -683,8 +1018,9 @@
                                 </h3>
 
                                 <p>
-                                    Browse properties backed by verification
-                                    and accountability.
+                                    Browse properties backed
+                                    by verification and
+                                    accountability.
                                 </p>
 
                             </div>
@@ -692,11 +1028,15 @@
                         </div>
 
 
+
+                        <!-- BENEFIT 2 -->
+
                         <div class="account-benefit">
 
                             <div class="benefit-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -705,8 +1045,9 @@
                                 </h3>
 
                                 <p>
-                                    Move through a structured transaction
-                                    process designed around trust.
+                                    Move through a structured
+                                    transaction process
+                                    designed around trust.
                                 </p>
 
                             </div>
@@ -714,11 +1055,15 @@
                         </div>
 
 
+
+                        <!-- BENEFIT 3 -->
+
                         <div class="account-benefit">
 
                             <div class="benefit-icon">
                                 ✓
                             </div>
+
 
                             <div>
 
@@ -727,8 +1072,9 @@
                                 </h3>
 
                                 <p>
-                                    One account gives you access to the Equeh
-                                    platform without fixed client or owner roles.
+                                    One account gives you
+                                    access to the Equeh
+                                    platform.
                                 </p>
 
                             </div>
@@ -738,9 +1084,11 @@
                     </div>
 
 
+
+                    <!-- PROPERTY IMAGE -->
+
                     <div class="account-visual">
 
-                        <!-- Replace with your own image -->
                         <img
                             src="/image/WhatsApp Image 2026-09-11 at 12.11.10 PM.jpeg"
                             alt="Equeh property"
@@ -753,10 +1101,17 @@
             </section>
 
 
-            <!-- FORM -->
+
+            <!-- =====================================
+                 RIGHT SIDE / FORM
+            ====================================== -->
+
             <section class="account-form-area">
 
                 <div class="account-card">
+
+
+                    <!-- FORM HEADER -->
 
                     <div class="account-card-header">
 
@@ -764,18 +1119,24 @@
                             ACCOUNT DETAILS
                         </span>
 
+
                         <h2>
                             Create your Equeh account
                         </h2>
 
+
                         <p>
-                            Enter your official details below to get started.
-                            You can complete the required verification steps
-                            when they become necessary.
+                            Enter your official details below
+                            to get started.
                         </p>
 
                     </div>
 
+
+
+                    <!-- =================================
+                         FORM
+                    ================================== -->
 
                     <form
                         id="createAccountForm"
@@ -783,15 +1144,22 @@
                         novalidate
                     >
 
-                        <!-- NAME -->
+
+                        <!-- FIRST / LAST NAME -->
+
                         <div class="form-row">
+
 
                             <div class="form-group">
 
                                 <label for="firstName">
+
                                     Official first name
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <input
                                     type="text"
@@ -802,6 +1170,7 @@
                                     required
                                 >
 
+
                                 <small
                                     class="field-error"
                                     id="firstNameError"
@@ -810,12 +1179,17 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="lastName">
+
                                     Official last name
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <input
                                     type="text"
@@ -825,6 +1199,7 @@
                                     autocomplete="family-name"
                                     required
                                 >
+
 
                                 <small
                                     class="field-error"
@@ -836,15 +1211,22 @@
                         </div>
 
 
+
                         <!-- GENDER / DOB -->
+
                         <div class="form-row">
+
 
                             <div class="form-group">
 
                                 <label for="gender">
+
                                     Gender
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <select
                                     id="gender"
@@ -870,6 +1252,7 @@
 
                                 </select>
 
+
                                 <small
                                     class="field-error"
                                     id="genderError"
@@ -878,12 +1261,17 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="dateOfBirth">
+
                                     Date of birth
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <input
                                     type="date"
@@ -891,6 +1279,7 @@
                                     name="dateOfBirth"
                                     required
                                 >
+
 
                                 <small
                                     class="field-error"
@@ -902,15 +1291,22 @@
                         </div>
 
 
+
                         <!-- PHONE / EMAIL -->
+
                         <div class="form-row">
+
 
                             <div class="form-group">
 
                                 <label for="phone">
+
                                     Phone number
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <input
                                     type="tel"
@@ -921,6 +1317,7 @@
                                     required
                                 >
 
+
                                 <small
                                     class="field-error"
                                     id="phoneError"
@@ -929,12 +1326,17 @@
                             </div>
 
 
+
                             <div class="form-group">
 
                                 <label for="email">
+
                                     Email address
+
                                     <span>*</span>
+
                                 </label>
+
 
                                 <input
                                     type="email"
@@ -944,6 +1346,7 @@
                                     autocomplete="email"
                                     required
                                 >
+
 
                                 <small
                                     class="field-error"
@@ -955,13 +1358,21 @@
                         </div>
 
 
-                        <!-- PASSWORD -->
+
+                        <!-- =================================
+                             PASSWORD
+                        ================================== -->
+
                         <div class="form-group">
 
                             <label for="password">
+
                                 Password
+
                                 <span>*</span>
+
                             </label>
+
 
                             <div class="password-field">
 
@@ -974,11 +1385,13 @@
                                     required
                                 >
 
+
                                 <button
                                     type="button"
                                     class="password-toggle"
                                     id="passwordToggle"
                                     aria-label="Show password"
+                                    title="Show password"
                                 >
                                     ◉
                                 </button>
@@ -986,14 +1399,22 @@
                             </div>
 
 
+
                             <p class="password-description">
-                                Use at least 8 characters, including 1 small
-                                letter, 1 capital letter, 1 number and
-                                1 special character.
+
+                                Use at least 8 characters,
+                                including 1 small letter,
+                                1 capital letter, 1 number
+                                and 1 special character.
+
                             </p>
 
 
+
+                            <!-- PASSWORD RULES -->
+
                             <div class="password-rules">
+
 
                                 <span id="rule-length">
 
@@ -1004,6 +1425,7 @@
                                     8 characters
 
                                 </span>
+
 
 
                                 <span id="rule-uppercase">
@@ -1017,6 +1439,7 @@
                                 </span>
 
 
+
                                 <span id="rule-lowercase">
 
                                     <span class="rule-icon">
@@ -1028,6 +1451,7 @@
                                 </span>
 
 
+
                                 <span id="rule-number">
 
                                     <span class="rule-icon">
@@ -1037,6 +1461,7 @@
                                     1 number
 
                                 </span>
+
 
 
                                 <span id="rule-special">
@@ -1060,7 +1485,11 @@
                         </div>
 
 
-                        <!-- ACKNOWLEDGEMENT -->
+
+                        <!-- =================================
+                             ACKNOWLEDGEMENT
+                        ================================== -->
+
                         <div class="acknowledgement">
 
                             <label class="checkbox-label">
@@ -1072,9 +1501,13 @@
                                     required
                                 >
 
+
                                 <span>
-                                    I confirm that the information provided
-                                    is accurate and belongs to me.
+
+                                    I confirm that the
+                                    information provided is
+                                    accurate and belongs to me.
+
                                 </span>
 
                             </label>
@@ -1088,7 +1521,11 @@
                         </div>
 
 
-                        <!-- SUBMIT -->
+
+                        <!-- =================================
+                             SUBMIT
+                        ================================== -->
+
                         <button
                             type="submit"
                             class="account-submit"
@@ -1099,16 +1536,20 @@
                     </form>
 
 
+
                     <!-- SECURITY -->
+
                     <div class="security-note">
 
                         <span class="security-icon">
                             🔒
                         </span>
 
+
                         <p>
-                            Your information is protected using secure
-                            authentication and encrypted connections.
+                            Your information is protected
+                            using secure authentication and
+                            encrypted connections.
                         </p>
 
                     </div>
@@ -1122,10 +1563,15 @@
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
     <footer class="simple-footer">
 
-        <div class="section-container simple-footer-container">
+        <div class="simple-footer-container">
+
 
             <a
                 href="index.html"
@@ -1137,6 +1583,7 @@
                     class="logo-mark"
                     aria-hidden="true"
                 ></span>
+
 
                 <span class="logo-word">
                     Equeh
@@ -1154,19 +1601,41 @@
     </footer>
 
 
-    <!-- FIREBASE + JAVASCRIPT -->
+
+    <!-- =========================================
+         FIREBASE + JAVASCRIPT
+
+         IMPORTANT:
+         This uses npm Firebase.
+         Do NOT open this page using
+         Live Server on port 5500.
+
+         Use:
+             npm run dev
+
+         Then:
+             http://localhost:5173/create-account.html
+    ========================================= -->
+
     <script type="module">
+
+        /* =========================================
+           FIREBASE IMPORTS
+        ========================================= */
 
         import {
             initializeApp
         } from "firebase/app";
 
+
         import {
             getAuth,
+            browserLocalPersistence,
             createUserWithEmailAndPassword,
-            updateProfile,
-            deleteUser
+            setPersistence,
+            updateProfile
         } from "firebase/auth";
+
 
         import {
             getFirestore,
@@ -1176,9 +1645,10 @@
         } from "firebase/firestore";
 
 
-        /* =========================
+
+        /* =========================================
            FIREBASE CONFIGURATION
-        ========================= */
+        ========================================= */
 
         const firebaseConfig = {
 
@@ -1202,760 +1672,990 @@
         };
 
 
-        /* =========================
+
+        /* =========================================
            INITIALIZE FIREBASE
-        ========================= */
+        ========================================= */
 
         const app =
-            initializeApp(firebaseConfig);
+            initializeApp(
+                firebaseConfig
+            );
+
 
         const auth =
             getAuth(app);
+
 
         const db =
             getFirestore(app);
 
 
-        /* =========================
-           DOM READY
-        ========================= */
 
-        document.addEventListener(
-            "DOMContentLoaded",
+        /* =========================================
+           GET FORM ELEMENTS
+        ========================================= */
+
+        const form =
+            document.getElementById(
+                "createAccountForm"
+            );
+
+
+        const firstName =
+            document.getElementById(
+                "firstName"
+            );
+
+
+        const lastName =
+            document.getElementById(
+                "lastName"
+            );
+
+
+        const gender =
+            document.getElementById(
+                "gender"
+            );
+
+
+        const dateOfBirth =
+            document.getElementById(
+                "dateOfBirth"
+            );
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            );
+
+
+        const email =
+            document.getElementById(
+                "email"
+            );
+
+
+        const password =
+            document.getElementById(
+                "password"
+            );
+
+
+        const acknowledgement =
+            document.getElementById(
+                "acknowledgement"
+            );
+
+
+        const passwordToggle =
+            document.getElementById(
+                "passwordToggle"
+            );
+
+
+
+        /* =========================================
+           PASSWORD RULE ELEMENTS
+        ========================================= */
+
+        const ruleLength =
+            document.getElementById(
+                "rule-length"
+            );
+
+
+        const ruleUppercase =
+            document.getElementById(
+                "rule-uppercase"
+            );
+
+
+        const ruleLowercase =
+            document.getElementById(
+                "rule-lowercase"
+            );
+
+
+        const ruleNumber =
+            document.getElementById(
+                "rule-number"
+            );
+
+
+        const ruleSpecial =
+            document.getElementById(
+                "rule-special"
+            );
+
+
+
+        /* =========================================
+           PASSWORD RULE FUNCTION
+        ========================================= */
+
+        function updatePasswordRule(
+            element,
+            valid
+        ) {
+
+            if (!element) {
+                return;
+            }
+
+
+            const icon =
+                element.querySelector(
+                    ".rule-icon"
+                );
+
+
+            if (valid) {
+
+                element.classList.add(
+                    "valid"
+                );
+
+                if (icon) {
+                    icon.textContent = "✓";
+                }
+
+            } else {
+
+                element.classList.remove(
+                    "valid"
+                );
+
+                if (icon) {
+                    icon.textContent = "○";
+                }
+            }
+        }
+
+
+
+        /* =========================================
+           VALIDATE PASSWORD
+        ========================================= */
+
+        function validatePassword(
+            value
+        ) {
+
+            const checks = {
+
+                length:
+                    value.length >= 8,
+
+                uppercase:
+                    /[A-Z]/.test(value),
+
+                lowercase:
+                    /[a-z]/.test(value),
+
+                number:
+                    /[0-9]/.test(value),
+
+                special:
+                    /[^A-Za-z0-9]/.test(value)
+            };
+
+
+            updatePasswordRule(
+                ruleLength,
+                checks.length
+            );
+
+
+            updatePasswordRule(
+                ruleUppercase,
+                checks.uppercase
+            );
+
+
+            updatePasswordRule(
+                ruleLowercase,
+                checks.lowercase
+            );
+
+
+            updatePasswordRule(
+                ruleNumber,
+                checks.number
+            );
+
+
+            updatePasswordRule(
+                ruleSpecial,
+                checks.special
+            );
+
+
+            return (
+                checks.length &&
+                checks.uppercase &&
+                checks.lowercase &&
+                checks.number &&
+                checks.special
+            );
+        }
+
+
+
+        /* =========================================
+           PASSWORD INPUT LISTENER
+        ========================================= */
+
+        password.addEventListener(
+            "input",
             function () {
 
-                const form =
-                    document.getElementById(
-                        "createAccountForm"
-                    );
+                validatePassword(
+                    password.value
+                );
 
-                const password =
-                    document.getElementById(
-                        "password"
-                    );
-
-                const passwordToggle =
-                    document.getElementById(
-                        "passwordToggle"
-                    );
+            }
+        );
 
 
-                const rules = {
 
-                    length:
-                        document.getElementById(
-                            "rule-length"
-                        ),
+        /* =========================================
+           SHOW / HIDE PASSWORD
+        ========================================= */
 
-                    uppercase:
-                        document.getElementById(
-                            "rule-uppercase"
-                        ),
-
-                    lowercase:
-                        document.getElementById(
-                            "rule-lowercase"
-                        ),
-
-                    number:
-                        document.getElementById(
-                            "rule-number"
-                        ),
-
-                    special:
-                        document.getElementById(
-                            "rule-special"
-                        )
-                };
-
-
-                /* =========================
-                   PASSWORD VISIBILITY
-                ========================= */
+        passwordToggle.addEventListener(
+            "click",
+            function () {
 
                 if (
-                    passwordToggle &&
-                    password
+                    password.type ===
+                    "password"
                 ) {
 
-                    passwordToggle.addEventListener(
-                        "click",
-                        function () {
+                    password.type =
+                        "text";
 
-                            const isPassword =
-                                password.type ===
-                                "password";
 
-                            password.type =
-                                isPassword
-                                    ? "text"
-                                    : "password";
+                    passwordToggle.textContent =
+                        "◌";
 
-                            passwordToggle.setAttribute(
-                                "aria-label",
-                                isPassword
-                                    ? "Hide password"
-                                    : "Show password"
-                            );
 
-                            passwordToggle.textContent =
-                                isPassword
-                                    ? "◌"
-                                    : "◉";
-                        }
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+
+                    passwordToggle.setAttribute(
+                        "title",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    password.type =
+                        "password";
+
+
+                    passwordToggle.textContent =
+                        "◉";
+
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+
+                    passwordToggle.setAttribute(
+                        "title",
+                        "Show password"
                     );
                 }
 
+            }
+        );
 
-                /* =========================
-                   PASSWORD RULES
-                ========================= */
 
-                function updateRule(
-                    element,
-                    valid
+
+        /* =========================================
+           ERROR FUNCTION
+        ========================================= */
+
+        function setError(
+            input,
+            errorElement,
+            message
+        ) {
+
+            if (input) {
+
+                if (message) {
+
+                    input.classList.add(
+                        "invalid"
+                    );
+
+                } else {
+
+                    input.classList.remove(
+                        "invalid"
+                    );
+                }
+            }
+
+
+            if (errorElement) {
+
+                errorElement.textContent =
+                    message || "";
+            }
+        }
+
+
+
+        /* =========================================
+           CLEAR ERRORS
+        ========================================= */
+
+        function clearErrors() {
+
+            document
+                .querySelectorAll(
+                    ".field-error"
+                )
+                .forEach(
+                    function (element) {
+
+                        element.textContent =
+                            "";
+                    }
+                );
+
+
+            document
+                .querySelectorAll(
+                    "input, select"
+                )
+                .forEach(
+                    function (element) {
+
+                        element.classList.remove(
+                            "invalid"
+                        );
+                    }
+                );
+        }
+
+
+
+        /* =========================================
+           FORM SUBMISSION
+        ========================================= */
+
+        form.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                clearErrors();
+
+
+                let isValid = true;
+
+
+
+                /* =====================================
+                   FIRST NAME
+                ===================================== */
+
+                if (
+                    !firstName.value.trim()
                 ) {
 
-                    if (!element) {
-                        return;
-                    }
+                    setError(
+                        firstName,
 
-                    const icon =
-                        element.querySelector(
-                            ".rule-icon"
-                        );
+                        document.getElementById(
+                            "firstNameError"
+                        ),
 
-                    element.classList.toggle(
-                        "valid",
-                        valid
+                        "Please enter your first name."
                     );
 
-                    if (icon) {
-
-                        icon.textContent =
-                            valid
-                                ? "✓"
-                                : "○";
-                    }
+                    isValid = false;
                 }
 
 
-                function validatePasswordRules(
-                    value
+
+                /* =====================================
+                   LAST NAME
+                ===================================== */
+
+                if (
+                    !lastName.value.trim()
                 ) {
 
-                    const checks = {
+                    setError(
+                        lastName,
 
-                        length:
-                            value.length >= 8,
+                        document.getElementById(
+                            "lastNameError"
+                        ),
 
-                        uppercase:
-                            /[A-Z]/.test(value),
-
-                        lowercase:
-                            /[a-z]/.test(value),
-
-                        number:
-                            /[0-9]/.test(value),
-
-                        special:
-                            /[^A-Za-z0-9]/.test(value)
-                    };
-
-
-                    updateRule(
-                        rules.length,
-                        checks.length
+                        "Please enter your last name."
                     );
 
-                    updateRule(
-                        rules.uppercase,
-                        checks.uppercase
-                    );
-
-                    updateRule(
-                        rules.lowercase,
-                        checks.lowercase
-                    );
-
-                    updateRule(
-                        rules.number,
-                        checks.number
-                    );
-
-                    updateRule(
-                        rules.special,
-                        checks.special
-                    );
-
-
-                    return Object.values(
-                        checks
-                    ).every(Boolean);
+                    isValid = false;
                 }
 
 
-                if (password) {
 
-                    password.addEventListener(
-                        "input",
-                        function () {
+                /* =====================================
+                   GENDER
+                ===================================== */
 
-                            validatePasswordRules(
-                                password.value
-                            );
-                        }
-                    );
-                }
-
-
-                /* =========================
-                   VALIDATION HELPERS
-                ========================= */
-
-                function setError(
-                    input,
-                    errorElement,
-                    message
+                if (
+                    !gender.value
                 ) {
 
-                    if (input) {
+                    setError(
+                        gender,
 
-                        input.classList.toggle(
-                            "invalid",
-                            Boolean(message)
-                        );
-                    }
+                        document.getElementById(
+                            "genderError"
+                        ),
 
-                    if (errorElement) {
-
-                        errorElement.textContent =
-                            message || "";
-                    }
-                }
-
-
-                function clearErrors() {
-
-                    document
-                        .querySelectorAll(
-                            ".field-error"
-                        )
-                        .forEach(
-                            function (element) {
-
-                                element.textContent =
-                                    "";
-                            }
-                        );
-
-
-                    document
-                        .querySelectorAll(
-                            "input, select"
-                        )
-                        .forEach(
-                            function (element) {
-
-                                element.classList.remove(
-                                    "invalid"
-                                );
-                            }
-                        );
-                }
-
-
-                /* =========================
-                   FORM SUBMISSION
-                ========================= */
-
-                if (form) {
-
-                    form.addEventListener(
-                        "submit",
-                        async function (event) {
-
-                            event.preventDefault();
-
-                            clearErrors();
-
-                            let valid = true;
-
-
-                            const firstName =
-                                document.getElementById(
-                                    "firstName"
-                                );
-
-                            const lastName =
-                                document.getElementById(
-                                    "lastName"
-                                );
-
-                            const gender =
-                                document.getElementById(
-                                    "gender"
-                                );
-
-                            const dateOfBirth =
-                                document.getElementById(
-                                    "dateOfBirth"
-                                );
-
-                            const phone =
-                                document.getElementById(
-                                    "phone"
-                                );
-
-                            const email =
-                                document.getElementById(
-                                    "email"
-                                );
-
-                            const acknowledgement =
-                                document.getElementById(
-                                    "acknowledgement"
-                                );
-
-
-                            /* =========================
-                               FIRST NAME
-                            ========================= */
-
-                            if (
-                                !firstName.value.trim()
-                            ) {
-
-                                setError(
-                                    firstName,
-                                    document.getElementById(
-                                        "firstNameError"
-                                    ),
-                                    "Please enter your first name."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               LAST NAME
-                            ========================= */
-
-                            if (
-                                !lastName.value.trim()
-                            ) {
-
-                                setError(
-                                    lastName,
-                                    document.getElementById(
-                                        "lastNameError"
-                                    ),
-                                    "Please enter your last name."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               GENDER
-                            ========================= */
-
-                            if (!gender.value) {
-
-                                setError(
-                                    gender,
-                                    document.getElementById(
-                                        "genderError"
-                                    ),
-                                    "Please select your gender."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               DATE OF BIRTH
-                            ========================= */
-
-                            if (
-                                !dateOfBirth.value
-                            ) {
-
-                                setError(
-                                    dateOfBirth,
-                                    document.getElementById(
-                                        "dateOfBirthError"
-                                    ),
-                                    "Please enter your date of birth."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               PHONE
-                            ========================= */
-
-                            if (
-                                !phone.value.trim()
-                            ) {
-
-                                setError(
-                                    phone,
-                                    document.getElementById(
-                                        "phoneError"
-                                    ),
-                                    "Please enter your phone number."
-                                );
-
-                                valid = false;
-
-                            } else if (
-                                phone.value.trim().length < 7
-                            ) {
-
-                                setError(
-                                    phone,
-                                    document.getElementById(
-                                        "phoneError"
-                                    ),
-                                    "Please enter a valid phone number."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               EMAIL
-                            ========================= */
-
-                            const emailValue =
-                                email.value.trim();
-
-                            const emailPattern =
-                                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                            if (!emailValue) {
-
-                                setError(
-                                    email,
-                                    document.getElementById(
-                                        "emailError"
-                                    ),
-                                    "Please enter your email address."
-                                );
-
-                                valid = false;
-
-                            } else if (
-                                !emailPattern.test(
-                                    emailValue
-                                )
-                            ) {
-
-                                setError(
-                                    email,
-                                    document.getElementById(
-                                        "emailError"
-                                    ),
-                                    "Please enter a valid email address."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               PASSWORD
-                            ========================= */
-
-                            const passwordValid =
-                                validatePasswordRules(
-                                    password.value
-                                );
-
-
-                            if (!password.value) {
-
-                                setError(
-                                    password,
-                                    document.getElementById(
-                                        "passwordError"
-                                    ),
-                                    "Please create a password."
-                                );
-
-                                valid = false;
-
-                            } else if (
-                                !passwordValid
-                            ) {
-
-                                setError(
-                                    password,
-                                    document.getElementById(
-                                        "passwordError"
-                                    ),
-                                    "Password does not meet all requirements."
-                                );
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               ACKNOWLEDGEMENT
-                            ========================= */
-
-                            if (
-                                !acknowledgement.checked
-                            ) {
-
-                                document.getElementById(
-                                    "acknowledgementError"
-                                ).textContent =
-                                    "Please confirm the information provided.";
-
-                                valid = false;
-                            }
-
-
-                            /* =========================
-                               STOP IF INVALID
-                            ========================= */
-
-                            if (!valid) {
-
-                                const firstInvalid =
-                                    form.querySelector(
-                                        ".invalid"
-                                    );
-
-                                if (firstInvalid) {
-
-                                    firstInvalid.focus();
-                                }
-
-                                return;
-                            }
-
-
-                            /* =========================
-                               BUTTON LOADING STATE
-                            ========================= */
-
-                            const submitButton =
-                                form.querySelector(
-                                    'button[type="submit"]'
-                                );
-
-
-                            if (submitButton) {
-
-                                submitButton.disabled =
-                                    true;
-
-                                submitButton.textContent =
-                                    "Creating account...";
-                            }
-
-
-                            let user = null;
-
-
-                            /* =========================
-                               CREATE FIREBASE ACCOUNT
-                            ========================= */
-
-                            try {
-
-                                const userCredential =
-                                    await createUserWithEmailAndPassword(
-                                        auth,
-                                        emailValue,
-                                        password.value
-                                    );
-
-
-                                user =
-                                    userCredential.user;
-
-
-                                /* =========================
-                                   UPDATE DISPLAY NAME
-                                ========================= */
-
-                                await updateProfile(
-                                    user,
-                                    {
-                                        displayName:
-                                            firstName.value.trim() +
-                                            " " +
-                                            lastName.value.trim()
-                                    }
-                                );
-
-
-                                /* =========================
-                                   SAVE PROFILE TO FIRESTORE
-                                ========================= */
-
-                                await setDoc(
-                                    doc(
-                                        db,
-                                        "users",
-                                        user.uid
-                                    ),
-                                    {
-
-                                        firstName:
-                                            firstName.value.trim(),
-
-                                        lastName:
-                                            lastName.value.trim(),
-
-                                        gender:
-                                            gender.value,
-
-                                        dateOfBirth:
-                                            dateOfBirth.value,
-
-                                        phone:
-                                            phone.value.trim(),
-
-                                        email:
-                                            emailValue,
-
-                                        createdAt:
-                                            serverTimestamp()
-                                    }
-                                );
-
-
-                                /* =========================
-                                   SUCCESS
-                                ========================= */
-
-                                window.location.replace(
-                                    "dashboard.html"
-                                );
-
-
-                            } catch (error) {
-
-                                console.error(
-                                    "Equeh account creation error:",
-                                    error
-                                );
-
-
-                                /* =========================
-                                   ROLLBACK AUTH ACCOUNT
-                                   IF FIRESTORE FAILS
-                                ========================= */
-
-                                if (user) {
-
-                                    try {
-
-                                        await deleteUser(
-                                            user
-                                        );
-
-                                    } catch (
-                                        deleteError
-                                    ) {
-
-                                        console.error(
-                                            "Could not roll back Firebase account:",
-                                            deleteError
-                                        );
-                                    }
-                                }
-
-
-                                /* =========================
-                                   FIREBASE ERROR HANDLING
-                                ========================= */
-
-                                if (
-                                    error.code ===
-                                    "auth/email-already-in-use"
-                                ) {
-
-                                    setError(
-                                        email,
-                                        document.getElementById(
-                                            "emailError"
-                                        ),
-                                        "An account already exists with this email address."
-                                    );
-
-                                    email.focus();
-
-
-                                } else if (
-                                    error.code ===
-                                    "auth/invalid-email"
-                                ) {
-
-                                    setError(
-                                        email,
-                                        document.getElementById(
-                                            "emailError"
-                                        ),
-                                        "Please enter a valid email address."
-                                    );
-
-                                    email.focus();
-
-
-                                } else if (
-                                    error.code ===
-                                    "auth/weak-password"
-                                ) {
-
-                                    setError(
-                                        password,
-                                        document.getElementById(
-                                            "passwordError"
-                                        ),
-                                        "Your password is too weak."
-                                    );
-
-                                    password.focus();
-
-
-                                } else {
-
-                                    alert(
-                                        "We could not create your account right now. Please try again."
-                                    );
-                                }
-
-
-                                /* =========================
-                                   RESTORE BUTTON
-                                ========================= */
-
-                                if (submitButton) {
-
-                                    submitButton.disabled =
-                                        false;
-
-                                    submitButton.textContent =
-                                        "Create account";
-                                }
-                            }
-
-                        }
+                        "Please select your gender."
                     );
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   DATE OF BIRTH
+                ===================================== */
+
+                if (
+                    !dateOfBirth.value
+                ) {
+
+                    setError(
+                        dateOfBirth,
+
+                        document.getElementById(
+                            "dateOfBirthError"
+                        ),
+
+                        "Please enter your date of birth."
+                    );
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   PHONE
+                ===================================== */
+
+                const phoneValue =
+                    phone.value.trim();
+
+
+                if (!phoneValue) {
+
+                    setError(
+                        phone,
+
+                        document.getElementById(
+                            "phoneError"
+                        ),
+
+                        "Please enter your phone number."
+                    );
+
+                    isValid = false;
+
+                } else if (
+                    phoneValue.length < 7
+                ) {
+
+                    setError(
+                        phone,
+
+                        document.getElementById(
+                            "phoneError"
+                        ),
+
+                        "Please enter a valid phone number."
+                    );
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   EMAIL
+                ===================================== */
+
+                const emailValue =
+                    email.value.trim();
+
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!emailValue) {
+
+                    setError(
+                        email,
+
+                        document.getElementById(
+                            "emailError"
+                        ),
+
+                        "Please enter your email address."
+                    );
+
+                    isValid = false;
+
+                } else if (
+                    !emailPattern.test(
+                        emailValue
+                    )
+                ) {
+
+                    setError(
+                        email,
+
+                        document.getElementById(
+                            "emailError"
+                        ),
+
+                        "Please enter a valid email address."
+                    );
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   PASSWORD
+                ===================================== */
+
+                const passwordValue =
+                    password.value;
+
+
+                const passwordValid =
+                    validatePassword(
+                        passwordValue
+                    );
+
+
+                if (!passwordValue) {
+
+                    setError(
+                        password,
+
+                        document.getElementById(
+                            "passwordError"
+                        ),
+
+                        "Please create a password."
+                    );
+
+                    isValid = false;
+
+                } else if (
+                    !passwordValid
+                ) {
+
+                    setError(
+                        password,
+
+                        document.getElementById(
+                            "passwordError"
+                        ),
+
+                        "Password does not meet all requirements."
+                    );
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   ACKNOWLEDGEMENT
+                ===================================== */
+
+                if (
+                    !acknowledgement.checked
+                ) {
+
+                    const acknowledgementError =
+                        document.getElementById(
+                            "acknowledgementError"
+                        );
+
+
+                    acknowledgementError.textContent =
+                        "Please confirm the information provided.";
+
+
+                    isValid = false;
+                }
+
+
+
+                /* =====================================
+                   STOP IF INVALID
+                ===================================== */
+
+                if (!isValid) {
+
+                    const firstInvalid =
+                        form.querySelector(
+                            ".invalid"
+                        );
+
+
+                    if (firstInvalid) {
+
+                        firstInvalid.focus();
+                    }
+
+
+                    return;
+                }
+
+
+
+                /* =====================================
+                   SUBMIT BUTTON
+                ===================================== */
+
+                const submitButton =
+                    form.querySelector(
+                        'button[type="submit"]'
+                    );
+
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        true;
+
+
+                    submitButton.textContent =
+                        "Creating account...";
+                }
+
+
+
+                /* =====================================
+                   CREATE FIREBASE ACCOUNT
+                ===================================== */
+
+                try {
+
+                    console.log(
+                        "Creating Firebase account..."
+                    );
+
+
+                    await setPersistence(
+                        auth,
+                        browserLocalPersistence
+                    );
+
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            emailValue,
+                            passwordValue
+                        );
+
+
+                    const user =
+                        userCredential.user;
+
+
+                    console.log(
+                        "Firebase Authentication successful.",
+                        user.uid
+                    );
+
+
+
+                    /* =================================
+                       UPDATE DISPLAY NAME
+                    ================================= */
+
+                    try {
+
+                        await updateProfile(
+                            user,
+                            {
+
+                                displayName:
+                                    firstName.value.trim() +
+                                    " " +
+                                    lastName.value.trim()
+                            }
+                        );
+
+
+                        console.log(
+                            "Firebase display name updated."
+                        );
+
+                    } catch (
+                        profileError
+                    ) {
+
+                        console.error(
+                            "Display name update failed:",
+                            profileError
+                        );
+                    }
+
+
+
+                    /* =================================
+                       SAVE PROFILE TO FIRESTORE
+                    ================================= */
+
+                    try {
+
+                        await setDoc(
+                            doc(
+                                db,
+                                "users",
+                                user.uid
+                            ),
+                            {
+
+                                firstName:
+                                    firstName.value.trim(),
+
+                                lastName:
+                                    lastName.value.trim(),
+
+                                gender:
+                                    gender.value,
+
+                                dateOfBirth:
+                                    dateOfBirth.value,
+
+                                phone:
+                                    phoneValue,
+
+                                email:
+                                    emailValue,
+
+                                createdAt:
+                                    serverTimestamp()
+                            }
+                        );
+
+
+                        console.log(
+                            "User profile saved to Firestore."
+                        );
+
+                    } catch (
+                        firestoreError
+                    ) {
+
+                        /*
+                         * IMPORTANT:
+                         *
+                         * Authentication has already
+                         * succeeded.
+                         *
+                         * A Firestore problem should NOT
+                         * prevent the user from entering
+                         * the dashboard.
+                         */
+
+                        console.error(
+                            "Firestore profile save failed:",
+                            firestoreError
+                        );
+                    }
+
+
+
+                    /* =================================
+                       SUCCESS
+                    ================================= */
+
+                    console.log(
+                        "Account creation successful."
+                    );
+
+
+                    window.location.href =
+                        "dashboard.html";
+
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Firebase account creation failed:",
+                        error
+                    );
+
+
+
+                    /* =================================
+                       EXISTING EMAIL
+                    ================================= */
+
+                    if (
+                        error.code ===
+                        "auth/email-already-in-use"
+                    ) {
+
+                        setError(
+                            email,
+
+                            document.getElementById(
+                                "emailError"
+                            ),
+
+                            "An account already exists with this email address."
+                        );
+
+
+                        email.focus();
+                    }
+
+
+
+                    /* =================================
+                       INVALID EMAIL
+                    ================================= */
+
+                    else if (
+                        error.code ===
+                        "auth/invalid-email"
+                    ) {
+
+                        setError(
+                            email,
+
+                            document.getElementById(
+                                "emailError"
+                            ),
+
+                            "Please enter a valid email address."
+                        );
+
+
+                        email.focus();
+                    }
+
+
+
+                    /* =================================
+                       WEAK PASSWORD
+                    ================================= */
+
+                    else if (
+                        error.code ===
+                        "auth/weak-password"
+                    ) {
+
+                        setError(
+                            password,
+
+                            document.getElementById(
+                                "passwordError"
+                            ),
+
+                            "Your password is too weak."
+                        );
+
+
+                        password.focus();
+                    }
+
+
+
+                    /* =================================
+                       OPERATION NOT ALLOWED
+                    ================================= */
+
+                    else if (
+                        error.code ===
+                        "auth/operation-not-allowed"
+                    ) {
+
+                        alert(
+                            "Email/password authentication is not enabled in Firebase. Please enable Email/Password under Firebase Authentication → Sign-in method."
+                        );
+                    }
+
+
+
+                    /* =================================
+                       TOO MANY REQUESTS
+                    ================================= */
+
+                    else if (
+                        error.code ===
+                        "auth/too-many-requests"
+                    ) {
+
+                        alert(
+                            "Too many attempts have been made. Please wait a moment and try again."
+                        );
+                    }
+
+
+
+                    /* =================================
+                       OTHER ERROR
+                    ================================= */
+
+                    else {
+
+                        alert(
+                            "We could not create your account right now. Please try again."
+                        );
+                    }
+
+
+
+                    /* =================================
+                       RESTORE BUTTON
+                    ================================= */
+
+                    if (submitButton) {
+
+                        submitButton.disabled =
+                            false;
+
+
+                        submitButton.textContent =
+                            "Create account";
+                    }
+
                 }
 
             }

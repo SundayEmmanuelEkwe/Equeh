@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -33,7 +32,6 @@
     >
 
     <style>
-
         :root {
             --blue: #2563eb;
             --blue-dark: #1d4ed8;
@@ -501,32 +499,25 @@
 
             border-radius: 12px;
 
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
-
-            box-shadow:
-                0 8px 20px rgba(37, 99, 235, 0.18);
 
             transition:
                 background 0.2s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+                transform 0.2s ease;
         }
 
         .browse-button:hover {
             background: var(--blue-dark);
 
             transform: translateY(-1px);
-
-            box-shadow:
-                0 10px 24px rgba(37, 99, 235, 0.22);
         }
 
         /* ================================
-           STAT CARDS
+           SUMMARY CARDS
         ================================= */
 
-        .stats-grid {
+        .summary-grid {
             display: grid;
 
             grid-template-columns:
@@ -537,94 +528,99 @@
             margin-bottom: 28px;
         }
 
-        .stat-card {
-            padding: 21px;
+        .summary-card {
+            padding: 20px;
 
             background: var(--white);
 
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-light);
 
             border-radius: var(--radius-md);
 
             box-shadow: var(--shadow-sm);
         }
 
-        .stat-top {
+        .summary-card-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
 
             gap: 10px;
 
-            margin-bottom: 16px;
+            margin-bottom: 15px;
         }
 
-        .stat-icon {
-            width: 39px;
-            height: 39px;
+        .summary-label {
+            color: var(--text-light);
+
+            font-size: 11px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+        }
+
+        .summary-icon {
+            width: 34px;
+            height: 34px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border-radius: 11px;
+            border-radius: 10px;
 
-            font-size: 17px;
+            font-size: 14px;
+            font-weight: 700;
         }
 
-        .stat-icon.blue {
+        .summary-icon.blue {
             background: var(--blue-light);
             color: var(--blue);
         }
 
-        .stat-icon.green {
+        .summary-icon.green {
             background: var(--green-light);
             color: var(--green);
         }
 
-        .stat-icon.orange {
+        .summary-icon.orange {
             background: var(--orange-light);
             color: var(--orange);
         }
 
-        .stat-icon.purple {
+        .summary-icon.purple {
             background: var(--purple-light);
             color: var(--purple);
         }
 
-        .stat-label {
-            color: var(--text-light);
-
-            font-size: 10px;
-            font-weight: 500;
-        }
-
-        .stat-value {
+        .summary-value {
             color: var(--text);
 
-            font-size: 24px;
+            font-size: 25px;
             font-weight: 700;
 
             letter-spacing: -0.03em;
         }
 
-        .stat-description {
-            margin-top: 3px;
+        .summary-subtext {
+            margin-top: 4px;
 
             color: var(--text-light);
 
-            font-size: 9px;
+            font-size: 11px;
         }
 
         /* ================================
-           MAIN GRID
+           DASHBOARD GRID
         ================================= */
 
         .dashboard-grid {
             display: grid;
 
             grid-template-columns:
-                minmax(0, 1.65fr)
+                minmax(0, 1.55fr)
                 minmax(300px, 0.85fr);
 
             gap: 22px;
@@ -632,14 +628,10 @@
             align-items: start;
         }
 
-        /* ================================
-           GENERAL CARD
-        ================================= */
-
         .dashboard-card {
             background: var(--white);
 
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-light);
 
             border-radius: var(--radius-lg);
 
@@ -653,9 +645,9 @@
             align-items: center;
             justify-content: space-between;
 
-            gap: 15px;
+            gap: 16px;
 
-            padding: 21px 22px;
+            padding: 22px 22px 18px;
 
             border-bottom: 1px solid var(--border-light);
         }
@@ -665,50 +657,150 @@
 
             font-size: 15px;
             font-weight: 700;
-
-            letter-spacing: -0.02em;
         }
 
         .card-header p {
-            margin-top: 3px;
+            margin-top: 4px;
+
+            color: var(--text-light);
+
+            font-size: 11px;
+        }
+
+        .card-link {
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ================================
+           TRANSACTION LIST
+        ================================= */
+
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 17px 22px;
+
+            border-bottom: 1px solid var(--border-light);
+
+            transition:
+                background 0.2s ease;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: 0;
+        }
+
+        .transaction-item:hover {
+            background: #fafcff;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+
+            flex: 0 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue-light);
+
+            color: var(--blue);
+
+            border-radius: 12px;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .transaction-info {
+            min-width: 0;
+
+            flex: 1;
+        }
+
+        .transaction-title {
+            color: var(--text);
+
+            font-size: 12px;
+            font-weight: 600;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .transaction-meta {
+            margin-top: 4px;
 
             color: var(--text-light);
 
             font-size: 10px;
         }
 
-        .card-link {
-            color: var(--blue);
+        .transaction-status {
+            padding: 5px 9px;
 
-            font-size: 10px;
+            border-radius: 20px;
+
+            font-size: 9px;
             font-weight: 600;
 
             white-space: nowrap;
         }
 
-        .card-link:hover {
-            color: var(--blue-dark);
+        .transaction-status.progress {
+            background: var(--orange-light);
+
+            color: var(--orange);
+        }
+
+        .transaction-status.completed {
+            background: var(--green-light);
+
+            color: var(--green);
+        }
+
+        .transaction-status.pending {
+            background: var(--blue-light);
+
+            color: var(--blue);
         }
 
         /* ================================
-           FEATURED PROPERTY
+           PROPERTY CARD
         ================================= */
 
         .property-card {
-            margin: 20px;
+            padding: 18px;
         }
 
         .property-image {
             position: relative;
 
-            width: 100%;
-            height: 245px;
+            height: 180px;
 
             overflow: hidden;
 
-            background: #eef2f7;
-
             border-radius: 15px;
+
+            background: #e5e7eb;
         }
 
         .property-image img {
@@ -718,22 +810,22 @@
             object-fit: cover;
 
             transition:
-                transform 0.35s ease;
+                transform 0.3s ease;
         }
 
         .property-card:hover .property-image img {
             transform: scale(1.025);
         }
 
-        .property-badge {
+        .verified-badge {
             position: absolute;
 
-            top: 13px;
-            left: 13px;
+            top: 12px;
+            left: 12px;
 
-            padding: 6px 10px;
+            padding: 6px 9px;
 
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.94);
 
             color: var(--green);
 
@@ -742,167 +834,86 @@
             font-size: 9px;
             font-weight: 700;
 
-            box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
         }
 
         .property-favourite {
             position: absolute;
 
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
 
-            width: 35px;
-            height: 35px;
+            width: 34px;
+            height: 34px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            background: rgba(255, 255, 255, 0.95);
-
             border: 0;
 
-            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
 
             color: var(--text-secondary);
 
+            border-radius: 50%;
+
             font-size: 16px;
 
-            box-shadow:
-                0 4px 12px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
         }
 
-        .property-favourite:hover,
         .property-favourite.active {
             color: #ef4444;
         }
 
-        .property-info {
-            padding-top: 17px;
-        }
-
-        .property-location {
-            color: var(--blue);
-
-            font-size: 9px;
-            font-weight: 600;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.06em;
+        .property-content {
+            padding-top: 15px;
         }
 
         .property-title {
-            margin-top: 6px;
-
             color: var(--text);
 
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
-
-            letter-spacing: -0.025em;
         }
 
-        .property-description {
-            max-width: 650px;
-
-            margin-top: 7px;
+        .property-location {
+            margin-top: 5px;
 
             color: var(--text-light);
 
             font-size: 10px;
-
-            line-height: 1.65;
         }
 
         .property-details {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
 
-            gap: 17px;
+            gap: 13px;
 
-            margin-top: 14px;
-        }
-
-        .property-detail {
-            display: flex;
-            align-items: center;
-
-            gap: 5px;
+            margin-top: 13px;
 
             color: var(--text-secondary);
 
             font-size: 10px;
         }
 
-        .property-detail strong {
-            color: var(--text);
-
-            font-weight: 600;
-        }
-
-        .property-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 15px;
-
-            margin-top: 19px;
-
-            padding-top: 17px;
-
-            border-top: 1px solid var(--border-light);
-        }
-
-        .property-price-label {
-            color: var(--text-light);
-
-            font-size: 9px;
-        }
-
         .property-price {
-            margin-top: 2px;
-
-            color: var(--text);
-
-            font-size: 19px;
-            font-weight: 700;
-
-            letter-spacing: -0.025em;
-        }
-
-        .view-property {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            min-height: 40px;
-
-            padding: 0 16px;
-
-            background: var(--blue-light);
+            margin-top: 15px;
 
             color: var(--blue);
 
-            border: 0;
-
-            border-radius: 10px;
-
-            font-size: 10px;
-            font-weight: 600;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
+            font-size: 18px;
+            font-weight: 700;
         }
 
-        .view-property:hover {
-            background: var(--blue);
+        .property-note {
+            margin-top: 6px;
 
-            color: var(--white);
+            color: var(--text-light);
+
+            font-size: 9px;
         }
 
         /* ================================
@@ -910,7 +921,8 @@
         ================================= */
 
         .quick-actions {
-            padding: 18px;
+            display: flex;
+            flex-direction: column;
         }
 
         .quick-action {
@@ -919,34 +931,20 @@
 
             gap: 13px;
 
-            width: 100%;
+            padding: 17px 22px;
 
-            padding: 13px;
-
-            background: var(--white);
-
-            border: 1px solid var(--border-light);
-
-            border-radius: 13px;
-
-            text-align: left;
+            border-bottom: 1px solid var(--border-light);
 
             transition:
-                border-color 0.2s ease,
-                background 0.2s ease,
-                transform 0.2s ease;
+                background 0.2s ease;
         }
 
-        .quick-action + .quick-action {
-            margin-top: 10px;
+        .quick-action:last-child {
+            border-bottom: 0;
         }
 
         .quick-action:hover {
-            background: var(--blue-light);
-
-            border-color: var(--blue-soft);
-
-            transform: translateY(-1px);
+            background: #fafcff;
         }
 
         .quick-action-icon {
@@ -963,223 +961,42 @@
 
             color: var(--blue);
 
-            border-radius: 10px;
+            border-radius: 11px;
 
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         .quick-action-content {
-            min-width: 0;
-
             flex: 1;
+            min-width: 0;
         }
 
         .quick-action-title {
-            color: var(--text);
+            display: block;
 
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .quick-action-text {
-            margin-top: 2px;
-
-            color: var(--text-light);
-
-            font-size: 9px;
-
-            line-height: 1.45;
-        }
-
-        .quick-action-arrow {
-            color: var(--text-light);
-
-            font-size: 14px;
-        }
-
-        /* ================================
-           VERIFICATION CARD
-        ================================= */
-
-        .verification-card {
-            margin-top: 22px;
-        }
-
-        .verification-body {
-            padding: 19px 20px;
-        }
-
-        .verification-status {
-            display: flex;
-            align-items: flex-start;
-
-            gap: 12px;
-        }
-
-        .verification-status-icon {
-            width: 39px;
-            height: 39px;
-
-            flex: 0 0 39px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: var(--green-light);
-
-            color: var(--green);
-
-            border-radius: 11px;
-
-            font-size: 17px;
-        }
-
-        .verification-status-content {
-            min-width: 0;
-        }
-
-        .verification-status-title {
             color: var(--text);
 
             font-size: 11px;
             font-weight: 700;
         }
 
-        .verification-status-text {
+        .quick-action-text {
+            display: block;
+
             margin-top: 3px;
 
             color: var(--text-light);
 
             font-size: 9px;
 
-            line-height: 1.6;
-        }
-
-        .verification-progress {
-            height: 6px;
-
-            margin-top: 16px;
-
-            background: #eef2f7;
-
-            border-radius: 20px;
-
-            overflow: hidden;
-        }
-
-        .verification-progress span {
-            display: block;
-
-            width: 75%;
-            height: 100%;
-
-            background: var(--green);
-
-            border-radius: inherit;
-        }
-
-        .verification-progress-label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            margin-top: 7px;
-
-            color: var(--text-light);
-
-            font-size: 8px;
-        }
-
-        .verification-progress-label strong {
-            color: var(--green);
-
-            font-weight: 600;
-        }
-
-        /* ================================
-           ACTIVITY
-        ================================= */
-
-        .activity-card {
-            margin-top: 22px;
-        }
-
-        .activity-list {
-            padding: 4px 20px 8px;
-        }
-
-        .activity-item {
-            position: relative;
-
-            display: flex;
-
-            gap: 12px;
-
-            padding: 15px 0;
-
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .activity-item:last-child {
-            border-bottom: 0;
-        }
-
-        .activity-icon {
-            width: 34px;
-            height: 34px;
-
-            flex: 0 0 34px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: var(--blue-light);
-
-            color: var(--blue);
-
-            border-radius: 10px;
-
-            font-size: 13px;
-        }
-
-        .activity-content {
-            min-width: 0;
-        }
-
-        .activity-title {
-            color: var(--text);
-
-            font-size: 10px;
-            font-weight: 600;
-
             line-height: 1.5;
         }
 
-        .activity-time {
-            margin-top: 2px;
-
+        .quick-action-arrow {
             color: var(--text-light);
 
-            font-size: 8px;
-        }
-
-        /* ================================
-           EMPTY / PLACEHOLDER
-        ================================= */
-
-        .property-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            width: 100%;
-            height: 100%;
-
-            color: var(--text-light);
-
-            font-size: 11px;
+            font-size: 15px;
         }
 
         /* ================================
@@ -1187,15 +1004,15 @@
         ================================= */
 
         .dashboard-footer {
-            padding: 25px 0;
+            border-top: 1px solid var(--border-light);
 
             background: var(--white);
-
-            border-top: 1px solid var(--border-light);
         }
 
         .footer-container {
             width: min(1200px, calc(100% - 40px));
+
+            min-height: 90px;
 
             margin: 0 auto;
 
@@ -1207,29 +1024,25 @@
         }
 
         .footer-logo {
-            font-size: 19px;
+            font-size: 20px;
         }
 
         .footer-logo .logo-mark {
-            width: 24px;
-            height: 24px;
+            width: 25px;
+            height: 25px;
 
-            flex-basis: 24px;
-
-            border-radius: 7px;
+            flex-basis: 25px;
         }
 
         .footer-logo .logo-mark::before {
             width: 8px;
             height: 8px;
-
-            border-radius: 2px;
         }
 
         .footer-copy {
             color: var(--text-light);
 
-            font-size: 9px;
+            font-size: 10px;
         }
 
         .footer-links {
@@ -1242,7 +1055,7 @@
         .footer-links a {
             color: var(--text-light);
 
-            font-size: 9px;
+            font-size: 10px;
         }
 
         .footer-links a:hover {
@@ -1253,21 +1066,7 @@
            RESPONSIVE
         ================================= */
 
-        @media (max-width: 1050px) {
-
-            .desktop-nav {
-                gap: 18px;
-            }
-
-            .dashboard-grid {
-                grid-template-columns:
-                    minmax(0, 1.4fr)
-                    minmax(270px, 0.8fr);
-            }
-
-        }
-
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
 
             .desktop-nav {
                 display: none;
@@ -1277,113 +1076,33 @@
                 display: flex;
             }
 
-            .stats-grid {
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+            .header-actions {
+                margin-left: auto;
             }
 
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
 
-            .quick-actions {
-                display: grid;
-
+            .summary-grid {
                 grid-template-columns:
                     repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 680px) {
+
+            .header-container {
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                min-height: 68px;
 
                 gap: 10px;
             }
-
-            .quick-action + .quick-action {
-                margin-top: 0;
-            }
-
-        }
-
-        @media (max-width: 700px) {
-
-            .header-container {
-                width: min(100% - 28px, 1200px);
-
-                min-height: 68px;
-            }
-
-            .dashboard-main {
-                width: min(100% - 28px, 1200px);
-
-                padding-top: 30px;
-            }
-
-            .welcome-section {
-                align-items: flex-start;
-
-                flex-direction: column;
-
-                margin-bottom: 24px;
-            }
-
-            .browse-button {
-                width: 100%;
-            }
-
-            .stats-grid {
-                gap: 11px;
-
-                margin-bottom: 20px;
-            }
-
-            .stat-card {
-                padding: 15px;
-            }
-
-            .stat-value {
-                font-size: 20px;
-            }
-
-            .dashboard-card {
-                border-radius: 17px;
-            }
-
-            .property-card {
-                margin: 14px;
-            }
-
-            .property-image {
-                height: 205px;
-            }
-
-            .property-title {
-                font-size: 16px;
-            }
-
-            .property-bottom {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-            .view-property {
-                width: 100%;
-            }
-
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-            }
-
-        }
-
-        @media (max-width: 480px) {
 
             .logo {
                 font-size: 21px;
@@ -1394,8 +1113,6 @@
                 height: 27px;
 
                 flex-basis: 27px;
-
-                border-radius: 8px;
             }
 
             .logo-mark::before {
@@ -1409,88 +1126,134 @@
             }
 
             .profile-button {
-                padding-right: 4px;
-            }
+                padding: 3px;
 
-            .notification-btn {
-                width: 37px;
-                height: 37px;
+                border-radius: 50%;
+
+                border: 0;
             }
 
             .dashboard-main {
-                width: min(100% - 22px, 1200px);
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                padding: 30px 0 50px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
+            .welcome-section {
+                align-items: flex-start;
 
-                gap: 8px;
+                flex-direction: column;
+
+                gap: 18px;
             }
 
-            .stat-card {
-                padding: 13px;
+            .welcome-section h1 {
+                font-size: 28px;
             }
 
-            .stat-top {
-                margin-bottom: 11px;
+            .browse-button {
+                width: 100%;
             }
 
-            .stat-icon {
-                width: 33px;
-                height: 33px;
-
-                border-radius: 9px;
-
-                font-size: 14px;
+            .summary-grid {
+                gap: 10px;
             }
 
-            .stat-label {
+            .summary-card {
+                padding: 15px;
+            }
+
+            .summary-value {
+                font-size: 21px;
+            }
+
+            .summary-label {
                 font-size: 9px;
             }
 
-            .stat-value {
-                font-size: 18px;
-            }
-
-            .stat-description {
-                font-size: 8px;
+            .summary-subtext {
+                font-size: 9px;
             }
 
             .card-header {
-                padding: 17px;
+                padding: 18px 16px 15px;
             }
 
-            .property-card {
-                margin: 11px;
-            }
+            .transaction-item {
+                padding: 15px 16px;
 
-            .property-image {
-                height: 180px;
-
-                border-radius: 12px;
-            }
-
-            .property-details {
                 gap: 11px;
             }
 
-            .verification-body {
-                padding: 16px;
+            .transaction-icon {
+                width: 35px;
+                height: 35px;
+
+                flex-basis: 35px;
+
+                border-radius: 10px;
             }
 
-            .activity-list {
-                padding-left: 16px;
-                padding-right: 16px;
+            .transaction-status {
+                padding: 4px 7px;
+
+                font-size: 8px;
+            }
+
+            .property-card {
+                padding: 14px;
+            }
+
+            .property-image {
+                height: 190px;
+            }
+
+            .quick-action {
+                padding: 15px 16px;
+            }
+
+            .footer-container {
+                width: min(
+                    100% - 28px,
+                    1200px
+                );
+
+                padding: 20px 0;
+
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 13px;
+            }
+
+        }
+
+        @media (max-width: 420px) {
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions {
+                gap: 6px;
+            }
+
+            .notification-btn,
+            .menu-toggle {
+                width: 37px;
+                height: 37px;
             }
 
         }
 
     </style>
-
 </head>
 
 <body>
-
 
     <!-- ================================
          HEADER
@@ -1501,7 +1264,7 @@
         <div class="header-container">
 
             <a
-                href="dashboard.html"
+                href="index.html"
                 class="logo"
                 aria-label="Equeh home"
             >
@@ -1518,9 +1281,11 @@
             </a>
 
 
+            <!-- DESKTOP NAVIGATION -->
+
             <nav
                 class="desktop-nav"
-                aria-label="Main navigation"
+                aria-label="Primary navigation"
             >
 
                 <a
@@ -1545,9 +1310,9 @@
             </nav>
 
 
-            <div class="header-actions">
+            <!-- HEADER ACTIONS -->
 
-                <!-- NOTIFICATIONS -->
+            <div class="header-actions">
 
                 <button
                     type="button"
@@ -1568,20 +1333,23 @@
                 </button>
 
 
-                <!-- PROFILE -->
-
                 <button
                     type="button"
                     class="profile-button"
                     id="profileButton"
-                    aria-label="Open profile menu"
+                    aria-label="Open profile"
                 >
 
                     <span class="profile-avatar">
-                        U
+                        <span id="profileInitial">
+                            U
+                        </span>
                     </span>
 
-                    <span class="profile-name">
+                    <span
+                        class="profile-name"
+                        id="profileName"
+                    >
                         User
                     </span>
 
@@ -1595,13 +1363,11 @@
                 </button>
 
 
-                <!-- MOBILE MENU -->
-
                 <button
                     type="button"
                     class="menu-toggle"
                     id="menuToggle"
-                    aria-label="Open navigation menu"
+                    aria-label="Open menu"
                     aria-expanded="false"
                 >
 
@@ -1616,7 +1382,7 @@
         </div>
 
 
-        <!-- MOBILE NAV -->
+        <!-- MOBILE NAVIGATION -->
 
         <nav
             class="mobile-nav"
@@ -1624,10 +1390,7 @@
             aria-label="Mobile navigation"
         >
 
-            <a
-                href="dashboard.html"
-                class="active"
-            >
+            <a href="dashboard.html">
                 Dashboard
             </a>
 
@@ -1644,7 +1407,7 @@
             </a>
 
             <a href="profile.html">
-                Profile & Account
+                Profile &amp; Account
             </a>
 
             <a href="notifications.html">
@@ -1662,26 +1425,27 @@
 
     <main class="dashboard-main">
 
-
-        <!-- WELCOME -->
+        <!-- WELCOME SECTION -->
 
         <section class="welcome-section">
 
             <div>
 
-                <p class="welcome-eyebrow">
-                    YOUR EQUEH DASHBOARD
-                </p>
+                <div class="welcome-eyebrow">
+                    Your Equeh Dashboard
+                </div>
 
                 <h1>
                     Welcome back,
-                    <span>User.</span>
+                    <span id="welcomeUserName">
+                        User.
+                    </span>
                 </h1>
 
                 <p class="welcome-text">
-                    Discover verified properties, manage your
-                    transactions and keep track of your Equeh
-                    verification journey.
+                    Manage your property search, transactions,
+                    verification status, and account activity
+                    from one secure place.
                 </p>
 
             </div>
@@ -1691,127 +1455,131 @@
                 href="discover.html"
                 class="browse-button"
             >
-                Discover properties
+                Browse Properties
             </a>
 
         </section>
 
 
-        <!-- ================================
-             STATS
-        ================================= -->
+        <!-- SUMMARY CARDS -->
 
-        <section
-            class="stats-grid"
-            aria-label="Dashboard statistics"
-        >
+        <section class="summary-grid">
 
+            <article class="summary-card">
 
-            <article class="stat-card">
+                <div class="summary-card-top">
 
-                <div class="stat-top">
-
-                    <div class="stat-icon blue">
-                        ◇
-                    </div>
-
-                    <span class="stat-label">
-                        Available
+                    <span class="summary-label">
+                        Saved Properties
                     </span>
 
-                </div>
-
-                <div class="stat-value">
-                    24
-                </div>
-
-                <p class="stat-description">
-                    Verified properties
-                </p>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-top">
-
-                    <div class="stat-icon green">
-                        ✓
-                    </div>
-
-                    <span class="stat-label">
-                        Verified
-                    </span>
-
-                </div>
-
-                <div class="stat-value">
-                    1
-                </div>
-
-                <p class="stat-description">
-                    Verification status
-                </p>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-top">
-
-                    <div class="stat-icon orange">
-                        ◷
-                    </div>
-
-                    <span class="stat-label">
-                        Active
-                    </span>
-
-                </div>
-
-                <div class="stat-value">
-                    0
-                </div>
-
-                <p class="stat-description">
-                    Active transactions
-                </p>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-top">
-
-                    <div class="stat-icon purple">
+                    <span
+                        class="summary-icon blue"
+                        aria-hidden="true"
+                    >
                         ♡
-                    </div>
-
-                    <span class="stat-label">
-                        Saved
                     </span>
 
                 </div>
 
-                <div class="stat-value">
+                <div class="summary-value">
                     3
                 </div>
 
-                <p class="stat-description">
-                    Saved properties
-                </p>
+                <div class="summary-subtext">
+                    Properties you saved
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Active Transactions
+                    </span>
+
+                    <span
+                        class="summary-icon orange"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    1
+                </div>
+
+                <div class="summary-subtext">
+                    Currently in progress
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Completed
+                    </span>
+
+                    <span
+                        class="summary-icon green"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    2
+                </div>
+
+                <div class="summary-subtext">
+                    Completed transactions
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-card-top">
+
+                    <span class="summary-label">
+                        Verification
+                    </span>
+
+                    <span
+                        class="summary-icon purple"
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </span>
+
+                </div>
+
+                <div class="summary-value">
+                    Verified
+                </div>
+
+                <div class="summary-subtext">
+                    Account verification status
+                </div>
 
             </article>
 
         </section>
 
 
-        <!-- ================================
-             DASHBOARD CONTENT
-        ================================= -->
+        <!-- MAIN DASHBOARD GRID -->
 
         <div class="dashboard-grid">
 
@@ -1821,7 +1589,7 @@
             <div>
 
 
-                <!-- FEATURED PROPERTY -->
+                <!-- RECENT TRANSACTIONS -->
 
                 <section class="dashboard-card">
 
@@ -1830,18 +1598,18 @@
                         <div>
 
                             <h2>
-                                Featured verified property
+                                Recent Transactions
                             </h2>
 
                             <p>
-                                A property currently available on Equeh
+                                Keep track of your property
+                                transactions.
                             </p>
 
                         </div>
 
-
                         <a
-                            href="discover.html"
+                            href="transactions.html"
                             class="card-link"
                         >
                             View all
@@ -1850,112 +1618,131 @@
                     </div>
 
 
-                    <article class="property-card">
+                    <div class="transaction-list">
 
-                        <div class="property-image">
 
-                            <!-- Replace with your own image -->
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
 
-                            <img
-                                src="/image/modern.jpg.jpeg"
-                                alt="Featured Equeh property"
-                            >
-
-                            <span class="property-badge">
-                                ✓ Verified
+                            <span class="transaction-icon">
+                                ↗
                             </span>
 
+                            <span class="transaction-info">
 
-                            <button
-                                type="button"
-                                class="property-favourite"
-                                aria-label="Save property"
-                                data-favourite
-                            >
-                                ♡
-                            </button>
-
-                        </div>
-
-
-                        <div class="property-info">
-
-                            <p class="property-location">
-                                Lagos, Nigeria
-                            </p>
-
-
-                            <h3 class="property-title">
-                                Modern Family Home
-                            </h3>
-
-
-                            <p class="property-description">
-                                Explore a verified property with
-                                documented ownership and property
-                                information available through Equeh.
-                            </p>
-
-
-                            <div class="property-details">
-
-                                <span class="property-detail">
-                                    <strong>4</strong>
-                                    Bedrooms
+                                <span class="transaction-title">
+                                    4 Bedroom Detached Duplex
                                 </span>
 
-                                <span class="property-detail">
-                                    <strong>4</strong>
-                                    Bathrooms
+                                <span class="transaction-meta">
+                                    Lekki, Lagos · Updated recently
                                 </span>
 
-                                <span class="property-detail">
-                                    <strong>1</strong>
-                                    Parking
+                            </span>
+
+                            <span class="transaction-status progress">
+                                In Progress
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
+
+                            <span class="transaction-icon">
+                                ✓
+                            </span>
+
+                            <span class="transaction-info">
+
+                                <span class="transaction-title">
+                                    Residential Land
                                 </span>
 
-                                <span class="property-detail">
-                                    <strong>Detached</strong>
+                                <span class="transaction-meta">
+                                    Abuja · Completed
                                 </span>
 
-                            </div>
+                            </span>
+
+                            <span class="transaction-status completed">
+                                Completed
+                            </span>
+
+                        </a>
 
 
-                            <div class="property-bottom">
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
 
-                                <div>
+                            <span class="transaction-icon">
+                                ✓
+                            </span>
 
-                                    <p class="property-price-label">
-                                        Asking price
-                                    </p>
+                            <span class="transaction-info">
 
-                                    <p class="property-price">
-                                        ₦85,000,000
-                                    </p>
+                                <span class="transaction-title">
+                                    3 Bedroom Terrace
+                                </span>
 
-                                </div>
+                                <span class="transaction-meta">
+                                    Ikeja, Lagos · Completed
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status completed">
+                                Completed
+                            </span>
+
+                        </a>
 
 
-                                <a
-                                    href="property-details.html"
-                                    class="view-property"
-                                >
-                                    View property
-                                </a>
+                        <a
+                            href="transaction-details.html"
+                            class="transaction-item"
+                        >
 
-                            </div>
+                            <span class="transaction-icon">
+                                ○
+                            </span>
 
-                        </div>
+                            <span class="transaction-info">
 
-                    </article>
+                                <span class="transaction-title">
+                                    Commercial Property
+                                </span>
+
+                                <span class="transaction-meta">
+                                    Victoria Island · Awaiting action
+                                </span>
+
+                            </span>
+
+                            <span class="transaction-status pending">
+                                Pending
+                            </span>
+
+                        </a>
+
+
+                    </div>
 
                 </section>
 
 
-                <!-- VERIFICATION -->
+                <!-- SAVED PROPERTY -->
 
                 <section
-                    class="dashboard-card verification-card"
+                    class="dashboard-card"
+                    style="margin-top: 22px;"
                 >
 
                     <div class="card-header">
@@ -1963,186 +1750,97 @@
                         <div>
 
                             <h2>
-                                Your verification
+                                Saved Property
                             </h2>
 
                             <p>
-                                Keep your Equeh account ready for transactions
+                                Properties you may want to revisit.
                             </p>
 
                         </div>
 
-
                         <a
-                            href="kyc.html"
+                            href="discover.html"
                             class="card-link"
                         >
-                            View details
+                            Discover more
                         </a>
 
                     </div>
 
 
-                    <div class="verification-body">
+                    <article class="property-card">
 
-                        <div class="verification-status">
+                        <a href="property-details.html">
 
-                            <div
-                                class="verification-status-icon"
-                                aria-hidden="true"
-                            >
-                                ✓
-                            </div>
+                            <div class="property-image">
 
+                                <img
+                                    src="/image/modern.jpg.jpeg"
+                                    alt="Modern property"
+                                >
 
-                            <div class="verification-status-content">
-
-                                <p class="verification-status-title">
-                                    Identity verification in progress
-                                </p>
-
-                                <p class="verification-status-text">
-                                    Your account verification is progressing.
-                                    Complete the remaining steps before
-                                    starting a transaction.
-                                </p>
+                                <span class="verified-badge">
+                                    ✓ Verified
+                                </span>
 
                             </div>
 
-                        </div>
 
+                            <div class="property-content">
 
-                        <div
-                            class="verification-progress"
-                            aria-label="Verification progress"
-                        >
+                                <h3 class="property-title">
+                                    Modern 4 Bedroom Detached Duplex
+                                </h3>
 
-                            <span></span>
-
-                        </div>
-
-
-                        <div class="verification-progress-label">
-
-                            <span>
-                                Verification progress
-                            </span>
-
-                            <strong>
-                                75%
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- RECENT ACTIVITY -->
-
-                <section
-                    class="dashboard-card activity-card"
-                >
-
-                    <div class="card-header">
-
-                        <div>
-
-                            <h2>
-                                Recent activity
-                            </h2>
-
-                            <p>
-                                Your latest account activity
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="activity-list">
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                ✓
-                            </div>
-
-                            <div class="activity-content">
-
-                                <p class="activity-title">
-                                    Email address verified
+                                <p class="property-location">
+                                    Lekki Phase 1, Lagos
                                 </p>
 
-                                <p class="activity-time">
-                                    Recently
+
+                                <div class="property-details">
+
+                                    <span>
+                                        4 Beds
+                                    </span>
+
+                                    <span>
+                                        5 Baths
+                                    </span>
+
+                                    <span>
+                                        Detached
+                                    </span>
+
+                                </div>
+
+
+                                <div class="property-price">
+                                    ₦185,000,000
+                                </div>
+
+                                <p class="property-note">
+                                    Verified property information
+                                    available through Equeh.
                                 </p>
 
                             </div>
 
-                        </div>
+                        </a>
 
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                ♡
-                            </div>
-
-                            <div class="activity-content">
-
-                                <p class="activity-title">
-                                    Property added to saved properties
-                                </p>
-
-                                <p class="activity-time">
-                                    Recently
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="activity-item">
-
-                            <div class="activity-icon">
-                                ◇
-                            </div>
-
-                            <div class="activity-content">
-
-                                <p class="activity-title">
-                                    Account created successfully
-                                </p>
-
-                                <p class="activity-time">
-                                    Recently
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                    </article>
 
                 </section>
 
             </div>
 
 
-            <!-- ================================
-                 RIGHT COLUMN
-            ================================= -->
+            <!-- RIGHT COLUMN -->
 
             <aside>
 
 
-                <!-- QUICK ACTIONS -->
+                <!-- ACCOUNT STATUS -->
 
                 <section class="dashboard-card">
 
@@ -2151,11 +1849,11 @@
                         <div>
 
                             <h2>
-                                Quick actions
+                                Account Status
                             </h2>
 
                             <p>
-                                Get where you need to go
+                                Your current Equeh account status.
                             </p>
 
                         </div>
@@ -2167,23 +1865,23 @@
 
 
                         <a
-                            href="discover.html"
+                            href="kyc.html"
                             class="quick-action"
                         >
 
                             <span class="quick-action-icon">
-                                ◇
+                                ✓
                             </span>
 
                             <span class="quick-action-content">
 
                                 <span class="quick-action-title">
-                                    Discover properties
+                                    Identity verified
                                 </span>
 
                                 <span class="quick-action-text">
-                                    Browse verified properties available
-                                    on Equeh.
+                                    Your account verification status
+                                    is currently active.
                                 </span>
 
                             </span>
@@ -2204,18 +1902,18 @@
                         >
 
                             <span class="quick-action-icon">
-                                ◷
+                                ↗
                             </span>
 
                             <span class="quick-action-content">
 
                                 <span class="quick-action-title">
-                                    My transactions
+                                    View transactions
                                 </span>
 
                                 <span class="quick-action-text">
-                                    View and track your property
-                                    transactions.
+                                    Review your current and completed
+                                    property transactions.
                                 </span>
 
                             </span>
@@ -2298,6 +1996,204 @@
 
                 </section>
 
+
+                <!-- SECURITY / TRUST CARD -->
+
+                <section
+                    class="dashboard-card"
+                    style="margin-top: 22px;"
+                >
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Equeh Trust
+                            </h2>
+
+                            <p>
+                                Your transaction protection journey.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div style="padding: 22px;">
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                                margin-bottom:18px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--green-light);
+                                    color:var(--green);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Verified account
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Your identity information is
+                                    connected to your Equeh account.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                                margin-bottom:18px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--blue-light);
+                                    color:var(--blue);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ◆
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Property verification
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Equeh helps coordinate property and
+                                    transaction verification.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            style="
+                                display:flex;
+                                align-items:flex-start;
+                                gap:12px;
+                            "
+                        >
+
+                            <span
+                                style="
+                                    width:38px;
+                                    height:38px;
+                                    flex:0 0 38px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:var(--purple-light);
+                                    color:var(--purple);
+                                    border-radius:11px;
+                                    font-weight:700;
+                                "
+                            >
+                                ◇
+                            </span>
+
+                            <div>
+
+                                <strong
+                                    style="
+                                        display:block;
+                                        color:var(--text);
+                                        font-size:12px;
+                                    "
+                                >
+                                    Secure transactions
+                                </strong>
+
+                                <span
+                                    style="
+                                        display:block;
+                                        margin-top:3px;
+                                        color:var(--text-light);
+                                        font-size:10px;
+                                        line-height:1.6;
+                                    "
+                                >
+                                    Transaction stages are tracked
+                                    through the Equeh workflow.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
             </aside>
 
         </div>
@@ -2312,7 +2208,6 @@
     <footer class="dashboard-footer">
 
         <div class="footer-container">
-
 
             <a
                 href="dashboard.html"
@@ -2362,11 +2257,133 @@
          JAVASCRIPT
     ================================= -->
 
-    <script>
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "firebase/app";
+
+        import {
+            getAuth,
+            onAuthStateChanged
+        } from "firebase/auth";
+
+
+        /* ============================
+           FIREBASE CONFIGURATION
+        ============================ */
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyBhATdmiYEjt-cGrSR8Qi5bNp-SBvcR5Nw",
+
+            authDomain:
+                "equeh-prototype.firebaseapp.com",
+
+            projectId:
+                "equeh-prototype",
+
+            storageBucket:
+                "equeh-prototype.firebasestorage.app",
+
+            messagingSenderId:
+                "120863104273",
+
+            appId:
+                "1:120863104273:web:04c5c9232eca28a74600b0"
+        };
+
+
+        /* ============================
+           INITIALIZE FIREBASE
+        ============================ */
+
+        const app =
+            initializeApp(firebaseConfig);
+
+        const auth =
+            getAuth(app);
+
 
         document.addEventListener(
             "DOMContentLoaded",
             function () {
+
+                /* ============================
+                   FIREBASE AUTHENTICATION GUARD
+                ============================ */
+
+                onAuthStateChanged(
+                    auth,
+                    function (user) {
+
+                        if (!user) {
+
+                            window.location.replace(
+                                "login.html"
+                            );
+
+                            return;
+                        }
+
+
+                        /* ============================
+                           DISPLAY LOGGED-IN USER
+                        ============================ */
+
+                        const profileName =
+                            document.getElementById(
+                                "profileName"
+                            );
+
+                        const welcomeUserName =
+                            document.getElementById(
+                                "welcomeUserName"
+                            );
+
+                        const profileInitial =
+                            document.getElementById(
+                                "profileInitial"
+                            );
+
+                        const displayName =
+                            user.displayName
+                                ? user.displayName.trim()
+                                : (user.email || "User").split("@")[0];
+
+                        const firstName =
+                            displayName
+                                .split(" ")[0] || "User";
+
+
+                        if (profileName) {
+
+                            profileName.textContent =
+                                firstName;
+
+                        }
+
+
+                        if (welcomeUserName) {
+
+                            welcomeUserName.textContent =
+                                firstName + ".";
+
+                        }
+
+
+                        if (profileInitial) {
+
+                            profileInitial.textContent =
+                                firstName
+                                    .charAt(0)
+                                    .toUpperCase();
+
+                        }
+
+                    }
+                );
 
 
                 /* ============================
@@ -2384,7 +2401,10 @@
                     );
 
 
-                if (menuToggle && mobileNav) {
+                if (
+                    menuToggle &&
+                    mobileNav
+                ) {
 
                     menuToggle.addEventListener(
                         "click",
@@ -2394,6 +2414,7 @@
                                 mobileNav.classList.toggle(
                                     "open"
                                 );
+
 
                             menuToggle.setAttribute(
                                 "aria-expanded",
